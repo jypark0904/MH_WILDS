@@ -1,0 +1,13 @@
+.damage-panel{margin:0;padding:0;border:0;background:none}
+.damage-settings-baseline{display:flex;flex-wrap:wrap;align-items:baseline;gap:.3rem .55rem;margin:0 0 1.2rem;color:var(--text)}
+.damage-settings-baseline strong{color:var(--gold);font-size:1.25rem}
+.damage-settings-baseline small{flex-basis:100%;color:var(--muted)}
+.damage-setting-section+.damage-setting-section{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.damage-setting-section h3{margin:0 0 .8rem;font-size:.95rem}
+.damage-setting-section>.hint{margin:.35rem 0 .9rem}
+.damage-setting-section .damage-setting-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem 1rem}
+.damage-setting-section .damage-setting-grid label{margin:0;min-width:0}
+.damage-setting-section label small{color:var(--gold);white-space:nowrap}
+.damage-setting-section label input,.damage-setting-section label select{margin-top:.35rem}
+.damage-settings-notice{padding:.75rem 1rem;border:1px solid var(--line);border-radius:.6rem;background:var(--surface)}
+@media(max-width:520px){.damage-setting-section .damage-setting-grid{grid-template-columns:1fr}}

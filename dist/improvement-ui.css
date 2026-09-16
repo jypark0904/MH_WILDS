@@ -1,0 +1,25 @@
+.improvement-options{align-items:stretch}
+.improvement-skill-card{display:flex;flex-direction:column;gap:.6rem;min-width:0;padding:1rem;border:1px solid var(--line);border-radius:10px;background:var(--surface-raised,var(--bg))}
+.improvement-skill-card h4{margin:0;font-size:.9rem}
+.improvement-skill-description{margin:0;color:var(--muted);font-size:.75rem;line-height:1.6}
+.improvement-skill-card .improvement-control{margin-top:auto;padding-top:.25rem}
+.improvement-control-row{display:flex;align-items:center;justify-content:space-between;gap:.7rem}
+.improvement-stepper{display:flex;align-items:center;overflow:hidden;border:1px solid var(--line);border-radius:8px;flex-shrink:0}
+.improvement-stepper .improvement-step{display:grid;place-items:center;width:2rem;height:2.2rem;min-height:0;padding:0;border:0;border-radius:0;background:transparent;line-height:1}
+.improvement-stepper .improvement-step:disabled{opacity:.3}
+.improvement-level-label{display:flex;align-items:center;gap:.2rem;margin:0;padding:0 .2rem;color:var(--muted);font-size:.75rem}
+.improvement-level-label input.improvement-level{width:2.1rem;min-width:0;height:2.2rem;padding:0;border:0;border-radius:0;background:transparent;text-align:center;appearance:textfield;-moz-appearance:textfield;color:var(--text)}
+.improvement-level::-webkit-inner-spin-button,.improvement-level::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.improvement-level-label input.improvement-level:focus{outline-offset:-2px}
+.improvement-level-label input.improvement-level[aria-invalid="true"]{outline:1px solid var(--danger,#c25f50);outline-offset:-2px}
+.improvement-submit{min-height:2.2rem;padding:.35rem .8rem;font-size:.75rem;white-space:nowrap;border-color:var(--gold)}
+.improvement-retry{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;border-color:var(--danger,#c25f50)}
+.improvement-retry h3{margin:0;font-size:.95rem}
+.improvement-retry-heading p{margin:.35rem 0 0;color:var(--muted);font-size:.8rem}
+.improvement-level-status{margin:.45rem 0 0;font-size:.72rem}
+.improvement-control.is-failed .improvement-stepper{border-color:var(--danger,#c25f50);background:color-mix(in srgb,var(--danger,#c25f50) 9%,transparent)}
+.improvement-control.is-failed .improvement-level,.improvement-control.is-failed .improvement-level-status{color:var(--danger,#c25f50)}
+.improvement-control.is-lowered .improvement-stepper{border-color:var(--green,#528d64);background:color-mix(in srgb,var(--green,#528d64) 9%,transparent)}
+.improvement-control.is-lowered .improvement-level,.improvement-control.is-lowered .improvement-level-status{color:var(--green,#528d64)}
+.improvement-control.is-lowered .improvement-submit{border-color:var(--green,#528d64);color:var(--green,#528d64)}
+@media(max-width:600px){.improvement-retry .improvement-control{width:100%}.improvement-skill-card{padding:.85rem}}

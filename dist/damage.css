@@ -1,0 +1,12 @@
+.damage-panel{margin:1rem 0;padding-top:1rem;border-top:1px solid var(--line)}
+.damage-summary{padding:1rem;border:1px solid #465649;background:#202d26;border-radius:10px;margin:.8rem 0}
+.damage-summary small{color:var(--muted);font-size:.78rem}.damage-index{display:block;font-size:1.9rem;line-height:1.4;color:#c3e2b9;font-variant-numeric:tabular-nums}
+.damage-profile{font-size:.86rem;margin:.4rem 0}.damage-shares{display:flex;flex-wrap:wrap;gap:.25rem .8rem;font-size:.75rem;color:#a9bcae}.damage-summary .hint{margin:.6rem 0 0;font-size:.75rem}
+.damage-settings summary{font-size:.82rem;color:var(--gold);cursor:pointer}.damage-settings h4{font-size:.85rem;margin:1rem 0 .5rem}.damage-setting-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}.damage-setting-grid label{font-size:.75rem;margin:0}.damage-setting-grid input,.damage-setting-grid select{padding:.45rem;margin-top:.3rem}.damage-settings .hint{font-size:.75rem}.damage-settings>details{margin:.75rem 0}
+.damage-sources{padding-left:1.2rem;font-size:.75rem}.damage-sources li{margin:.5rem 0;overflow-wrap:anywhere}
+.damage-skill-badge{display:inline-block;color:var(--muted);font-size:.72rem;font-variant-numeric:tabular-nums;white-space:nowrap}.damage-positive{color:#a9d39c;font-weight:600}.damage-total{border-color:#52694b;color:#c3e2b9;font-variant-numeric:tabular-nums}
+#target-rows .skill-row{margin:.35rem 0;min-height:2.5rem}
+#target-rows .skill-name{line-height:1.35}
+.target-skill-meta{display:flex;align-items:baseline;gap:.2rem;margin-top:.12rem;white-space:nowrap}
+.target-skill-meta .damage-skill-badge{display:inline;margin:0}.target-skill-meta small{font-size:.72rem}
+.result-skill-level>.damage-skill-badge{margin-right:auto}.damage-modal-intro{border-block:1px solid var(--line);padding:1rem 0;margin:1rem 0}.damage-modal-intro strong>.damage-skill-badge{margin-left:.4rem}.skill-effect-heading .damage-skill-badge{margin-left:auto}

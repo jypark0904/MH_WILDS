@@ -1,0 +1,923 @@
+{
+  "game": "wilds",
+  "version": 1,
+  "dbVersion": "1.041",
+  "researchedAt": "2026-09-16",
+  "scope": "기본게임 TU4~TU4.5, 건랜스 제외. 동일 무기·같은 대표 동작의 장비 비교용이며 수렵 전체 DPS가 아니다.",
+  "sources": {
+    "gs-tu4": {
+      "title": "Mathalos Nest — Great Sword Endgame Meta Sets (TU4)",
+      "url": "https://docs.google.com/document/d/1A5wxQRX87Z0Kf_EXWc4G62w3ePoFLtkMpXly_x0ARVY/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "ls-endgame": {
+      "title": "timmy·Mikalya — Wilds Long Sword Guide (거극 아티어·역전왕 최종 장비 포함)",
+      "url": "https://docs.google.com/document/d/1tt7GZ6XtPe68GvlafxTriKUVt8LeLFVAUNkWb6FMnQM/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "sns-tu451": {
+      "title": "BK·MOPOP·HungryDave·PokerDew — Sword and Shield Guide, TU4.51",
+      "url": "https://docs.google.com/document/d/1AUrozQQ77v71PAN-HkXdCjHSzC4QM0zFlDmT6RhEZSM/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "db-1041": {
+      "title": "Team Leviathan — Dual Blades Guide & Set Compilation, 1.041.01.00",
+      "url": "https://docs.google.com/document/d/1X68k4cL2Lo9R4nqsbpTsFvA6Z74L1RafAteXKiWguxc/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "hh-arkveld": {
+      "title": "Upgreid — Hunting Horn Guide, AT Arkveld Edition v1.7.0",
+      "url": "https://docs.google.com/document/d/1MK8dawS-pH-6lvlHYFYV5QmEXtohyEiJPlJM9L2Gy5A/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "hammer-tu41": {
+      "title": "Radiant-Dong — TU4.1 Hammer Meta Updates 및 작성자 답변",
+      "url": "https://www.reddit.com/r/MonsterHunterMeta/comments/1raaex0/tu41_hammer_gl_meta_document_updates/",
+      "updatedAt": "2026-02-20",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "hammer-tu4": {
+      "title": "Radiant-Dong — TU4 Hammer: 모으기 타격 강화 변경 설명",
+      "url": "https://www.reddit.com/r/MonsterHunterMeta/comments/1ptdedg/tu4_gl_hammer_meta_document_updates/",
+      "updatedAt": "2025-12-24",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "lance-tu45": {
+      "title": "Monster Hunter Lance Community — Wilds Endgame, TU4.5",
+      "url": "https://www.mhlance.com/wilds/builds/endgame",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "spec_sa_sets": {
+      "title": "Sasch · Wilds Switch Axe Endgame Sets (Gogma/TU4.5)",
+      "url": "https://wiggler.pet/wilds/endgame/switch_axe",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "spec_cb_guide": {
+      "title": "timmy · jerrynt — MH Wilds Charge Blade Guide, TU4.5 v1.4.2",
+      "url": "https://docs.google.com/document/d/1I9XKBQZLpG0159yPOs2zvPS7wwrzaEPtiMkBfzGzibQ/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "spec_ig_sets": {
+      "title": "EchoesPartOne · MH Wilds Insect Glaive Endgame Meta Sets, TU4.5",
+      "url": "https://mhwssets.wordpress.com/ig/",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "spec_lbg_guide": {
+      "title": "MHGH Bowgun team · Wilds Light Bowgun Guide, TU4.5 v1.4.5",
+      "url": "https://docs.google.com/document/d/1Mm7rOM0V7VLsOHlXW5zO8uD5ht5rhlVeVNLn3cdDXy8/edit",
+      "updatedAt": "2026-03-06",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "spec_hbg_guide": {
+      "title": "Cylon · MHGH Bowgun team — Wilds Heavy Bowgun Guide, TU4.5 v1.4.5",
+      "url": "https://docs.google.com/document/d/17atnsKzYrQlEy_70Z2zzlEBJrN3OtiTYurKCHzMLIn8/edit",
+      "updatedAt": "2026-07-06",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "spec_bow_compendium": {
+      "title": "p_chu · ninjazenia — MH:Wilds Bow Compendium, TU4",
+      "url": "https://docs.google.com/document/d/1i3qfZtagi5CFrIKdTlNM-DN2cMowdOwwkAVOWvMccUE/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "lance-combos": {
+      "title": "Monster Hunter Lance Community — Wilds Combos (TU4)",
+      "url": "https://www.mhlance.com/wilds/guides/combos",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "mv-1040": {
+      "title": "717999vlr — MH Wilds Motion Values 1.040.0",
+      "url": "https://docs.google.com/spreadsheets/d/1F_bOwQT6A6mFtCN7WCetnZDrmvLYu-ne4y97IsG6Fkk/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "mv-1040-notes": {
+      "title": "717999vlr — 1.040.0 갱신 설명 및 보우건 미갱신 고지",
+      "url": "https://www.reddit.com/r/MonsterHunter/comments/1ptau7i/mh_wilds_motion_values_10400_update/",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "wilds-db": {
+      "title": "MH Wilds Database — 한국어 스킬 레벨 설명",
+      "url": "https://docs.wilds.mhdb.io/",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    }
+  },
+  "profiles": {
+    "great-sword/charged": {
+      "label": "모아베기 중심",
+      "note": "3단 모아베기→강모아베기→강화 참모아베기. 첫 참모아베기 타격이 약점에 적중한다고 가정합니다. 모으기 시간 비중 35%는 조절 가능한 모델 가정입니다.",
+      "derivation": "1.040 GS 표: 176/1.5 + 187/1.8 + 16/1 + 267/2.5 = 물리646MV·속성6.8배. 강화 참모아베기 조건은 첫 타격의 육질×물리 예리도 보정≥45. 준비·상쇄·헛침은 제외.",
+      "evidence": "verified_motion_values_assumed_rotation",
+      "sourceIds": [
+        "mv-1040",
+        "gs-tu4"
+      ],
+      "chargeFraction": 0.35,
+      "channels": [
+        {
+          "label": "모아베기·강모아베기·강화 참모아베기",
+          "rawMV": 646,
+          "eleMV": 6.8,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1,
+          "charged": true
+        }
+      ]
+    },
+    "great-sword/draw": {
+      "label": "발도·회피 중심",
+      "note": "3단 발도 모아베기 1회를 비교합니다. 발도·회피·납도 전체의 초당 피해는 아닙니다. 모으기 시간 비중 45%는 모델 가정입니다.",
+      "derivation": "1.040 GS 표 Charged Slash Lv3 =176MV·속성1.5배. 발도 공격 한 번의 대표값을 채택하며 실제 차지 단계는 전투마다 다릅니다.",
+      "evidence": "verified_motion_values_assumed_rotation",
+      "sourceIds": [
+        "mv-1040",
+        "gs-tu4"
+      ],
+      "chargeFraction": 0.45,
+      "channels": [
+        {
+          "label": "발도 모아베기 3단계",
+          "rawMV": 176,
+          "eleMV": 1.5,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1,
+          "charged": true,
+          "draw": true
+        }
+      ]
+    },
+    "long-sword/raw-combo": {
+      "label": "연계·카운터 중심",
+      "note": "붉은 기인 상태의 짧은 연계를 대표값으로 비교합니다. 투구깨기·기인해방베기·기인 게이지 회복 시간은 포함하지 않습니다.",
+      "derivation": "원저자 Crimson I→Spirit I 반복: 물리80MV·속성2.4배, 약1.5초. 여기서는 1회 합계만 사용. 붉은 기인 단계의 별도 공격력 보정과 투구깨기의 반복 비중은 고정하지 않음.",
+      "evidence": "verified_author_combo_partial_model",
+      "sourceIds": [
+        "ls-endgame"
+      ],
+      "channels": [
+        {
+          "label": "붉은 기인 연계 1회",
+          "rawMV": 80,
+          "eleMV": 2.4,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1
+        }
+      ]
+    },
+    "sword-shield/guard-combo": {
+      "label": "연계·저스트 가드",
+      "note": "검을 쓰는 수평베기 반복 연계의 1초 분량입니다. 방패 공격·가드 성공·폴 배시·강화 차지 찹을 섞는 빈도는 포함하지 않습니다.",
+      "derivation": "TU4.51 원저자 sustained Lateral Loop B>B>Y+B: 53.7MV/s·속성1.9배/s. 같은 1초 기준으로 물리·속성을 함께 정규화. 검 타격만 있으므로 회심·예리도·속성 육질을 모두 적용.",
+      "evidence": "verified_author_rate_normalization",
+      "sourceIds": [
+        "sns-tu451"
+      ],
+      "channels": [
+        {
+          "label": "수평베기 반복 1초 분량",
+          "rawMV": 53.7,
+          "eleMV": 1.9,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1
+        }
+      ]
+    },
+    "dual-blades/element": {
+      "label": "속성·회피 연계",
+      "note": "난무 I→II→III 전체 적중을 가정합니다. 귀인 강화 지속시간·회피 강화 버프·난무 중 이동 손실은 포함하지 않습니다.",
+      "derivation": "1.041 원저자 난무 전체393MV·속성20배·27타·약5.39초. 원시 모션 합계를 사용하며 귀인 부스트의 별도 물리1.15/속성1.3 버프는 이 합계에 미포함.",
+      "evidence": "verified_author_combo_partial_model",
+      "sourceIds": [
+        "db-1041"
+      ],
+      "channels": [
+        {
+          "label": "난무 I→II→III",
+          "rawMV": 393,
+          "eleMV": 20,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1
+        }
+      ]
+    },
+    "hammer/raw-offset": {
+      "label": "물리·상쇄 중심",
+      "note": "3단 모아 내려치기와 세로 휘두르기 3연계를 한 번씩 쓰는 예시입니다. 두 동작의 실제 사용 비중은 플레이에 따라 다릅니다. 모으기 시간 비중 25%는 가정입니다.",
+      "derivation": "1.040 Hammer 표 Charged Big Bang20+130MV/속성1+1.5, Overhead Smash I·II·Upswing41+45+95MV/속성1+1+1.3. 합계331MV·속성5.8배. 모으기 타격 강화는 모은 두 타격에만 적용.",
+      "evidence": "verified_motion_values_assumed_rotation",
+      "sourceIds": [
+        "mv-1040",
+        "hammer-tu4"
+      ],
+      "chargeFraction": 0.25,
+      "channels": [
+        {
+          "label": "3단 모아 내려치기",
+          "rawMV": 150,
+          "eleMV": 2.5,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1,
+          "charged": true,
+          "hammerCharged": true
+        },
+        {
+          "label": "세로 휘두르기 3연계",
+          "rawMV": 181,
+          "eleMV": 3.3,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1
+        }
+      ]
+    },
+    "hunting-horn/element": {
+      "label": "속성·음파 중심",
+      "note": "피리는 타격·향주파 종류·향주파 누적·향음주 겹침을 구분해야 합니다.",
+      "derivation": "1.040 HH 표는 일반 타격, 회심 불가 타격 향주파, 회심 가능한 참격 향주파, 고정 속성값을 쓰는 속성 향주파 및 육질 무시 향음주를 구분. 현재 입력의 실제 선율 종류와 겹침 수가 미확정이라 임의의 30%/80% 지분을 만들지 않음.",
+      "evidence": "unsupported_missing_song_and_channel_model",
+      "sourceIds": [
+        "mv-1040",
+        "hh-arkveld"
+      ],
+      "channels": [],
+      "unavailable": "선율·향주파 종류·향음주 겹침 수를 아직 계산하지 않아 피리 전체 피해 비교를 지원하지 않습니다."
+    },
+    "hunting-horn/raw": {
+      "label": "물리·상태이상 무기",
+      "note": "피리는 타격·향주파 종류·향주파 누적·향음주 겹침을 구분해야 합니다.",
+      "derivation": "1.040 HH 표는 일반 타격, 회심 불가 타격 향주파, 회심 가능한 참격 향주파, 고정 속성값을 쓰는 속성 향주파 및 육질 무시 향음주를 구분. 현재 입력의 실제 선율 종류와 겹침 수가 미확정이라 임의의 30%/80% 지분을 만들지 않음.",
+      "evidence": "unsupported_missing_song_and_channel_model",
+      "sourceIds": [
+        "mv-1040",
+        "hh-arkveld"
+      ],
+      "channels": [],
+      "unavailable": "선율·향주파 종류·향음주 겹침 수를 아직 계산하지 않아 피리 전체 피해 비교를 지원하지 않습니다."
+    },
+    "lance/guard-raw": {
+      "label": "가드·물리 중심",
+      "note": "중단 찌르기→넓게 후려치기→중단 찌르기→3연 찌르기 전체 적중을 가정합니다. 카운터·가드 시간은 포함하지 않습니다.",
+      "derivation": "TU4 랜스 커뮤니티 대표 반복 콤보:233MV·속성8.1배·약4.7초. 공격적인 방어 등 발동 버프는 공통 조건 설정으로 별도 적용.",
+      "evidence": "verified_author_combo",
+      "sourceIds": [
+        "lance-combos",
+        "lance-tu45"
+      ],
+      "channels": [
+        {
+          "label": "중단→후려치기→중단→3연 찌르기",
+          "rawMV": 233,
+          "eleMV": 8.1,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1
+        }
+      ]
+    },
+    "switch-axe/power": {
+      "label": "물리 중심 · 강격병 권장",
+      "note": "검 상승베기 2타와 고출력 추격 2회를 가정한 부분 모델입니다. 강격병 자체의 공격력 보정·풀 릴리스·변형·고출력 유지율은 아직 제외되어 실제 전체 피해와 다릅니다.",
+      "derivation": "1.040 SA 표 검 우상승58/1+좌상승62/1, 추격12MV·속성0.35배×2. 추격은 소모 예리도가0이어도 피해 예리도 보정을 받는 것으로 분류. 고출력 중 검 각 타격당 추격1회라는 회전 가정. 강격병 공격력 보정은 최신 원저자 계수 재검증 전까지 미적용.",
+      "evidence": "verified_motion_values_partial_phial_model",
+      "sourceIds": [
+        "mv-1040",
+        "spec_sa_sets"
+      ],
+      "channels": [
+        {
+          "label": "검 상승베기 2타",
+          "rawMV": 120,
+          "eleMV": 2,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1
+        },
+        {
+          "label": "고출력 추격 2회",
+          "rawMV": 12,
+          "eleMV": 0.35,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 2
+        }
+      ]
+    },
+    "switch-axe/element": {
+      "label": "강속성병 · 속성 중심",
+      "note": "검 3연베기와 고출력 추격 3회를 가정한 부분 모델입니다. 강속성병 자체 보정·풀 릴리스·변형·고출력 유지율은 아직 제외됩니다.",
+      "derivation": "1.040 SA 표 Sword Triple Slash25+22+26MV/속성1×3, 강속성병 추격12MV·속성1배×3. 검 각 타격당 추격1회 가정. 고출력 추격도 회심·물리 육질 적용; CB 유탄병처럼 취급하지 않음. 강속성병 자체 속성 증폭 계수는 최신 계수 재검증 전까지 미적용.",
+      "evidence": "verified_motion_values_partial_phial_model",
+      "sourceIds": [
+        "mv-1040",
+        "spec_sa_sets"
+      ],
+      "channels": [
+        {
+          "label": "검 3연베기",
+          "rawMV": 73,
+          "eleMV": 3,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1
+        },
+        {
+          "label": "강속성병 고출력 추격 3회",
+          "rawMV": 12,
+          "eleMV": 1,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 3
+        }
+      ]
+    },
+    "charge-blade/impact": {
+      "label": "유탄병 · 고출력 후속해방",
+      "note": "방패·도끼 강화 상태의 고출력→후속해방→검 변형→방패 찌르기입니다. 도끼 타격마다 추가 톱니 4회 적중을 가정합니다. 포탄 장전2는 병 부분만 과충전으로 비교합니다.",
+      "derivation": "1.040 CB 표 AED68+AEDF78, 도끼강화12MV·속성0.2배×8, 검변형30/1, 방패찌르기15+6/속성2. 방패 강화로 도끼 물리×1.1. 병은 기본16MV(유탄) 또는4배(강속성)×5; 강속성병에는 방패 강화×1.3. 포탄 장전2가 있으면 병20MV 또는5배이므로 병만×1.25. 원저자 AEDF 루프 과충전 유탄병100MV와 일치. 도끼강화 타수·재충전·상태 유지·변형 애니메이션 단축은 실전 변수.",
+      "evidence": "verified_motion_values_assumed_tick_count",
+      "sourceIds": [
+        "mv-1040",
+        "spec_cb_guide"
+      ],
+      "channels": [
+        {
+          "label": "고출력·후속 도끼 타격 (방패 강화)",
+          "rawMV": 160.6,
+          "eleMV": 2,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1
+        },
+        {
+          "label": "도끼 강화 추가 타격 최대8회 (방패 강화)",
+          "rawMV": 13.2,
+          "eleMV": 0.2,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 8
+        },
+        {
+          "label": "검으로 변형 베기",
+          "rawMV": 30,
+          "eleMV": 1,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1,
+          "morph": true
+        },
+        {
+          "label": "방패 찌르기 2타",
+          "rawMV": 21,
+          "eleMV": 2,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1
+        },
+        {
+          "label": "고출력·후속 유탄병 5회",
+          "rawMV": 16,
+          "eleMV": 0,
+          "crit": false,
+          "sharpness": false,
+          "hitzone": false,
+          "count": 5,
+          "artillery": true,
+          "overchargePhial": true
+        }
+      ],
+      "rules": {
+        "포탄 장전": {
+          "channelFlag": "overchargePhial",
+          "levels": [
+            {
+              "rawDamage": 1,
+              "elementDamage": 1
+            },
+            {
+              "rawDamage": 1.25,
+              "elementDamage": 1.25
+            }
+          ],
+          "sourceIds": [
+            "mv-1040",
+            "spec_cb_guide"
+          ],
+          "note": "차지액스 빨강 병 장전 가정의 AED/AEDF 병 채널 전용. 일반16→과충전20MV, 강속성4→5배. 건랜스에는 별도 탄수 계산 필요."
+        }
+      }
+    },
+    "charge-blade/element": {
+      "label": "강속성병 · 고출력 후속해방",
+      "note": "방패·도끼 강화 상태의 고출력→후속해방→검 변형→방패 찌르기입니다. 도끼 타격마다 추가 톱니 4회 적중을 가정합니다. 포탄 장전2는 병 부분만 과충전으로 비교합니다.",
+      "derivation": "1.040 CB 표 AED68+AEDF78, 도끼강화12MV·속성0.2배×8, 검변형30/1, 방패찌르기15+6/속성2. 방패 강화로 도끼 물리×1.1. 병은 기본16MV(유탄) 또는4배(강속성)×5; 강속성병에는 방패 강화×1.3. 포탄 장전2가 있으면 병20MV 또는5배이므로 병만×1.25. 원저자 AEDF 루프 과충전 유탄병100MV와 일치. 도끼강화 타수·재충전·상태 유지·변형 애니메이션 단축은 실전 변수.",
+      "evidence": "verified_motion_values_assumed_tick_count",
+      "sourceIds": [
+        "mv-1040",
+        "spec_cb_guide"
+      ],
+      "channels": [
+        {
+          "label": "고출력·후속 도끼 타격 (방패 강화)",
+          "rawMV": 160.6,
+          "eleMV": 2,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1
+        },
+        {
+          "label": "도끼 강화 추가 타격 최대8회 (방패 강화)",
+          "rawMV": 13.2,
+          "eleMV": 0.2,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 8
+        },
+        {
+          "label": "검으로 변형 베기",
+          "rawMV": 30,
+          "eleMV": 1,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1,
+          "morph": true
+        },
+        {
+          "label": "방패 찌르기 2타",
+          "rawMV": 21,
+          "eleMV": 2,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1
+        },
+        {
+          "label": "고출력·후속 강속성병 5회 (방패 강화)",
+          "rawMV": 0,
+          "eleMV": 5.2,
+          "crit": false,
+          "sharpness": false,
+          "hitzone": true,
+          "count": 5,
+          "overchargePhial": true
+        }
+      ],
+      "rules": {
+        "포탄 장전": {
+          "channelFlag": "overchargePhial",
+          "levels": [
+            {
+              "rawDamage": 1,
+              "elementDamage": 1
+            },
+            {
+              "rawDamage": 1.25,
+              "elementDamage": 1.25
+            }
+          ],
+          "sourceIds": [
+            "mv-1040",
+            "spec_cb_guide"
+          ],
+          "note": "차지액스 빨강 병 장전 가정의 AED/AEDF 병 채널 전용. 일반16→과충전20MV, 강속성4→5배. 건랜스에는 별도 탄수 계산 필요."
+        }
+      }
+    },
+    "insect-glaive/ground": {
+      "label": "지상 연계 · 강습베기",
+      "note": "3색 진액의 지상 연계→강습베기 2단계를 대표로 삼았습니다. 조충곤 타격만 계산하며 사냥벌레·진액 회수 시간은 제외합니다.",
+      "derivation": "원저자 지상 루프 옆Y→뒤Y 1타→Y+B를 표에 대응: Strong Sidestep26/0.8+Combo1 18/0.8+Strong Descending Slash Lv2(32+12+18+18+18+46)/속성6. 합계188MV·속성7.6. 비연은 공중에 뜨는 SDS 앞5타98MV에만 적용하며 마지막46MV는 제외. 옆베기의 비연 자격이 불확실하여 미적용.",
+      "evidence": "verified_motion_values_assumed_mapping",
+      "sourceIds": [
+        "mv-1040",
+        "spec_ig_sets"
+      ],
+      "channels": [
+        {
+          "label": "옆·뒤 연계",
+          "rawMV": 44,
+          "eleMV": 1.6,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1
+        },
+        {
+          "label": "강습베기 공중 5타",
+          "rawMV": 98,
+          "eleMV": 5,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1,
+          "airborne": true
+        },
+        {
+          "label": "강습베기 마지막 착지 타격",
+          "rawMV": 46,
+          "eleMV": 1,
+          "crit": true,
+          "sharpness": true,
+          "hitzone": true,
+          "count": 1
+        }
+      ]
+    },
+    "light-bowgun/normal": {
+      "label": "통상탄",
+      "note": "같은 탄종·같은 거리·같은 명중 수의 물리탄 상대 피해입니다. 100MV는 비교 기준 단위이며 실제 탄의 모션값이나 초당 피해가 아닙니다. 속사·추격·재장전·탄창 순서 효과는 제외합니다.",
+      "derivation": "최신 MV 표 작성자가 보우건 수치 미갱신 및 복합 배율 미검증을 명시. 따라서 공격력·회심·대응 탄 강화의 같은 탄종 내 비율만 비교하도록 물리100MV로 정규화. 예리도·무기 속성은 적용하지 않음. 다른 탄종끼리 이 값을 직접 비교하면 안 됨.",
+      "evidence": "normalized_same_ammo_relative_damage",
+      "sourceIds": [
+        "mv-1040-notes",
+        "spec_lbg_guide"
+      ],
+      "channels": [
+        {
+          "label": "물리탄 상대 피해 기준",
+          "rawMV": 100,
+          "eleMV": 0,
+          "crit": true,
+          "sharpness": false,
+          "hitzone": true,
+          "count": 1,
+          "shotType": "normal",
+          "normalShot": true
+        }
+      ]
+    },
+    "light-bowgun/pierce": {
+      "label": "관통탄",
+      "note": "같은 탄종·같은 거리·같은 명중 수의 물리탄 상대 피해입니다. 100MV는 비교 기준 단위이며 실제 탄의 모션값이나 초당 피해가 아닙니다. 속사·추격·재장전·탄창 순서 효과는 제외합니다.",
+      "derivation": "최신 MV 표 작성자가 보우건 수치 미갱신 및 복합 배율 미검증을 명시. 따라서 공격력·회심·대응 탄 강화의 같은 탄종 내 비율만 비교하도록 물리100MV로 정규화. 예리도·무기 속성은 적용하지 않음. 다른 탄종끼리 이 값을 직접 비교하면 안 됨.",
+      "evidence": "normalized_same_ammo_relative_damage",
+      "sourceIds": [
+        "mv-1040-notes",
+        "spec_lbg_guide"
+      ],
+      "channels": [
+        {
+          "label": "물리탄 상대 피해 기준",
+          "rawMV": 100,
+          "eleMV": 0,
+          "crit": true,
+          "sharpness": false,
+          "hitzone": true,
+          "count": 1,
+          "shotType": "pierce",
+          "pierceShot": true
+        }
+      ]
+    },
+    "light-bowgun/spread": {
+      "label": "산탄",
+      "note": "같은 탄종·같은 거리·같은 명중 수의 물리탄 상대 피해입니다. 100MV는 비교 기준 단위이며 실제 탄의 모션값이나 초당 피해가 아닙니다. 속사·추격·재장전·탄창 순서 효과는 제외합니다.",
+      "derivation": "최신 MV 표 작성자가 보우건 수치 미갱신 및 복합 배율 미검증을 명시. 따라서 공격력·회심·대응 탄 강화의 같은 탄종 내 비율만 비교하도록 물리100MV로 정규화. 예리도·무기 속성은 적용하지 않음. 다른 탄종끼리 이 값을 직접 비교하면 안 됨.",
+      "evidence": "normalized_same_ammo_relative_damage",
+      "sourceIds": [
+        "mv-1040-notes",
+        "spec_lbg_guide"
+      ],
+      "channels": [
+        {
+          "label": "물리탄 상대 피해 기준",
+          "rawMV": 100,
+          "eleMV": 0,
+          "crit": true,
+          "sharpness": false,
+          "hitzone": true,
+          "count": 1,
+          "shotType": "spread",
+          "spreadShot": true
+        }
+      ]
+    },
+    "heavy-bowgun/normal": {
+      "label": "통상탄",
+      "note": "같은 탄종·같은 거리·같은 명중 수의 물리탄 상대 피해입니다. 100MV는 비교 기준 단위이며 실제 탄의 모션값이나 초당 피해가 아닙니다. 속사·추격·재장전·탄창 순서 효과는 제외합니다.",
+      "derivation": "최신 MV 표 작성자가 보우건 수치 미갱신 및 복합 배율 미검증을 명시. 따라서 공격력·회심·대응 탄 강화의 같은 탄종 내 비율만 비교하도록 물리100MV로 정규화. 예리도·무기 속성은 적용하지 않음. 다른 탄종끼리 이 값을 직접 비교하면 안 됨.",
+      "evidence": "normalized_same_ammo_relative_damage",
+      "sourceIds": [
+        "mv-1040-notes",
+        "spec_hbg_guide"
+      ],
+      "channels": [
+        {
+          "label": "물리탄 상대 피해 기준",
+          "rawMV": 100,
+          "eleMV": 0,
+          "crit": true,
+          "sharpness": false,
+          "hitzone": true,
+          "count": 1,
+          "shotType": "normal",
+          "normalShot": true
+        }
+      ]
+    },
+    "heavy-bowgun/pierce": {
+      "label": "관통탄",
+      "note": "같은 탄종·같은 거리·같은 명중 수의 물리탄 상대 피해입니다. 100MV는 비교 기준 단위이며 실제 탄의 모션값이나 초당 피해가 아닙니다. 속사·추격·재장전·탄창 순서 효과는 제외합니다.",
+      "derivation": "최신 MV 표 작성자가 보우건 수치 미갱신 및 복합 배율 미검증을 명시. 따라서 공격력·회심·대응 탄 강화의 같은 탄종 내 비율만 비교하도록 물리100MV로 정규화. 예리도·무기 속성은 적용하지 않음. 다른 탄종끼리 이 값을 직접 비교하면 안 됨.",
+      "evidence": "normalized_same_ammo_relative_damage",
+      "sourceIds": [
+        "mv-1040-notes",
+        "spec_hbg_guide"
+      ],
+      "channels": [
+        {
+          "label": "물리탄 상대 피해 기준",
+          "rawMV": 100,
+          "eleMV": 0,
+          "crit": true,
+          "sharpness": false,
+          "hitzone": true,
+          "count": 1,
+          "shotType": "pierce",
+          "pierceShot": true
+        }
+      ]
+    },
+    "heavy-bowgun/spread": {
+      "label": "산탄",
+      "note": "같은 탄종·같은 거리·같은 명중 수의 물리탄 상대 피해입니다. 100MV는 비교 기준 단위이며 실제 탄의 모션값이나 초당 피해가 아닙니다. 속사·추격·재장전·탄창 순서 효과는 제외합니다.",
+      "derivation": "최신 MV 표 작성자가 보우건 수치 미갱신 및 복합 배율 미검증을 명시. 따라서 공격력·회심·대응 탄 강화의 같은 탄종 내 비율만 비교하도록 물리100MV로 정규화. 예리도·무기 속성은 적용하지 않음. 다른 탄종끼리 이 값을 직접 비교하면 안 됨.",
+      "evidence": "normalized_same_ammo_relative_damage",
+      "sourceIds": [
+        "mv-1040-notes",
+        "spec_hbg_guide"
+      ],
+      "channels": [
+        {
+          "label": "물리탄 상대 피해 기준",
+          "rawMV": 100,
+          "eleMV": 0,
+          "crit": true,
+          "sharpness": false,
+          "hitzone": true,
+          "count": 1,
+          "shotType": "spread",
+          "spreadShot": true
+        }
+      ]
+    },
+    "light-bowgun/element": {
+      "label": "속성탄",
+      "note": "속성탄은 공격력에 비례하는 속성 성분과 탄별 계수·다단히트가 필요합니다.",
+      "derivation": "보우건의 속성탄은 근접 무기의 독립 속성값 수식과 다름. 최신 원저자 MV 표의 탄 배율이 불완전하여 임의의 속성 비율·구작 계수를 복사하지 않음.",
+      "evidence": "unsupported_unverified_ammo_coefficients",
+      "sourceIds": [
+        "mv-1040-notes",
+        "spec_lbg_guide"
+      ],
+      "channels": [],
+      "unavailable": "최신 속성탄의 탄종별 피해 계수와 공격력 연동 속성 수식을 아직 검증하지 못했습니다."
+    },
+    "heavy-bowgun/element": {
+      "label": "속성탄",
+      "note": "속성탄은 공격력에 비례하는 속성 성분과 탄별 계수·다단히트가 필요합니다.",
+      "derivation": "보우건의 속성탄은 근접 무기의 독립 속성값 수식과 다름. 최신 원저자 MV 표의 탄 배율이 불완전하여 임의의 속성 비율·구작 계수를 복사하지 않음.",
+      "evidence": "unsupported_unverified_ammo_coefficients",
+      "sourceIds": [
+        "mv-1040-notes",
+        "spec_hbg_guide"
+      ],
+      "channels": [],
+      "unavailable": "최신 속성탄의 탄종별 피해 계수와 공격력 연동 속성 수식을 아직 검증하지 못했습니다."
+    },
+    "heavy-bowgun/hybrid": {
+      "label": "속성탄 + 용열 척탄",
+      "note": "용열 척탄과 보조 속성탄의 사용량·충전·재생 시간을 함께 계산해야 합니다.",
+      "derivation": "원저자 운용은 속성탄+용열 척탄 병용. 용열의 포술 대상 폭발과 특수사격 대상, 속성탄의 별도 수식 및 사이클을 구분해야 하므로 근거 없는50:50지분을 만들지 않음.",
+      "evidence": "unsupported_missing_special_ammo_cycle",
+      "sourceIds": [
+        "spec_hbg_guide",
+        "mv-1040-notes"
+      ],
+      "channels": [],
+      "unavailable": "용열 척탄과 속성탄의 피해 계수·게이지 사용 주기를 아직 지원하지 않습니다."
+    },
+    "bow/element": {
+      "label": "속성 · 강사 중심",
+      "note": "3단계 모아쏘기→강사→강연사의 모든 화살이 적중하고 병을 사용하지 않는 대표값입니다. 실제 병·거리·스태미나·포스샷 순서 효과는 제외합니다.",
+      "derivation": "1.040 Bow 표 Lv3 Charged Shot12MV·속성1×3, Power Shot12MV·속성0.8×5, Power Volley15MV·속성1×6. 합계186MV·속성13배. 4단계 행은 사용할 수 없다는 표의 주석을 따라 제외. 강화 스킬은 해당 화살 채널에만 적용.",
+      "evidence": "verified_motion_values_assumed_rotation",
+      "sourceIds": [
+        "mv-1040",
+        "spec_bow_compendium"
+      ],
+      "channels": [
+        {
+          "label": "3단계 모아쏘기 3발",
+          "rawMV": 12,
+          "eleMV": 1,
+          "crit": true,
+          "sharpness": false,
+          "hitzone": true,
+          "count": 3,
+          "shotType": "normal",
+          "normalShot": true,
+          "chargeMaster": true
+        },
+        {
+          "label": "3단계 강사 5발",
+          "rawMV": 12,
+          "eleMV": 0.8,
+          "crit": true,
+          "sharpness": false,
+          "hitzone": true,
+          "count": 5,
+          "shotType": "spread",
+          "spreadShot": true,
+          "chargeMaster": true
+        },
+        {
+          "label": "3단계 강연사 6발",
+          "rawMV": 15,
+          "eleMV": 1,
+          "crit": true,
+          "sharpness": false,
+          "hitzone": true,
+          "count": 6,
+          "shotType": "spread",
+          "spreadShot": true,
+          "chargeMaster": true
+        }
+      ]
+    },
+    "bow/raw": {
+      "label": "물리 · 강사 중심",
+      "note": "3단계 모아쏘기→강사→강연사의 모든 화살이 적중하고 병을 사용하지 않는 대표값입니다. 실제 병·거리·스태미나·포스샷 순서 효과는 제외합니다.",
+      "derivation": "1.040 Bow 표 Lv3 Charged Shot12MV·속성1×3, Power Shot12MV·속성0.8×5, Power Volley15MV·속성1×6. 합계186MV·속성13배. 4단계 행은 사용할 수 없다는 표의 주석을 따라 제외. 강화 스킬은 해당 화살 채널에만 적용.",
+      "evidence": "verified_motion_values_assumed_rotation",
+      "sourceIds": [
+        "mv-1040",
+        "spec_bow_compendium"
+      ],
+      "channels": [
+        {
+          "label": "3단계 모아쏘기 3발",
+          "rawMV": 12,
+          "eleMV": 1,
+          "crit": true,
+          "sharpness": false,
+          "hitzone": true,
+          "count": 3,
+          "shotType": "normal",
+          "normalShot": true,
+          "chargeMaster": true
+        },
+        {
+          "label": "3단계 강사 5발",
+          "rawMV": 12,
+          "eleMV": 0.8,
+          "crit": true,
+          "sharpness": false,
+          "hitzone": true,
+          "count": 5,
+          "shotType": "spread",
+          "spreadShot": true,
+          "chargeMaster": true
+        },
+        {
+          "label": "3단계 강연사 6발",
+          "rawMV": 15,
+          "eleMV": 1,
+          "crit": true,
+          "sharpness": false,
+          "hitzone": true,
+          "count": 6,
+          "shotType": "spread",
+          "spreadShot": true,
+          "chargeMaster": true
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "great-sword": "charged",
+    "long-sword": "raw-combo",
+    "sword-shield": "guard-combo",
+    "dual-blades": "element",
+    "hammer": "raw-offset",
+    "hunting-horn": "element",
+    "lance": "guard-raw",
+    "switch-axe": "power",
+    "charge-blade": "element",
+    "insect-glaive": "ground",
+    "light-bowgun": "normal",
+    "heavy-bowgun": "hybrid",
+    "bow": "element"
+  },
+  "extraRules": {
+    "모으기 타격 강화": {
+      "channelFlag": "hammerCharged",
+      "levels": [
+        {
+          "rawDamage": 1.03
+        }
+      ],
+      "sourceIds": [
+        "hammer-tu4"
+      ],
+      "note": "해머의 모으기 타격 채널에만 적용. 기절 축적은 피해값에 포함하지 않음."
+    },
+    "비연": {
+      "channelFlag": "airborne",
+      "levels": [
+        {
+          "rawDamage": 1.1
+        }
+      ],
+      "sourceIds": [
+        "spec_ig_sets",
+        "wilds-db"
+      ],
+      "note": "자격이 확인된 공중 타격의 물리 부분만. 전체 조충곤 피해에10%를 곱하지 않음."
+    },
+    "차지 마스터": {
+      "channelFlag": "chargeMaster",
+      "levels": [
+        {
+          "elementDamage": 1.05
+        },
+        {
+          "elementDamage": 1.1
+        },
+        {
+          "elementDamage": 1.15
+        }
+      ],
+      "sourceIds": [
+        "spec_bow_compendium"
+      ],
+      "note": "이 플래그는 활의 확인된 모으기 화살에만 지정. 다른 무기의 차지마스터 배율로 재사용하지 않음."
+    },
+    "고속 변형": {
+      "channelFlag": "morph",
+      "levels": [
+        {
+          "rawDamage": 1
+        },
+        {
+          "rawDamage": 1.1
+        },
+        {
+          "rawDamage": 1.2
+        }
+      ],
+      "sourceIds": [
+        "spec_cb_guide",
+        "wilds-db"
+      ],
+      "note": "변형 타격 물리 부분만. 변형 속도1.1/1.2/1.3은 아직 사이클 시간에 미반영."
+    }
+  },
+  "limitations": [
+    "대표 콤보는 모든 타격 명중을 가정하며 전 무기 간 강약 비교용이 아닙니다.",
+    "상태이상 발동·상처 파괴·세트 추가타·사냥벌레·특수탄은 별도 모델이 없으면 제외됩니다.",
+    "집중의 chargeFraction은 모으기에 소비하는 시간 비중이며 원저자의 관측값이 아닌 조절 가능한 가정입니다.",
+    "강화지속·탄창·재장전·스태미나 등 미구현 자원/시간 스킬은 고정 DPS 가산점으로 대체하지 않습니다.",
+    "SA 병 고유 배율과 모드 보정, DB 귀인 부스트, LS 기인 단계 배율을 제외한 부분 모델의 순위는 완전 모델과 달라질 수 있습니다."
+  ]
+}

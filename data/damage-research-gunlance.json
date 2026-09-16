@@ -1,0 +1,1313 @@
+{
+  "schemaVersion": 1,
+  "game": "Monster Hunter Wilds",
+  "scope": "기본 게임 TU4~1.041. 확장판 및 월드·라이즈 공식 제외.",
+  "researchedAt": "2026-09-16",
+  "versionEvidence": {
+    "numericVersion": "1.040.0 datamine",
+    "targetDatabaseVersion": "1.041",
+    "confidence": "1.041 공식 패치노트에서 건랜스 피해 수치 변경이 확인되지 않아 1.040 datamine을 사용. 패치노트 부재는 바이너리 전체 동등성 검증이 아님.",
+    "sourceIds": [
+      "capcom-1.040",
+      "capcom-1.041",
+      "mv-tu4",
+      "rcol-tu4"
+    ]
+  },
+  "sources": {
+    "capcom-1.011": {
+      "title": "CAPCOM — Update Summary (Ver.1.011)",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1800991756290109",
+      "publishedAt": "2025-05-28",
+      "kind": "official",
+      "accessedVia": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=2246340&count=100&maxlength=0&feeds=steam_community_announcements&enddate=1772409600"
+    },
+    "capcom-1.040": {
+      "title": "CAPCOM — Update Summary (Ver.1.040)",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1818752592134338",
+      "publishedAt": "2025-12-15",
+      "kind": "official"
+    },
+    "capcom-1.041": {
+      "title": "CAPCOM — Update Summary (Ver.1.041.00.00)",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1825093633183688",
+      "publishedAt": "2026-02-18",
+      "kind": "official"
+    },
+    "mv-tu4": {
+      "title": "717999vlr — MH Wilds Motion Values (1.040.0)",
+      "url": "https://docs.google.com/spreadsheets/d/1F_bOwQT6A6mFtCN7WCetnZDrmvLYu-ne4y97IsG6Fkk/edit",
+      "announcement": "https://www.reddit.com/r/MonsterHunter/comments/1ptau7i/mh_wilds_motion_values_10400_update/",
+      "kind": "original-datamine-analysis",
+      "sheets": [
+        "Notes",
+        "GL",
+        "GL Shelling",
+        "Charged Shelling Simulator"
+      ]
+    },
+    "rcol-tu4": {
+      "title": "dtlnor — Wilds 1.040 Player/Wp07.csv",
+      "url": "https://github.com/dtlnor/mhws-rcol-record/blob/238121acdddc5668bef186b81fbad6927a3cef34/Player/Wp07.csv",
+      "kind": "raw-datamine",
+      "updatedAt": "2025-12-22",
+      "commit": "238121acdddc5668bef186b81fbad6927a3cef34"
+    },
+    "params-tu4": {
+      "title": "dtlnor — Wilds 1.040 individual_wp07.csv",
+      "url": "https://github.com/dtlnor/mhws-rcol-record/blob/238121acdddc5668bef186b81fbad6927a3cef34/Player/GlobalActionParam/individual_wp07.csv",
+      "kind": "raw-datamine"
+    },
+    "wyrmstake-test": {
+      "title": "Frozenseraphim — Long gunlance wyrmstake numbers",
+      "url": "https://www.reddit.com/r/Gunlance/comments/1nccdj8/long_gunlance_wyrmstake_numbers/",
+      "publishedAt": "2025-09-09",
+      "kind": "original-mechanics-analysis"
+    },
+    "element-combo": {
+      "title": "Gunlance community — post-1.011 elemental attack/combo analysis",
+      "url": "https://www.reddit.com/r/Gunlance/comments/1kyffsm/",
+      "publishedAt": "2025-05-30",
+      "kind": "original-mechanics-analysis"
+    },
+    "artillery-early": {
+      "title": "Gunlance community — original Wilds explosive damage tests",
+      "url": "https://www.reddit.com/r/Gunlance/comments/1jbvad4/",
+      "publishedAt": "2025-03-15",
+      "kind": "original-test-historical",
+      "restriction": "포술의 기본 공격력/가산 공격력 구분과 고정 화염 관찰만 보조 사용. 출시 시점 용항포 회심·속성 및 모션값은 1.011 이후 폐기."
+    },
+    "focus-test": {
+      "title": "Gunlance community — G. Lawful Bors Focus 1 vs Artian Wide 3 Focus 3",
+      "url": "https://www.reddit.com/r/Gunlance/comments/1l7y7g6/",
+      "publishedAt": "2025-06-10",
+      "kind": "original-timing-test-historical",
+      "restriction": "집중 모아포격 시간 단축 보조 근거. 전체 콤보 시간을 TU4 실측값으로 사용하지 않음."
+    },
+    "skill-datamine": {
+      "title": "Kiranico — Wilds Artillery skill data",
+      "url": "https://mhwilds.kiranico.com/data/skills/artillery",
+      "kind": "datamined-skill-parameters"
+    },
+    "local-db": {
+      "title": "동봉 Wilds 1.041 한글 스킬 데이터",
+      "path": "data/database.json",
+      "kind": "local-database"
+    }
+  },
+  "findings": [
+    {
+      "status": "confirmed",
+      "text": "1.011부터 용항포 연속 타격에 회심과 무기 속성이 적용된다. 출시 직후의 미적용 설명은 현재 공식으로 사용할 수 없다.",
+      "sourceIds": [
+        "capcom-1.011",
+        "rcol-tu4"
+      ]
+    },
+    {
+      "status": "confirmed",
+      "text": "용항 틱은 참격 육질과 회심을 받지만 예리도 피해 배율을 받지 않는다. 마지막 폭발은 틱과 달리 회심과 무기 속성을 받지 않는다.",
+      "sourceIds": [
+        "rcol-tu4",
+        "wyrmstake-test"
+      ]
+    },
+    {
+      "status": "confirmed",
+      "text": "포격의 육질 무시 성분도 실제 공격력에 비례하는 모션값이다. 고정 화염은 별도의 불 육질을 적용하며 무기에 붙은 속성이 아니다.",
+      "sourceIds": [
+        "rcol-tu4",
+        "mv-tu4"
+      ]
+    },
+    {
+      "status": "confirmed",
+      "text": "스프레드시트 Sharpness 열의 숫자는 소모량이다. 0이라는 숫자를 보고 배율 0 또는 공격의 예리도 피해 적용 여부를 판단하면 안 된다.",
+      "sourceIds": [
+        "mv-tu4"
+      ]
+    },
+    {
+      "status": "inferred",
+      "text": "운용별 회심·속성 기여도는 대표 공격의 합과 육질·예리도·공격력·속성값으로 계산해야 한다. 일반형 0.3·방사형 0.8 같은 상수는 검증된 게임 수치가 아니다.",
+      "sourceIds": [
+        "mv-tu4",
+        "rcol-tu4"
+      ]
+    }
+  ],
+  "units": {
+    "motionValue": "true raw의 백분율. MV 10은 raw × 0.10.",
+    "trueRaw": "건랜스 표시 공격력을 사용하는 경우 표시값/2.3. 이미 true raw인 필드에 다시 나누지 않는다.",
+    "trueElement": "게임 표시 속성값/10",
+    "hitzones": "0~1 비율",
+    "shellPowerArrayIndex": "index 0~3 = 내부 포격위력 Lv1~4. 종류(normal/long/wide)와 위력 단계는 서로 다름.",
+    "availablePowerLabels": [
+      "약함 / Slightly Weak",
+      "보통 / Normal",
+      "약간 강함 / Slightly Strong",
+      "강함 / Strong"
+    ],
+    "unsupportedPowerLevels": [
+      5,
+      6,
+      7
+    ]
+  },
+  "attackRules": {
+    "melee": {
+      "critical": true,
+      "weaponElement": true,
+      "rawHitzone": true,
+      "rawSharpness": true,
+      "elementSharpness": true,
+      "artillery": false
+    },
+    "wyrmstakeTick": {
+      "critical": true,
+      "weaponElement": true,
+      "weaponElementMultiplier": 0.5,
+      "statusMultiplier": 0.1,
+      "rawHitzone": true,
+      "rawSharpness": false,
+      "elementSharpness": false,
+      "artilleryRaw": true,
+      "artilleryElement": false,
+      "hits": {
+        "ordinary": 9,
+        "firstWsfb": 9,
+        "multiWsfb": 15
+      },
+      "rawRecordEvidence": {
+        "IsNoUseKireaji": true,
+        "IsNoCritical": false,
+        "UseStatusAttackPower": true,
+        "UseStatusAttrPower": true,
+        "StatusAttrRate": 0.5,
+        "StatusConditionRate": 0.1,
+        "ActionTypeFixed": "SLASH"
+      },
+      "sourceIds": [
+        "rcol-tu4",
+        "wyrmstake-test"
+      ]
+    },
+    "shell": {
+      "critical": false,
+      "weaponElement": false,
+      "rawHitzone": false,
+      "rawSharpness": false,
+      "artilleryRaw": true,
+      "fixedFireHitzone": true
+    },
+    "wyrmstakeExplosion": {
+      "critical": false,
+      "weaponElement": false,
+      "rawHitzone": false,
+      "rawSharpness": false,
+      "artilleryRaw": true,
+      "fixedFireHitzone": true,
+      "multiRawMultiplier": 1.1,
+      "multiFixedFireMultiplier": null
+    },
+    "wyvernfire": {
+      "critical": false,
+      "weaponElement": false,
+      "rawHitzone": false,
+      "rawSharpness": false,
+      "artilleryRaw": true,
+      "fixedFireHitzone": true,
+      "hits": 5,
+      "repeatHitFireHitzoneRule": "미확인: 출시 원저자 테스트는 2~5타의 불 육질 상한 0.05를 제시. 현행 재검증이 없어 확정 공식으로 쓰지 않는다."
+    }
+  },
+  "meleeAttacks": [
+    {
+      "id": "lateral-thrust",
+      "label": "수평찌르기",
+      "motionValue": 24,
+      "weaponElementMultiplier": 2,
+      "critical": true,
+      "rawHitzone": true,
+      "rawSharpness": true,
+      "elementSharpness": true,
+      "artillery": false,
+      "sourceIds": [
+        "mv-tu4",
+        "rcol-tu4"
+      ]
+    },
+    {
+      "id": "lunging-upthrust",
+      "label": "내딛어찌르기",
+      "motionValue": 38,
+      "weaponElementMultiplier": 1.2,
+      "critical": true,
+      "rawHitzone": true,
+      "rawSharpness": true,
+      "elementSharpness": true,
+      "artillery": false,
+      "sourceIds": [
+        "mv-tu4",
+        "rcol-tu4"
+      ]
+    },
+    {
+      "id": "rising-slash",
+      "label": "베어올리기",
+      "motionValue": 38,
+      "weaponElementMultiplier": 1.2,
+      "critical": true,
+      "rawHitzone": true,
+      "rawSharpness": true,
+      "elementSharpness": true,
+      "artillery": false,
+      "sourceIds": [
+        "mv-tu4",
+        "rcol-tu4"
+      ]
+    },
+    {
+      "id": "guard-thrust",
+      "label": "가드찌르기",
+      "motionValue": 18,
+      "weaponElementMultiplier": 2,
+      "critical": true,
+      "rawHitzone": true,
+      "rawSharpness": true,
+      "elementSharpness": true,
+      "artillery": false,
+      "sourceIds": [
+        "mv-tu4",
+        "rcol-tu4"
+      ]
+    },
+    {
+      "id": "overhead-smash",
+      "label": "내려치기",
+      "motionValue": 57,
+      "weaponElementMultiplier": 2,
+      "critical": true,
+      "rawHitzone": true,
+      "rawSharpness": true,
+      "elementSharpness": true,
+      "artillery": false,
+      "sourceIds": [
+        "mv-tu4",
+        "rcol-tu4"
+      ]
+    },
+    {
+      "id": "wide-sweep",
+      "label": "후려치기",
+      "motionValue": 40,
+      "weaponElementMultiplier": 1.5,
+      "critical": true,
+      "rawHitzone": true,
+      "rawSharpness": true,
+      "elementSharpness": true,
+      "artillery": false,
+      "sourceIds": [
+        "mv-tu4",
+        "rcol-tu4"
+      ]
+    },
+    {
+      "id": "wsfb-sweep",
+      "label": "용항 풀버스트 후려치기",
+      "motionValue": 30,
+      "weaponElementMultiplier": 1,
+      "critical": true,
+      "rawHitzone": true,
+      "rawSharpness": true,
+      "elementSharpness": true,
+      "artillery": false,
+      "sourceIds": [
+        "mv-tu4",
+        "rcol-tu4"
+      ]
+    },
+    {
+      "id": "wsfb-thrust",
+      "label": "용항 풀버스트 찌르기",
+      "motionValue": 20,
+      "weaponElementMultiplier": 1,
+      "critical": true,
+      "rawHitzone": true,
+      "rawSharpness": true,
+      "elementSharpness": true,
+      "artillery": false,
+      "sourceIds": [
+        "mv-tu4",
+        "rcol-tu4"
+      ]
+    },
+    {
+      "id": "wyrmstake-thrust",
+      "label": "용항포 찌르기",
+      "motionValue": 40,
+      "weaponElementMultiplier": 2,
+      "critical": true,
+      "rawHitzone": true,
+      "rawSharpness": true,
+      "elementSharpness": true,
+      "artillery": false,
+      "sourceIds": [
+        "mv-tu4",
+        "rcol-tu4"
+      ]
+    },
+    {
+      "id": "wyrmstake-attach",
+      "label": "용항포 부착 타격",
+      "motionValue": 25,
+      "weaponElementMultiplier": 2,
+      "critical": true,
+      "rawHitzone": true,
+      "rawSharpness": true,
+      "elementSharpness": true,
+      "artillery": false,
+      "sourceIds": [
+        "mv-tu4",
+        "rcol-tu4"
+      ]
+    }
+  ],
+  "shellTypes": {
+    "normal": {
+      "label": "일반형",
+      "baseCapacity": 6,
+      "shellMv": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "shellFire": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "fullburstRawMultiplier": 1.4,
+      "wsfbRawMultiplier": 1.25,
+      "chargedRawMultiplier": 1.8,
+      "wyrmstakeTickMv": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "wyrmstakeExplosionMv": [
+        23,
+        25,
+        28,
+        31
+      ],
+      "wyrmstakeExplosionFire": [
+        19,
+        21,
+        23,
+        25
+      ],
+      "wyvernfireMv": [
+        39,
+        43,
+        47,
+        52
+      ],
+      "wyvernfireFire": [
+        22,
+        24,
+        26,
+        29
+      ],
+      "gaugeGain": {
+        "shell": 2.5,
+        "fullburst": 1.2,
+        "chargedShell": 8
+      }
+    },
+    "long": {
+      "label": "방사형",
+      "baseCapacity": 3,
+      "shellMv": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "shellFire": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "fullburstRawMultiplier": 1.4,
+      "wsfbRawMultiplier": 1.1,
+      "chargedRawMultiplier": 1.8,
+      "wyrmstakeTickMv": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "wyrmstakeExplosionMv": [
+        32,
+        37,
+        42,
+        49
+      ],
+      "wyrmstakeExplosionFire": [
+        19,
+        21,
+        23,
+        25
+      ],
+      "wyvernfireMv": [
+        39,
+        43,
+        47,
+        52
+      ],
+      "wyvernfireFire": [
+        22,
+        24,
+        26,
+        29
+      ],
+      "gaugeGain": {
+        "shell": 3.25,
+        "fullburst": 1.56,
+        "chargedShell": 10.4
+      }
+    },
+    "wide": {
+      "label": "확산형",
+      "baseCapacity": 2,
+      "shellMv": [
+        17,
+        19,
+        21,
+        23
+      ],
+      "shellFire": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "fullburstRawMultiplier": 1.35,
+      "wsfbRawMultiplier": 1.05,
+      "chargedRawMultiplier": 1.8,
+      "wyrmstakeTickMv": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "wyrmstakeExplosionMv": [
+        23,
+        25,
+        27,
+        30
+      ],
+      "wyrmstakeExplosionFire": [
+        19,
+        21,
+        23,
+        25
+      ],
+      "wyvernfireMv": [
+        46,
+        50,
+        55,
+        60
+      ],
+      "wyvernfireFire": [
+        24,
+        26,
+        29,
+        32
+      ],
+      "gaugeGain": {
+        "shell": 6.25,
+        "fullburst": 3,
+        "chargedShell": 20
+      }
+    }
+  },
+  "skills": {
+    "artillery": {
+      "id": "s-596764096",
+      "name": "포술",
+      "maxLevel": 3,
+      "rawBaseMultiplierByLevel": [
+        1,
+        1.05,
+        1.1,
+        1.15
+      ],
+      "fixedTrueFireAddByLevel": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "appliesTo": [
+        "포격 raw",
+        "모아포격 raw",
+        "풀버스트 raw",
+        "용항 틱 raw",
+        "용항 마지막 폭발 raw",
+        "용격포 raw",
+        "포격·폭발의 고정 화염"
+      ],
+      "doesNotApplyTo": [
+        "일반 참격",
+        "용항 틱의 무기 속성"
+      ],
+      "timing": "용격포 발사가 빨라진다. 전체 모션 시간과 수치 대응은 미산정.",
+      "formulaCaution": "포술은 기본 공격력 계열에 적용되고 모든 가산 공격력을 함께 1.15배로 만드는 것은 아니다. 고정 화염 가산 9는 true 단위이며 표시 +90과 혼동 금지.",
+      "sourceIds": [
+        "local-db",
+        "skill-datamine",
+        "artillery-early",
+        "wyrmstake-test"
+      ]
+    },
+    "loadShells": {
+      "id": "s802725120",
+      "name": "포탄 장전",
+      "maxLevel": 2,
+      "capacityAddByLevel": [
+        0,
+        0,
+        1
+      ],
+      "timing": "Lv1 장전 속도 증가, Lv2 추가 속도 증가. 현재 전체 재장전·퀵 리로드 시간은 미산정.",
+      "damage": "한 발의 위력을 올리지 않는다. 탄창 전체를 쓰는 공격은 발사 수를 증가시키며, 모아포격은 추가 탄을 모으는 시간도 필요하다.",
+      "sourceIds": [
+        "local-db",
+        "params-tu4"
+      ]
+    },
+    "focus": {
+      "id": "s-283334048",
+      "name": "집중",
+      "maxLevel": 3,
+      "chargedShellTimeMultiplierByLevel": [
+        1,
+        0.95,
+        0.9,
+        0.85
+      ],
+      "gaugeGain": "건랜스 게이지 상승 증가. 정확한 적용별 계수는 본 조사에서 미산정.",
+      "wyvernfireChargeTime": "집중이 용격포 자체 발사 준비 시간도 단축한다는 현행 원저자 검증은 확보하지 못함. 포술의 용격포 단축과 구분하여 미산정.",
+      "rotationApproximation": "집중에 반응하는 모아포격 준비 시간이 원래 전체 반복 시간의 f라면 회전율 근사 = 1/(1-f*(1-timeMultiplier)). f는 사용자 가정이며 모아포격 외 동작·장전·용격포 시간은 포함하지 않는다.",
+      "sourceIds": [
+        "local-db",
+        "focus-test"
+      ]
+    },
+    "criticalBoost": {
+      "id": "s-1607763456",
+      "name": "슈퍼회심",
+      "maxLevel": 5,
+      "positiveCriticalMultiplierByLevel": [
+        1.25,
+        1.28,
+        1.31,
+        1.34,
+        1.37,
+        1.4
+      ],
+      "appliesTo": [
+        "참격 raw",
+        "용항 틱 raw"
+      ],
+      "sourceIds": [
+        "local-db",
+        "capcom-1.011",
+        "rcol-tu4"
+      ]
+    },
+    "criticalElement": {
+      "id": "s313598432",
+      "name": "회심격【속성】",
+      "maxLevel": 3,
+      "appliesTo": [
+        "회심 가능한 무기 속성 공격"
+      ],
+      "multiplierByLevel": null,
+      "note": "건랜스별 계수의 독립 검증은 본 조사 범위에서 완료하지 못했으므로 미산정. 일반 회심이나 슈퍼회심만으로 무기 속성에 raw 회심배율을 곱하지 않는다.",
+      "sourceIds": [
+        "local-db"
+      ]
+    }
+  },
+  "timingParameters": {
+    "status": "data-parameters-not-complete-animation-times",
+    "normal": {
+      "minChargeTime": 0.4,
+      "chargeTime": 0.4,
+      "maxTime": 3.4
+    },
+    "long": {
+      "minChargeTime": 0.5,
+      "chargeTime": 0.5,
+      "maxTime": 2.5
+    },
+    "wide": {
+      "minChargeTime": 0.55,
+      "chargeTime": 0.55,
+      "maxTime": 2.1
+    },
+    "wyvernfire": {
+      "chargeTime": 3,
+      "shortChargeTime": 1.2
+    },
+    "cautions": [
+      "파라미터에 있는 GuardQuickReloadTime=0.5를 퀵 리로드 전체 시간으로 해석하지 않는다.",
+      "충전 시작 지연·발사·후딜·장전·취소 입력·히트스톱을 합친 전체 반복 시간은 아니다.",
+      "시트 Charged Shelling Simulator의 충전 결과와 단순 파라미터 곱이 완전히 같지 않으므로 3발 충전 시간을 3×0.55로 확정하지 않는다."
+    ],
+    "sourceIds": [
+      "params-tu4",
+      "mv-tu4"
+    ]
+  },
+  "formulas": {
+    "assumptions": "반올림 이전 공격 합. 퀘스트 방어율, 예리도 소진, 육질 변화, 상처 추가 피해, 상태이상 발동, 연격·도전자 등 조건부 스킬 가동률은 외부 입력 또는 미산정.",
+    "variables": {
+      "R": "현재 참격용 true raw",
+      "B": "포술이 적용되는 기본 공격력 계열",
+      "F": "포술을 받지 않는 가산 공격력 계열",
+      "A": "포술 레벨에 따른 배율",
+      "RA": "포술 보정 raw = B*A + F. 다른 곱셈 버프·상한은 게임 순서를 별도 검증해야 함.",
+      "C": "회심 기대 raw 배율: 양수 회심 a에서 1+a*(critMultiplier-1), 음수 회심은 별도 보정",
+      "E": "현재 true weapon element",
+      "He": "해당 무기 속성 육질",
+      "Hr": "참격 육질",
+      "Hf": "불 육질",
+      "Sr": "raw 예리도 배율",
+      "Se": "속성 예리도 배율",
+      "CE": "회심격【속성】 기대배율; 미장착이면 1",
+      "Af": "포술 고정 true 화염 가산"
+    },
+    "meleeRaw": "sum(count * R * MV/100 * Sr * Hr * C)",
+    "wyrmstakeRaw": "sum(ticks * RA * tickMV/100 * Hr * C)",
+    "explosionRaw": "sum(count * RA * explosionMV/100 * modeRawMultiplier)",
+    "weaponElement": "E * He * CE * (sum(meleeCount * elementMultiplier * Se) + sum(wyrmstakeTicks * 0.5))",
+    "fixedFire": "sum(count * (baseFixedTrueFire + Af) * Hf), 단 용격포 후속 불 육질 및 연속 용항 화염 배율은 현재 미확인",
+    "damageBuckets": {
+      "criticalPhysical": "meleeRaw + wyrmstakeRaw",
+      "noncriticalExplosive": "explosionRaw + fixedFire",
+      "weaponElement": "weaponElement"
+    },
+    "weight": "각 bucket / 전체 피해 합. 고정 가중치가 아닌 입력별 파생값."
+  },
+  "representativeCycles": [
+    {
+      "id": "normal-fullburst",
+      "type": "normal",
+      "label": "일반형 짧은 풀버스트 반복",
+      "description": "내려치기 → 풀버스트 → 회피·퀵 리로드. 반복 중 공격 묶음이며 첫 진입용 베어올리기는 제외.",
+      "meleeHits": [
+        {
+          "attackId": "overhead-smash",
+          "count": 1
+        }
+      ],
+      "shells": [
+        {
+          "mode": "fullburst",
+          "magazines": 1
+        }
+      ],
+      "wyrmstakes": [],
+      "wyvernfireUses": 0,
+      "assumptions": [
+        "탄창을 채운 상태에서 시작하며 모든 탄이 명중한다.",
+        "회피·장전은 피해가 없는 동작이므로 피해 합에서 제외한다. 전체 시간은 미확인."
+      ],
+      "sourceIds": [
+        "mv-tu4",
+        "params-tu4"
+      ],
+      "durationSeconds": null,
+      "timingStatus": "전체 동작 시간 미검증",
+      "modelStatus": "verified-attacks-with-assumed-representative-sequence",
+      "totalsByPower": {
+        "3": {
+          "loadShells0or1": {
+            "meleeRawMv": 57,
+            "meleeElementMultiplier": 2,
+            "wyrmstakeRawMv": 0,
+            "wyrmstakeElementMultiplier": 0,
+            "explosiveRawMv": 75.6,
+            "fixedTrueFireBase": 48,
+            "explosiveHitCount": 6
+          },
+          "loadShells2": {
+            "meleeRawMv": 57,
+            "meleeElementMultiplier": 2,
+            "wyrmstakeRawMv": 0,
+            "wyrmstakeElementMultiplier": 0,
+            "explosiveRawMv": 88.2,
+            "fixedTrueFireBase": 56,
+            "explosiveHitCount": 7
+          }
+        },
+        "4": {
+          "loadShells0or1": {
+            "meleeRawMv": 57,
+            "meleeElementMultiplier": 2,
+            "wyrmstakeRawMv": 0,
+            "wyrmstakeElementMultiplier": 0,
+            "explosiveRawMv": 84,
+            "fixedTrueFireBase": 54,
+            "explosiveHitCount": 6
+          },
+          "loadShells2": {
+            "meleeRawMv": 57,
+            "meleeElementMultiplier": 2,
+            "wyrmstakeRawMv": 0,
+            "wyrmstakeElementMultiplier": 0,
+            "explosiveRawMv": 98,
+            "fixedTrueFireBase": 63,
+            "explosiveHitCount": 7
+          }
+        }
+      }
+    },
+    {
+      "id": "normal-wsfb",
+      "type": "normal",
+      "label": "일반형 용항 풀버스트 연계",
+      "description": "수평찌르기 2회 → 후려치기 → 용항 풀버스트 → 연속 용항 풀버스트. 첫 용항 풀버스트 전 포격을 쓰지 않아 두 번 모두 가득 찬 탄창으로 계산.",
+      "meleeHits": [
+        {
+          "attackId": "lateral-thrust",
+          "count": 2
+        },
+        {
+          "attackId": "wide-sweep",
+          "count": 1
+        },
+        {
+          "attackId": "wsfb-sweep",
+          "count": 2
+        },
+        {
+          "attackId": "wsfb-thrust",
+          "count": 2
+        }
+      ],
+      "shells": [
+        {
+          "mode": "wsfb",
+          "magazines": 2
+        }
+      ],
+      "wyrmstakes": [
+        {
+          "ticks": 9,
+          "explosionRawMultiplier": 1
+        },
+        {
+          "ticks": 15,
+          "explosionRawMultiplier": 1.1
+        }
+      ],
+      "wyvernfireUses": 0,
+      "assumptions": [
+        "타격 구성은 원저자 속성 연계 분석과 모션값을 결합한 대표 경로이다. 모든 접촉·틱 명중을 가정한다.",
+        "연속 용항의 고정 화염에 대한 1.1배 적용 여부는 미확인. 본 계산에서는 폭발 raw에만 적용."
+      ],
+      "sourceIds": [
+        "mv-tu4",
+        "params-tu4",
+        "wyrmstake-test",
+        "element-combo"
+      ],
+      "durationSeconds": null,
+      "timingStatus": "전체 동작 시간 미검증",
+      "modelStatus": "verified-attacks-with-assumed-representative-sequence",
+      "totalsByPower": {
+        "3": {
+          "loadShells0or1": {
+            "meleeRawMv": 188,
+            "meleeElementMultiplier": 9.5,
+            "wyrmstakeRawMv": 168,
+            "wyrmstakeElementMultiplier": 12,
+            "explosiveRawMv": 193.8,
+            "fixedTrueFireBase": 142,
+            "explosiveHitCount": 14
+          },
+          "loadShells2": {
+            "meleeRawMv": 188,
+            "meleeElementMultiplier": 9.5,
+            "wyrmstakeRawMv": 168,
+            "wyrmstakeElementMultiplier": 12,
+            "explosiveRawMv": 216.3,
+            "fixedTrueFireBase": 158,
+            "explosiveHitCount": 16
+          }
+        },
+        "4": {
+          "loadShells0or1": {
+            "meleeRawMv": 188,
+            "meleeElementMultiplier": 9.5,
+            "wyrmstakeRawMv": 192,
+            "wyrmstakeElementMultiplier": 12,
+            "explosiveRawMv": 215.1,
+            "fixedTrueFireBase": 158,
+            "explosiveHitCount": 14
+          },
+          "loadShells2": {
+            "meleeRawMv": 188,
+            "meleeElementMultiplier": 9.5,
+            "wyrmstakeRawMv": 192,
+            "wyrmstakeElementMultiplier": 12,
+            "explosiveRawMv": 240.1,
+            "fixedTrueFireBase": 176,
+            "explosiveHitCount": 16
+          }
+        }
+      }
+    },
+    {
+      "id": "long-melee-wyrmstake",
+      "type": "long",
+      "label": "방사형 참격·용항포",
+      "description": "수평찌르기 2회 → 후려치기 → 일반 용항포(찌르기·부착·9틱·폭발).",
+      "meleeHits": [
+        {
+          "attackId": "lateral-thrust",
+          "count": 2
+        },
+        {
+          "attackId": "wide-sweep",
+          "count": 1
+        },
+        {
+          "attackId": "wyrmstake-thrust",
+          "count": 1
+        },
+        {
+          "attackId": "wyrmstake-attach",
+          "count": 1
+        }
+      ],
+      "shells": [],
+      "wyrmstakes": [
+        {
+          "ticks": 9,
+          "explosionRawMultiplier": 1
+        }
+      ],
+      "wyvernfireUses": 0,
+      "assumptions": [
+        "일반 용항포를 사용할 수 있도록 용항을 장전하고 시작한다.",
+        "용항의 모든 틱이 같은 참격·속성 육질에 명중한다. 장전·재접근 시간은 미확인."
+      ],
+      "sourceIds": [
+        "mv-tu4",
+        "rcol-tu4",
+        "wyrmstake-test"
+      ],
+      "durationSeconds": null,
+      "timingStatus": "전체 동작 시간 미검증",
+      "modelStatus": "verified-attacks-with-assumed-representative-sequence",
+      "totalsByPower": {
+        "3": {
+          "loadShells0or1": {
+            "meleeRawMv": 153,
+            "meleeElementMultiplier": 9.5,
+            "wyrmstakeRawMv": 72,
+            "wyrmstakeElementMultiplier": 4.5,
+            "explosiveRawMv": 42,
+            "fixedTrueFireBase": 23,
+            "explosiveHitCount": 1
+          },
+          "loadShells2": {
+            "meleeRawMv": 153,
+            "meleeElementMultiplier": 9.5,
+            "wyrmstakeRawMv": 72,
+            "wyrmstakeElementMultiplier": 4.5,
+            "explosiveRawMv": 42,
+            "fixedTrueFireBase": 23,
+            "explosiveHitCount": 1
+          }
+        },
+        "4": {
+          "loadShells0or1": {
+            "meleeRawMv": 153,
+            "meleeElementMultiplier": 9.5,
+            "wyrmstakeRawMv": 81,
+            "wyrmstakeElementMultiplier": 4.5,
+            "explosiveRawMv": 49,
+            "fixedTrueFireBase": 25,
+            "explosiveHitCount": 1
+          },
+          "loadShells2": {
+            "meleeRawMv": 153,
+            "meleeElementMultiplier": 9.5,
+            "wyrmstakeRawMv": 81,
+            "wyrmstakeElementMultiplier": 4.5,
+            "explosiveRawMv": 49,
+            "fixedTrueFireBase": 25,
+            "explosiveHitCount": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "wide-charged-wyvernfire",
+      "type": "wide",
+      "label": "확산형 모아포격·용격포",
+      "description": "탄창 전체 모아포격 2회와 용격포 1회로 구성한 공격 묶음.",
+      "meleeHits": [],
+      "shells": [
+        {
+          "mode": "charged",
+          "magazines": 2
+        }
+      ],
+      "wyrmstakes": [],
+      "wyvernfireUses": 1,
+      "assumptions": [
+        "포탄 장전 2일 때 모아포격 6발 + 용격포 5타. 일반 참격을 넣지 않은 사용자 운용을 직접 모델링했다.",
+        "모아포격 1발의 기본 게이지 회복은 20. 실제 용격포 사용 간격은 집중·초기 게이지·게이지 상한·빗나감에 따라 달라진다.",
+        "포탄 장전이 낮아 모아포격 4발이 되면 같은 공격 묶음의 용격포 1회에는 추가 게이지 확보가 필요할 수 있다. 지속 가능한 시간당 반복률을 뜻하지 않는다."
+      ],
+      "sourceIds": [
+        "mv-tu4",
+        "params-tu4"
+      ],
+      "durationSeconds": null,
+      "timingStatus": "전체 동작 시간 미검증",
+      "modelStatus": "verified-attacks-with-assumed-representative-sequence",
+      "totalsByPower": {
+        "3": {
+          "loadShells0or1": {
+            "meleeRawMv": 0,
+            "meleeElementMultiplier": 0,
+            "wyrmstakeRawMv": 0,
+            "wyrmstakeElementMultiplier": 0,
+            "explosiveRawMv": 426.2,
+            "fixedTrueFireBase": 189,
+            "explosiveHitCount": 9
+          },
+          "loadShells2": {
+            "meleeRawMv": 0,
+            "meleeElementMultiplier": 0,
+            "wyrmstakeRawMv": 0,
+            "wyrmstakeElementMultiplier": 0,
+            "explosiveRawMv": 501.8,
+            "fixedTrueFireBase": 211,
+            "explosiveHitCount": 11
+          }
+        },
+        "4": {
+          "loadShells0or1": {
+            "meleeRawMv": 0,
+            "meleeElementMultiplier": 0,
+            "wyrmstakeRawMv": 0,
+            "wyrmstakeElementMultiplier": 0,
+            "explosiveRawMv": 465.6,
+            "fixedTrueFireBase": 208,
+            "explosiveHitCount": 9
+          },
+          "loadShells2": {
+            "meleeRawMv": 0,
+            "meleeElementMultiplier": 0,
+            "wyrmstakeRawMv": 0,
+            "wyrmstakeElementMultiplier": 0,
+            "explosiveRawMv": 548.4,
+            "fixedTrueFireBase": 232,
+            "explosiveHitCount": 11
+          }
+        }
+      }
+    }
+  ],
+  "recommendedUse": {
+    "normal": {
+      "cycleIds": [
+        "normal-fullburst",
+        "normal-wsfb"
+      ],
+      "recipe": "두 대표 공격 묶음을 1회씩 더하는 비교 기준. 단일 연속 콤보 또는 실측 사용 비율은 아니다.",
+      "status": "assumed-mixture"
+    },
+    "long": {
+      "cycleIds": [
+        "long-melee-wyrmstake"
+      ],
+      "status": "assumed-sequence"
+    },
+    "wide": {
+      "cycleIds": [
+        "wide-charged-wyvernfire"
+      ],
+      "status": "assumed-sequence"
+    },
+    "ranking": "같은 운용·같은 공격 묶음·같은 육질 가정에서 장비 후보를 비교하는 상대 기대피해용. 서로 다른 묶음의 피해 합으로 무기 타입 DPS 우열을 비교하지 않는다."
+  },
+  "unresolved": [
+    "대표 콤보의 TU4~1.041 전체 애니메이션·히트스톱·취소 시간",
+    "집중의 용격포 자체 준비 시간 적용 여부 및 세부 게이지 계수",
+    "포술 용격포 발사 단축의 전체 반복 시간 반영",
+    "연속 용항 마지막 폭발의 고정 화염에도 1.1배를 적용하는지",
+    "용격포 2~5타 불 육질 상한의 현행 여부",
+    "상처 추가 피해, 상태이상 축적·발동, 녹색 이하 예리도의 특수 페널티, 각종 조건부 스킬·세트 추가 피해의 전체 모델"
+  ],
+  "benchmark": {
+    "status": "illustrative-derived-estimate",
+    "assumptions": {
+      "baseTrueRaw": 300,
+      "flatTrueRaw": 0,
+      "trueWeaponElement": 30,
+      "affinity": 0,
+      "rawSharpness": 1.32,
+      "elementSharpness": 1.15,
+      "rawHitzone": 0.6,
+      "elementHitzone": 0.2,
+      "fireHitzone": 0.15,
+      "artillery": 3,
+      "loadShells": 2,
+      "focus": 0,
+      "shellPowerLevel": 4
+    },
+    "cautions": [
+      "육질·공격력·속성값·흰 예리도는 비교용 입력값이며 사용자 실제 장비나 특정 몬스터 실측값이 아니다.",
+      "회심 0, 회심격 속성 없음. 회심을 올리면 피해 비중 자체도 바뀐다.",
+      "고정 화염은 모든 타격에 같은 Hf를 적용한 근사. 용격포 후속 불 육질 상한과 연속 용항 화염 배율은 미확인이다.",
+      "정수 반올림·상처 추가 피해·상태이상 발동·조건부 스킬은 제외. DPS 또는 전체 수렵 피해 분포가 아니다."
+    ],
+    "results": {
+      "normal-fullburst": {
+        "totals": {
+          "meleeRawMv": 57,
+          "meleeElementMultiplier": 2,
+          "wyrmstakeRawMv": 0,
+          "wyrmstakeElementMultiplier": 0,
+          "explosiveRawMv": 98,
+          "fixedTrueFireBase": 63,
+          "explosiveHitCount": 7
+        },
+        "components": {
+          "meleeRaw": 135.432,
+          "wyrmstakeRaw": 0,
+          "explosiveRaw": 338.1,
+          "weaponElement": 13.8,
+          "fixedFire": 18.9
+        },
+        "total": 506.232,
+        "weights": {
+          "criticalPhysical": 0.26753,
+          "noncriticalExplosive": 0.70521,
+          "weaponElement": 0.02726
+        },
+        "rawHitzoneSensitivity": [
+          {
+            "rawHitzone": 0.45,
+            "criticalPhysical": 0.215029,
+            "noncriticalExplosive": 0.755757,
+            "weaponElement": 0.029214
+          },
+          {
+            "rawHitzone": 0.6,
+            "criticalPhysical": 0.26753,
+            "noncriticalExplosive": 0.70521,
+            "weaponElement": 0.02726
+          },
+          {
+            "rawHitzone": 0.8,
+            "criticalPhysical": 0.327501,
+            "noncriticalExplosive": 0.647471,
+            "weaponElement": 0.025028
+          }
+        ]
+      },
+      "normal-wsfb": {
+        "totals": {
+          "meleeRawMv": 188,
+          "meleeElementMultiplier": 9.5,
+          "wyrmstakeRawMv": 192,
+          "wyrmstakeElementMultiplier": 12,
+          "explosiveRawMv": 240.1,
+          "fixedTrueFireBase": 176,
+          "explosiveHitCount": 16
+        },
+        "components": {
+          "meleeRaw": 446.688,
+          "wyrmstakeRaw": 397.44,
+          "explosiveRaw": 828.345,
+          "weaponElement": 137.55,
+          "fixedFire": 48
+        },
+        "total": 1858.023,
+        "weights": {
+          "criticalPhysical": 0.454315,
+          "noncriticalExplosive": 0.471655,
+          "weaponElement": 0.07403
+        },
+        "rawHitzoneSensitivity": [
+          {
+            "rawHitzone": 0.45,
+            "criticalPhysical": 0.384396,
+            "noncriticalExplosive": 0.532089,
+            "weaponElement": 0.083516
+          },
+          {
+            "rawHitzone": 0.6,
+            "criticalPhysical": 0.454315,
+            "noncriticalExplosive": 0.471655,
+            "weaponElement": 0.07403
+          },
+          {
+            "rawHitzone": 0.8,
+            "criticalPhysical": 0.526084,
+            "noncriticalExplosive": 0.409622,
+            "weaponElement": 0.064294
+          }
+        ]
+      },
+      "long-melee-wyrmstake": {
+        "totals": {
+          "meleeRawMv": 153,
+          "meleeElementMultiplier": 9.5,
+          "wyrmstakeRawMv": 81,
+          "wyrmstakeElementMultiplier": 4.5,
+          "explosiveRawMv": 49,
+          "fixedTrueFireBase": 25,
+          "explosiveHitCount": 1
+        },
+        "components": {
+          "meleeRaw": 363.528,
+          "wyrmstakeRaw": 167.67,
+          "explosiveRaw": 169.05,
+          "weaponElement": 92.55,
+          "fixedFire": 5.1
+        },
+        "total": 797.898,
+        "weights": {
+          "criticalPhysical": 0.665747,
+          "noncriticalExplosive": 0.218261,
+          "weaponElement": 0.115992
+        },
+        "rawHitzoneSensitivity": [
+          {
+            "rawHitzone": 0.45,
+            "criticalPhysical": 0.599007,
+            "noncriticalExplosive": 0.261841,
+            "weaponElement": 0.139152
+          },
+          {
+            "rawHitzone": 0.6,
+            "criticalPhysical": 0.665747,
+            "noncriticalExplosive": 0.218261,
+            "weaponElement": 0.115992
+          },
+          {
+            "rawHitzone": 0.8,
+            "criticalPhysical": 0.726451,
+            "noncriticalExplosive": 0.178622,
+            "weaponElement": 0.094927
+          }
+        ]
+      },
+      "wide-charged-wyvernfire": {
+        "totals": {
+          "meleeRawMv": 0,
+          "meleeElementMultiplier": 0,
+          "wyrmstakeRawMv": 0,
+          "wyrmstakeElementMultiplier": 0,
+          "explosiveRawMv": 548.4,
+          "fixedTrueFireBase": 232,
+          "explosiveHitCount": 11
+        },
+        "components": {
+          "meleeRaw": 0,
+          "wyrmstakeRaw": 0,
+          "explosiveRaw": 1891.98,
+          "weaponElement": 0,
+          "fixedFire": 49.65
+        },
+        "total": 1941.63,
+        "weights": {
+          "criticalPhysical": 0,
+          "noncriticalExplosive": 1,
+          "weaponElement": 0
+        },
+        "rawHitzoneSensitivity": [
+          {
+            "rawHitzone": 0.45,
+            "criticalPhysical": 0,
+            "noncriticalExplosive": 1,
+            "weaponElement": 0
+          },
+          {
+            "rawHitzone": 0.6,
+            "criticalPhysical": 0,
+            "noncriticalExplosive": 1,
+            "weaponElement": 0
+          },
+          {
+            "rawHitzone": 0.8,
+            "criticalPhysical": 0,
+            "noncriticalExplosive": 1,
+            "weaponElement": 0
+          }
+        ]
+      },
+      "normal-mixed-1-to-1": {
+        "totals": {
+          "meleeRawMv": 245,
+          "meleeElementMultiplier": 11.5,
+          "wyrmstakeRawMv": 192,
+          "wyrmstakeElementMultiplier": 12,
+          "explosiveRawMv": 338.1,
+          "fixedTrueFireBase": 239,
+          "explosiveHitCount": 23
+        },
+        "components": {
+          "meleeRaw": 582.12,
+          "wyrmstakeRaw": 397.44,
+          "explosiveRaw": 1166.445,
+          "weaponElement": 151.35,
+          "fixedFire": 66.9
+        },
+        "total": 2364.255,
+        "weights": {
+          "criticalPhysical": 0.414321,
+          "noncriticalExplosive": 0.521663,
+          "weaponElement": 0.064016
+        },
+        "rawHitzoneSensitivity": [
+          {
+            "rawHitzone": 0.45,
+            "criticalPhysical": 0.346646,
+            "noncriticalExplosive": 0.581941,
+            "weaponElement": 0.071413
+          },
+          {
+            "rawHitzone": 0.6,
+            "criticalPhysical": 0.414321,
+            "noncriticalExplosive": 0.521663,
+            "weaponElement": 0.064016
+          },
+          {
+            "rawHitzone": 0.8,
+            "criticalPhysical": 0.485392,
+            "noncriticalExplosive": 0.458361,
+            "weaponElement": 0.056248
+          }
+        ]
+      }
+    }
+  }
+}

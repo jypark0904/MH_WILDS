@@ -1,0 +1,38 @@
+/* Authentication gate: the application stays entirely concealed until access is resolved. */
+html.auth-pending body,
+html.auth-locked body{overflow:hidden}
+html.auth-pending body>:not(#auth-gate):not(script),
+html.auth-locked body>:not(#auth-gate):not(script){display:none!important}
+
+.auth-gate[hidden],.auth-account[hidden],.auth-local-mode[hidden],.auth-gate-error[hidden],.auth-gate-actions>[hidden]{display:none!important}
+.auth-gate{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;overflow:auto;padding:max(1.25rem,env(safe-area-inset-top)) max(1.25rem,env(safe-area-inset-right)) max(1.25rem,env(safe-area-inset-bottom)) max(1.25rem,env(safe-area-inset-left));background:radial-gradient(circle at 50% 25%,#29332e 0,#151b1e 34%,#0d1114 80%);color:#e9edf0;font-family:"Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif}
+.auth-gate-card{width:min(430px,100%);padding:2.25rem;border:1px solid #555e55;border-radius:18px;background:linear-gradient(160deg,#1d2527 0,#141a1e 78%);box-shadow:0 24px 80px #0009;text-align:center}
+.auth-gate-crest{display:grid;place-items:center;width:64px;height:70px;margin:0 auto 1.25rem;background:#d8b576;color:#192024;clip-path:polygon(50% 0,100% 22%,100% 78%,50% 100%,0 78%,0 22%);font:800 1.5rem Georgia,serif}
+.auth-gate-kicker{margin:0 0 .45rem;color:#d8b576;font-size:.68rem;letter-spacing:.18em}
+.auth-gate h1{margin:0;color:#f2f0e9;font-size:1.45rem;letter-spacing:-.04em}
+.auth-gate-status{margin:.8rem 0 0;color:#aab5ba;font-size:.9rem;line-height:1.7;word-break:keep-all}
+.auth-gate-error{margin:1rem 0 0;padding:.7rem .85rem;border:1px solid #7a4a4a;border-radius:8px;background:#382728;color:#ffc5c1;font-size:.8rem;line-height:1.6;overflow-wrap:anywhere}
+.auth-gate-actions{display:grid;gap:.65rem;margin-top:1.5rem}
+.auth-google-button,.auth-secondary-button{min-height:46px;border:1px solid #d8b576;border-radius:9px;padding:.7rem 1rem;font:700 .9rem inherit;cursor:pointer}
+.auth-google-button{background:#d8b576;color:#172025}
+.auth-google-button:hover{background:#ead09c}
+.auth-secondary-button{background:transparent;color:#cbd2d5;border-color:#566169}
+.auth-google-button:disabled,.auth-secondary-button:disabled{cursor:wait;opacity:.65}
+.auth-google-button:focus-visible,.auth-secondary-button:focus-visible,.auth-logout:focus-visible{outline:3px solid #f0cf8e;outline-offset:3px}
+.auth-gate-note{margin:1.35rem 0 0;color:#76858d;font-size:.72rem;line-height:1.6}
+
+.auth-account{display:flex;align-items:center;gap:.55rem;min-width:0}
+.auth-account-avatar{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border:1px solid #766642;border-radius:50%;background:#2b302b;color:#e5c680;font-size:.75rem;font-weight:800}
+.auth-account-copy{display:grid;min-width:0;line-height:1.25}
+.auth-account-copy strong{max-width:140px;overflow:hidden;color:var(--text,#e9edf0);font-size:.73rem;text-overflow:ellipsis;white-space:nowrap}
+.auth-account-copy small{max-width:160px;overflow:hidden;color:var(--muted,#9aa9b4);font-size:.61rem;text-overflow:ellipsis;white-space:nowrap}
+.auth-role{flex:none;padding:.12rem .38rem;border:1px solid #536258;border-radius:999px;color:#a9c8b5;font-size:.58rem;white-space:nowrap}
+.auth-role[data-role="master"]{border-color:#74613d;color:#e3c783}
+.auth-logout{flex:none;border:0;background:transparent;color:var(--muted,#9aa9b4);padding:.35rem;font-size:.68rem;text-decoration:underline;text-underline-offset:3px}
+.auth-logout:hover{background:transparent;color:var(--text,#e9edf0)}
+.auth-local-mode{flex:none;padding:.2rem .5rem;border:1px solid #4f6459;border-radius:999px;color:#9bc1ac;font-size:.64rem;white-space:nowrap}
+.auth-local-mode:before{content:"";display:inline-block;width:6px;height:6px;margin-right:.35rem;border-radius:50%;background:#94bda7;box-shadow:0 0 0 3px #94bda71f}
+
+@media(max-width:1100px){.auth-account-copy strong{max-width:105px}.auth-account-copy small{max-width:125px}}
+@media(max-width:760px){.auth-gate-card{padding:1.7rem 1.25rem}.auth-gate h1{font-size:1.25rem}.auth-account{gap:.35rem}.auth-account-avatar{display:none}.auth-account-copy strong{max-width:82px;font-size:.66rem}.auth-account-copy small{max-width:105px;font-size:.55rem}.auth-role{font-size:.54rem}.auth-logout{font-size:.62rem;padding-inline:.2rem}.auth-local-mode{font-size:.6rem}}
+@media(prefers-reduced-motion:reduce){.auth-gate *{scroll-behavior:auto!important}}

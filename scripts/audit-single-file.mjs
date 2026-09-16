@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const index=fs.readFileSync('dist/index.html','utf8'),html=fs.readFileSync('와일즈-장비시뮬레이터.html','utf8');
+const scripts=[...index.matchAll(/<script src="([^"]+)"><\/script>/g)].map(m=>m[1]);
+const embedded=[...html.matchAll(/<script>\s*([\s\S]*?)<\/script>/g)].map(m=>m[1]);
+assert.equal(embedded.length,scripts.length);
+scripts.forEach((file,i)=>{new vm.Script(embedded[i],{filename:file});assert.equal(embedded[i].trim(),fs.readFileSync('dist/'+file,'utf8').replace(/<\/script/gi,'<\\/script').trim(),file);});
+const styles=[...index.matchAll(/<link rel="stylesheet" href="([^"]+)">/g)].map(m=>m[1]);
+for(const file of styles)assert.ok(html.includes(fs.readFileSync('dist/'+file,'utf8').trim()),file);
+assert.ok(!/<script src=|<link rel="stylesheet" href=/.test(html));
+console.log('Offline artifact: '+scripts.length+' scripts, '+styles.length+' styles; syntax and source parity passed.');

@@ -1,0 +1,1588 @@
+{
+  "game": "wilds",
+  "schemaVersion": 1,
+  "researchedAt": "2026-09-16",
+  "scope": {
+    "dbVersion": "1.041",
+    "content": "기본게임 TU4~TU4.5/1.041, 건랜스 제외 13무기·25프로필",
+    "excluded": [
+      "월드/아이스본",
+      "라이즈/선브레이크",
+      "미발매 확장팩",
+      "속성 또는기술스킬의근거없는전역DPS상수"
+    ]
+  },
+  "assumptions": {
+    "recommended": {
+      "rawHitzone": 60,
+      "elementHitzone": 20,
+      "sharpness": "현재최고예리도와지속시간",
+      "fps": 60,
+      "affinity": "조건별발동률가중,100%상한",
+      "unit": "trueRaw/trueElement,표시속성값은일반적으로10배표시"
+    },
+    "evidence": "benchmark_assumption",
+    "reason": "육질60/20은쌍검원저자비교환경과일치하지만실제사냥감전체의평균이아니다.",
+    "sourceIds": [
+      "db-1041"
+    ],
+    "benchmark": {
+      "trueRaw": 300,
+      "trueElement": 40,
+      "affinity": 0,
+      "rawHitzone": 60,
+      "elementHitzone": 20,
+      "sharpness": "white",
+      "sharpnessRawMultiplier": 1.32,
+      "sharpnessElementMultiplier": 1.15,
+      "modeBonuses": false,
+      "note": "스탯과예리도보정을고정한 비교용 예시. 이 문서는 예리도계수의1차원자료를 재검증하지 않았으므로 실제엔진은 공통수식 검증값을 우선해야 한다."
+    }
+  },
+  "channelRules": {
+    "raw_contact": "공격력×MV/100×예리도×물리육질×물리회심기대값",
+    "element_contact": "실속성치×속성모션배율×속성예리도×속성육질×속성회심기대값",
+    "impact_phial": "별도공격력비례계수;회심·예리도·물리육질적용금지",
+    "element_phial": "별도속성계수·속성육질;회심·예리도적용금지",
+    "sonic": "음격자체기본값및선율구성필수;직접타격수식재사용금지",
+    "element_ammo": "탄종별고유수식;공격력도속성피해에기여",
+    "status": "피해가아니라축적.저항·발동횟수·지속피해·기회시간별도"
+  },
+  "sources": {
+    "gs-tu4": {
+      "title": "Mathalos Nest — Great Sword Endgame Meta Sets (TU4)",
+      "url": "https://docs.google.com/document/d/1A5wxQRX87Z0Kf_EXWc4G62w3ePoFLtkMpXly_x0ARVY/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "ls-endgame": {
+      "title": "timmy·Mikalya — Wilds Long Sword Guide (거극 아티어·역전왕 최종 장비 포함)",
+      "url": "https://docs.google.com/document/d/1tt7GZ6XtPe68GvlafxTriKUVt8LeLFVAUNkWb6FMnQM/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "sns-tu451": {
+      "title": "BK·MOPOP·HungryDave·PokerDew — Sword and Shield Guide, TU4.51",
+      "url": "https://docs.google.com/document/d/1AUrozQQ77v71PAN-HkXdCjHSzC4QM0zFlDmT6RhEZSM/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "db-1041": {
+      "title": "Team Leviathan — Dual Blades Guide & Set Compilation, 1.041.01.00",
+      "url": "https://docs.google.com/document/d/1X68k4cL2Lo9R4nqsbpTsFvA6Z74L1RafAteXKiWguxc/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "hh-arkveld": {
+      "title": "Upgreid — Hunting Horn Guide, AT Arkveld Edition v1.7.0",
+      "url": "https://docs.google.com/document/d/1MK8dawS-pH-6lvlHYFYV5QmEXtohyEiJPlJM9L2Gy5A/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "hammer-tu41": {
+      "title": "Radiant-Dong — TU4.1 Hammer Meta Updates 및 작성자 답변",
+      "url": "https://www.reddit.com/r/MonsterHunterMeta/comments/1raaex0/tu41_hammer_gl_meta_document_updates/",
+      "updatedAt": "2026-02-20",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "hammer-tu4": {
+      "title": "Radiant-Dong — TU4 Hammer: 모으기 타격 강화 변경 설명",
+      "url": "https://www.reddit.com/r/MonsterHunterMeta/comments/1ptdedg/tu4_gl_hammer_meta_document_updates/",
+      "updatedAt": "2025-12-24",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "lance-tu45": {
+      "title": "Monster Hunter Lance Community — Wilds Endgame, TU4.5",
+      "url": "https://www.mhlance.com/wilds/builds/endgame",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "spec_sa_sets": {
+      "title": "Sasch · Wilds Switch Axe Endgame Sets (Gogma/TU4.5)",
+      "url": "https://wiggler.pet/wilds/endgame/switch_axe",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "spec_cb_guide": {
+      "title": "timmy · jerrynt — MH Wilds Charge Blade Guide, TU4.5 v1.4.2",
+      "url": "https://docs.google.com/document/d/1I9XKBQZLpG0159yPOs2zvPS7wwrzaEPtiMkBfzGzibQ/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "spec_ig_sets": {
+      "title": "EchoesPartOne · MH Wilds Insect Glaive Endgame Meta Sets, TU4.5",
+      "url": "https://mhwssets.wordpress.com/ig/",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "spec_lbg_guide": {
+      "title": "MHGH Bowgun team · Wilds Light Bowgun Guide, TU4.5 v1.4.5",
+      "url": "https://docs.google.com/document/d/1Mm7rOM0V7VLsOHlXW5zO8uD5ht5rhlVeVNLn3cdDXy8/edit",
+      "updatedAt": "2026-03-06",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "spec_hbg_guide": {
+      "title": "Cylon · MHGH Bowgun team — Wilds Heavy Bowgun Guide, TU4.5 v1.4.5",
+      "url": "https://docs.google.com/document/d/17atnsKzYrQlEy_70Z2zzlEBJrN3OtiTYurKCHzMLIn8/edit",
+      "updatedAt": "2026-07-06",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "spec_bow_compendium": {
+      "title": "p_chu · ninjazenia — MH:Wilds Bow Compendium, TU4",
+      "url": "https://docs.google.com/document/d/1i3qfZtagi5CFrIKdTlNM-DN2cMowdOwwkAVOWvMccUE/edit",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    },
+    "lance-combos": {
+      "title": "Monster Hunter Lance Community — Wilds Combos (TU4)",
+      "url": "https://www.mhlance.com/wilds/guides/combos",
+      "checkedAt": "2026-09-16",
+      "primary": true
+    }
+  },
+  "profiles": {
+    "great-sword": [
+      {
+        "type": "charged",
+        "channels": [
+          "raw_contact",
+          "element_contact"
+        ],
+        "rotation": "모아베기·참 모아베기 중심. 상쇄/가드 성공과 약점 적중 여부로 긴 모션의 성패가 갈린다.",
+        "elementOrientation": "raw_dominant",
+        "sourceIds": [
+          "gs-tu4"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "집중",
+            "scope": "charge_time",
+            "effect": "모으기 시간과 공격 기회에 작용. 모으기 구간/고정 애니메이션/헛침을 분리하지 않은 전역 DPS 배수 금지.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "슈퍼회심",
+            "scope": "raw_contact",
+            "effect": "회심 가능한 직접 타격의 물리 피해에만 적용.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "현행 주력모션별 MV·속성배율·전체 프레임 세트 미확보",
+          "상쇄 성공률·참모아베기 적중률·장비 충격파는 별도 입력"
+        ]
+      },
+      {
+        "type": "draw",
+        "channels": [
+          "raw_contact",
+          "element_contact"
+        ],
+        "rotation": "발도 모아베기 후 회피·납도. 한 번의 접근 사이클을 단위로 비교한다.",
+        "elementOrientation": "raw_dominant",
+        "sourceIds": [
+          "gs-tu4"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "발도술【기】",
+            "scope": "draw_attacks_only",
+            "effect": "발도 공격의 유효 구간만 회심을 높인다. 전체 콤보 회심으로 취급하지 않는다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "집중",
+            "scope": "charge_time",
+            "effect": "접근·모으기·타격·납도 시간을 합친 사이클에서 모으기 구간만 단축한다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "발도스킬 활성 창별 타격 분류 미확보",
+          "회피·납도 및 접근 시간을 포함한 반복 측정 필요"
+        ]
+      }
+    ],
+    "long-sword": [
+      {
+        "type": "raw-combo",
+        "channels": [
+          "raw_contact",
+          "element_contact"
+        ],
+        "rotation": "붉은 기인 단계에서 Crimson I → Spirit I 반복, 큰 빈틈에는 투구깨기+해방을 사용한다.",
+        "elementOrientation": "raw_dominant",
+        "sourceIds": [
+          "ls-endgame"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "representative_combo",
+        "representativeCombos": [
+          {
+            "name": "Crimson I → Spirit I",
+            "rawMV": 80,
+            "elementMV": 2.4,
+            "durationSeconds": 1.5,
+            "sourceIds": [
+              "ls-endgame"
+            ],
+            "notes": "붉은 단계 유지 및 모든 타격 적중 전제.",
+            "evidence": "verified_author"
+          },
+          {
+            "name": "Spirit Helmbreaker + Spirit Release Slash",
+            "rawMV": 420,
+            "elementMV": 7.4,
+            "durationSeconds": 6,
+            "sourceIds": [
+              "ls-endgame"
+            ],
+            "notes": "붉은 단계 재충전 시간을 포함하지 않은 국소 폭딜. 지속 DPS에 그대로 사용 금지.",
+            "evidence": "verified_author"
+          }
+        ],
+        "mechanicEffects": [
+          {
+            "skill": "납도술",
+            "scope": "special_sheathe_transition",
+            "effect": "납도·카운터 접근 시간을 줄이는 기술 효과. 전역 피해량 보너스가 아니다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "기인 단계",
+            "scope": "raw_contact",
+            "effect": "흰/노란/붉은 단계의 공격력 보너스를 현재 단계에 적용한다.",
+            "numeric": {
+              "white": 0.02,
+              "yellow": 0.05,
+              "red": 0.1
+            },
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "카운터·붉은 단계 재충전·헛침 시간",
+          "투구깨기와 붉은루프의 실제 사용 비중"
+        ]
+      }
+    ],
+    "sword-shield": [
+      {
+        "type": "guard-combo",
+        "channels": [
+          "raw_sword",
+          "element_sword",
+          "raw_shield"
+        ],
+        "rotation": "짧은 빈틈에는 측면 베기·회전베기, 긴 빈틈에는 후반 피해가 큰 퍼펙트러시를 완주한다.",
+        "elementOrientation": "raw_dominant",
+        "sourceIds": [
+          "sns-tu451"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "공격적인 방어",
+            "scope": "timed_raw_buff",
+            "effect": "저스트 가드로 발동한 시간 동안 물리 공격력 보너스. 가드 빈도와 지속시간 입력 필요.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "달인의 재주",
+            "scope": "sharpness_uptime",
+            "effect": "방패 공격은 예리도 소모가 없으므로 검/방패 타격 수를 구분한다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "완주 퍼펙트러시의 최신 모션 합계와 검/방패 분할 미확보",
+          "원저자 일부 유지율은 이전 작품에서 추정한 값이므로 Wilds 실측값처럼 사용하지 않음"
+        ]
+      }
+    ],
+    "dual-blades": [
+      {
+        "type": "element",
+        "channels": [
+          "raw_contact",
+          "element_contact"
+        ],
+        "rotation": "육단베기로 게이지를 확보하고 난무 또는 귀인연참I→난무II·III를 넣는다.",
+        "elementOrientation": "element_sensitive",
+        "sourceIds": [
+          "db-1041"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "representative_combo",
+        "representativeCombos": [
+          {
+            "name": "Blade Dance I→II→III",
+            "rawMV": 393,
+            "elementMV": 20,
+            "durationSeconds": 5.39,
+            "sourceIds": [
+              "db-1041"
+            ],
+            "notes": "27타. 실전 이동·게이지 보충 시간 제외.",
+            "evidence": "verified_author"
+          },
+          {
+            "name": "Demon Flurry I→Blade Dance II→III",
+            "rawMV": 315,
+            "elementMV": 14.8,
+            "durationSeconds": 4.14,
+            "sourceIds": [
+              "db-1041"
+            ],
+            "notes": "귀인/귀인강화 모드 전환과 게이지 자원 필요.",
+            "evidence": "verified_author"
+          },
+          {
+            "name": "Sixfold Demon Slash",
+            "rawMV": 116,
+            "elementMV": 5.4,
+            "durationSeconds": 2.27,
+            "sourceIds": [
+              "db-1041"
+            ],
+            "notes": "장식장 추가타 제외.",
+            "evidence": "verified_author"
+          }
+        ],
+        "mechanicEffects": [
+          {
+            "skill": "회심격【속성】",
+            "scope": "critical_element_contact",
+            "effect": "쌍검 속성 회심 배율.",
+            "numeric": {
+              "levels": [
+                1,
+                1.05,
+                1.1,
+                1.15
+              ]
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "귀인 강화 회피 보너스",
+            "scope": "mode_uptime",
+            "effect": "Perfect Dodge 후 Demon Boost 활성 시간에 적용.",
+            "numeric": {
+              "rawMultiplier": 1.15,
+              "elementMultiplier": 1.3,
+              "baseSeconds": 20
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "강화 지속",
+            "scope": "gauge_and_mode_duration",
+            "effect": "Demon Boost 지속시간과 자원 관리에 작용한다. 이미 유지 중이면 지속시간 연장의 DPS 이득이 줄어든다.",
+            "numeric": {
+              "durationMultipliers": [
+                1,
+                1.3,
+                1.5,
+                1.8
+              ]
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "달인의 재주",
+            "scope": "sharpness_uptime",
+            "effect": "다타수에 의한 예리도 소모와 회심 확률을 함께 계산한다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "무기별 귀인강화 유지율·실전 적중 타수",
+          "속성 피해를 고정 80%로 간주하는 방식은 근거 없음"
+        ]
+      }
+    ],
+    "hammer": [
+      {
+        "type": "raw-offset",
+        "channels": [
+          "raw_contact",
+          "element_contact"
+        ],
+        "rotation": "모으기·상쇄와 큰 빈틈의 연계를 구분한다.",
+        "elementOrientation": "raw_dominant",
+        "sourceIds": [
+          "hammer-tu41",
+          "hammer-tu4"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "모으기 타격 강화",
+            "scope": "charged_raw_hits_only",
+            "effect": "TU4에서 모으기 타격의 상한 이후 물리 피해 증가가 추가되었다.",
+            "numeric": {
+              "chargedRawMultiplier": 1.03
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "집중",
+            "scope": "charge_time",
+            "effect": "모으기 타격을 쓰는 빈도와 차지 구간의 길이에 따라 효과가 달라진다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "역습",
+            "scope": "counter_uptime",
+            "effect": "상쇄/버티기 성공에 따른 공격력 버프 유지율을 입력한다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "모으기 타격 강화 대상 모션 비중은 실측되지 않음",
+          "총 DPS에 무조건 3% 추가 금지",
+          "현행 대표 루프의 MV·프레임 미확보"
+        ]
+      }
+    ],
+    "hunting-horn": [
+      {
+        "type": "element",
+        "channels": [
+          "raw_contact",
+          "element_contact",
+          "sonic_raw",
+          "sonic_element"
+        ],
+        "rotation": "음격·앙코르와 Resounding Melody 반복, 음향 버블 회복 자원을 관리한다.",
+        "elementOrientation": "song_dependent",
+        "sourceIds": [
+          "hh-arkveld"
+        ],
+        "mainMotionShare": {
+          "channel": "non_contact_sonic",
+          "lowerBound": 0.5,
+          "evidence": "author_estimate",
+          "note": "원저자 주력 루프에서 직접 타격이 절반 미만. 모든 피리·운용의 고정비율 아님."
+        },
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "회심·슈퍼회심",
+            "scope": "contact_only",
+            "effect": "음파에는 회심·예리도 보정이 없다. 전체 피해에 회심 기대값 적용 금지.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "속성 공격 강화",
+            "scope": "contact_and_song_specific",
+            "effect": "음격의 자체 기본속성 체계를 분리해야 한다. 무기 기본 속성 강화 롤은 음격에 적용되지 않는다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "피리 명인",
+            "scope": "song_and_bubble_uptime",
+            "effect": "선율·버블 시간과 범위에 작용. 전역 DPS 상수로 환산하지 않는다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "선율 목록·음격 자체 기본속성·속성 상한·음파 육질식",
+          "이 구성은 단순 EFR+EFE 합산으로 순위화하면 왜곡됨"
+        ]
+      },
+      {
+        "type": "raw",
+        "channels": [
+          "raw_contact",
+          "sonic_raw",
+          "status_buildup"
+        ],
+        "rotation": "무기 선율에 맞춘 앙코르·상쇄 또는 음격 반복.",
+        "elementOrientation": "raw_or_status",
+        "sourceIds": [
+          "hh-arkveld"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "공격",
+            "scope": "raw_contact_and_sonic",
+            "effect": "원저자는 비회심 음파 비중 때문에 공격력 축적을 선호한다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "슈퍼회심",
+            "scope": "contact_only",
+            "effect": "직접 타격 부분에만 적용한다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "raw 타입에도 선율별 회전 차이가 큼",
+          "상태이상 발동 횟수·다운 가치·음격의 상태이상 별도 모델 필요"
+        ]
+      }
+    ],
+    "lance": [
+      {
+        "type": "guard-raw",
+        "channels": [
+          "raw_contact",
+          "element_contact"
+        ],
+        "rotation": "중단찌르기→넓게 후려치기→중단찌르기→3연찌르기. 공격적인 상대는 빨간 모아 카운터 비중 증가.",
+        "elementOrientation": "raw_dominant",
+        "sourceIds": [
+          "lance-tu45",
+          "lance-combos"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": {
+          "min": 0.0476,
+          "max": 0.1304,
+          "evidence": "derived_from_author_estimate",
+          "derivation": "원저자 적정 속성이 raw 대비 추가하는 5~15%를 전체피해분율 x/(1+x)로 환산.",
+          "appliesTo": "해당 가이드의 동일 물리 스탯 및 일반 매치업 예시. 보편상수 아님."
+        },
+        "shareEvidence": "not_measured",
+        "support": "representative_combo",
+        "representativeCombos": [
+          {
+            "name": "Mid Thrust→Wide Sweep→Mid Thrust→Triple Thrust",
+            "rawMV": 233,
+            "elementMV": 8.1,
+            "durationSeconds": 4.7,
+            "sourceIds": [
+              "lance-combos"
+            ],
+            "notes": "원저자 표의 반올림 시간. 카운터 대기시간 제외.",
+            "evidence": "verified_author"
+          },
+          {
+            "name": "3 Mid Thrust→Triple Thrust",
+            "rawMV": 179,
+            "elementMV": 7.9,
+            "durationSeconds": 3.8,
+            "sourceIds": [
+              "lance-combos"
+            ],
+            "notes": "카운터 준비가 빠른 대안. 표 자체에 장식장 추가타가 포함됐는지 불명확하므로 기본 계산으로 자동 선택하지 않는다.",
+            "evidence": "verified_author"
+          }
+        ],
+        "mechanicEffects": [
+          {
+            "skill": "공격적인 방어",
+            "scope": "timed_raw_buff",
+            "effect": "가드 발동 유지율에 따라 적용.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "가드 성능",
+            "scope": "guard_recovery",
+            "effect": "밀림 및 후딜·스태미나에 의한 다음 카운터 기회에 작용.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "상대 패턴별 모아 카운터 비중",
+          "가드 성능 레벨을 일괄 공격%로 환산 금지"
+        ]
+      }
+    ],
+    "switch-axe": [
+      {
+        "type": "power",
+        "channels": [
+          "raw_contact",
+          "element_contact",
+          "amped_followup"
+        ],
+        "rotation": "강격병은 상승베기 반복이 지속딜 중심이며 빈틈에는 Full Release Slash.",
+        "elementOrientation": "raw_dominant",
+        "sourceIds": [
+          "spec_sa_sets"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "강화 지속",
+            "scope": "amped_uptime",
+            "effect": "고출력 유지 시간을 늘려 후속타·FRS 사용량에 영향. 주력 타격의 회심을 막는 고정피해로 취급하지 않는다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "고속 변형",
+            "scope": "morph_attacks_only",
+            "effect": "변형 공격에만 효과. 원저자는 주력 상승베기/FRS 운용에서 메타 우선순위가 낮다고 평가.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "집중",
+            "scope": "gauge",
+            "effect": "원저자는 이 주력 운용에서 비추천. 무조건 필수 DPS 배수 금지.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "상승베기와 FRS의 시간·고출력 후속타 분할",
+          "강격병 접촉/후속타 적용식 정밀 검증 필요"
+        ]
+      },
+      {
+        "type": "element",
+        "channels": [
+          "raw_contact",
+          "element_contact",
+          "amped_element_followup"
+        ],
+        "rotation": "좋은 속성 육질에서는 3연베기, 상대 육질비와 빈틈에 따라 상승베기/FRS 전환.",
+        "elementOrientation": "element_sensitive",
+        "sourceIds": [
+          "spec_sa_sets"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "강화 지속",
+            "scope": "amped_uptime",
+            "effect": "고출력 모드의 실전 유지율을 바꾼다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "회심격【속성】",
+            "scope": "critical_element_contact",
+            "effect": "실제 5속성이 있을 때만 적용; 상태이상 병 설정만으로 속성 대미지가 생기지 않는다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "속성 후속타별 모션 값과 회심/상한 처리 미확보",
+          "원저자 raw:element 육질 약3:1 전환 기준은 피해비중 3:1이라는 뜻이 아님"
+        ]
+      }
+    ],
+    "charge-blade": [
+      {
+        "type": "impact",
+        "channels": [
+          "raw_axe",
+          "element_axe",
+          "impact_phial"
+        ],
+        "rotation": "강화 도끼의 AED→후속해방 반복. 칼·방패 충전과 병 장전을 포함해야 한다.",
+        "elementOrientation": "raw_and_hitzone_independent",
+        "sourceIds": [
+          "spec_cb_guide"
+        ],
+        "mainMotionShare": {
+          "channel": "impact_phial",
+          "coefficientRawMV": 100,
+          "evidence": "verified_author",
+          "note": "현행 AEDF 루프에서 병 부분이100MV라고 FAQ가 명시. 전체 모션합/시간 미확보이므로 비율은 미정."
+        },
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "partial_component_formula",
+        "mechanicEffects": [
+          {
+            "skill": "포술",
+            "scope": "impact_phial_only",
+            "effect": "유탄병은 공격력 비례, 육질·회심·예리도 무시. 포술3은 이 부분만30% 증가.",
+            "numeric": {
+              "level3Multiplier": 1.3
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "포탄 장전",
+            "scope": "phial_cycle",
+            "effect": "노랑에서5병, 빨강에서5과충전병. 병 피해·방패 유지시간·장전 사이클 개선.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "고속 변형",
+            "scope": "morph_raw_and_time",
+            "effect": "변형 물리 타격 1.2배 및 해당 애니메이션 단축. AEDF 루프의 변형 부분에만 적용.",
+            "numeric": {
+              "level3MorphRawMultiplier": 1.2
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "슈퍼회심",
+            "scope": "non_phial_hits",
+            "effect": "도끼 직접 타격에만 적용한다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "최신 AEDF 루프의 전체 axe MV·속성MV·시간 미확보",
+          "과거 ED루프408MV/6.4s를 현행 AEDF로 오인하지 않음"
+        ]
+      },
+      {
+        "type": "element",
+        "channels": [
+          "raw_axe",
+          "element_axe",
+          "element_phial"
+        ],
+        "rotation": "강화 도끼의 AED→후속해방 반복. 극단적 속성 약점의 SAED는 별도 스타일이다.",
+        "elementOrientation": "element_sensitive",
+        "sourceIds": [
+          "spec_cb_guide"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "포술",
+            "scope": "none",
+            "effect": "강속성병은 포술 대상이 아니다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "속성 공격 강화",
+            "scope": "element_axe_and_phial",
+            "effect": "강속성병은 속성치·속성육질에 영향, 회심·예리도 무시.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "포탄 장전",
+            "scope": "overcharged_phials",
+            "effect": "과충전병과 충전 사이클에 작용.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "회심격【속성】",
+            "scope": "contact_only",
+            "effect": "도끼 접촉 속성에만 적용, 병에 적용 금지.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "outOfProfileMoves": [
+          {
+            "name": "AED 후 SAED·5 과충전병",
+            "elementMV": 70,
+            "evidence": "verified_author",
+            "note": "10→14의 과충전병 계수×5. AEDF 반복 타입의 대표 비중으로 넣지 않는다."
+          }
+        ],
+        "unsupported": [
+          "일반 접촉/병 속성 배분과 최신 루프 시간",
+          "병 피해 상한 및 방패강화는 별도 검증"
+        ]
+      }
+    ],
+    "insect-glaive": [
+      {
+        "type": "ground",
+        "channels": [
+          "raw_glaive",
+          "element_glaive",
+          "kinsect_separate"
+        ],
+        "rotation": "지상 2타→Strong Descending Slash 반복. 큰 적·긴 빈틈에서 Rising Spiral Slash.",
+        "elementOrientation": "raw_dominant",
+        "sourceIds": [
+          "spec_ig_sets"
+        ],
+        "mainMotionShare": {
+          "channel": "airborne_eligible",
+          "lowerBound": 0.8,
+          "evidence": "author_estimate",
+          "note": "주력루프 피해80% 이상 비연 적용이라는 원저자 추정. 개인 운용으로 바뀜."
+        },
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "비연",
+            "scope": "eligible_hits_only",
+            "effect": "지상에서 시작해도 몸이 뜨는 SDS/RSS 등 대상 타격에10%. 전체피해10%로 처리 금지.",
+            "numeric": {
+              "multiplier": 1.1
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "회심격【속성】",
+            "scope": "glaive_element_contact",
+            "effect": "현재 조사에서 IG 고유 배율 미확보. 쌍검/활 확인값을 임의 복사하지 않는다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "강화 지속",
+            "scope": "extract_uptime",
+            "effect": "진액 재수급 시간과 강화 유지에 영향.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "representativeCombos": [
+          {
+            "name": "Rising Spiral Slash",
+            "rawMVPerGlaiveHit": 64,
+            "maxGlaiveHits": 9,
+            "kinsectMVPerHit": 24,
+            "averageElementMultiplierPerHit": 0.8,
+            "evidence": "verified_author",
+            "sourceIds": [
+              "spec_ig_sets"
+            ],
+            "note": "히트수·벌레·진액 회수 실패를 별도 처리. 5타 미만이면 원저자상 일반 지상루프보다 불리."
+          }
+        ],
+        "unsupported": [
+          "벌레 스탯·속성·히트수의 별도 모델",
+          "RSS 총타수는 적 크기에 따라 변동",
+          "IG 회심격속성 계수 미확보"
+        ]
+      }
+    ],
+    "light-bowgun": [
+      {
+        "type": "normal",
+        "channels": [
+          "raw_ammo"
+        ],
+        "rotation": "통상탄 발사와 탄창 재장전.",
+        "elementOrientation": "raw_only_ammo",
+        "sourceIds": [
+          "spec_lbg_guide"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "탄종 강화",
+            "scope": "matching_ammo_only",
+            "effect": "선택한 통상/관통/산탄에만 적용. 강화 계수는 공통 스킬 DB의 검증값을 사용.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "퍼스트샷",
+            "scope": "clip_first_shot_and_reload",
+            "effect": "첫발 공격력+5/10/15, 재장전 속도+10/15/30%.",
+            "numeric": {
+              "rawFirstShot": [
+                5,
+                10,
+                15
+              ],
+              "reloadSpeedBonus": [
+                0.1,
+                0.15,
+                0.3
+              ]
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "속사 강화",
+            "scope": "rapid_fire_only",
+            "effect": "속사 탄에만5% 피해 증가. RF 유지율 필요.",
+            "numeric": {
+              "multiplier": 1.05
+            },
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "통상탄 연발 속도와 FPS 민감도",
+          "탄창 크기·반동·재장전·속사/특수모드 유지율"
+        ],
+        "notes": "원저자 TU4 실험:30FPS에서는60FPS 대비속사22%느림,90FPS는8%빠름.60FPS를 비교환경으로명시."
+      },
+      {
+        "type": "pierce",
+        "channels": [
+          "raw_ammo"
+        ],
+        "rotation": "관통탄의 유효 틱 수 및 라보 Burst Step 연계.",
+        "elementOrientation": "raw_only_ammo",
+        "sourceIds": [
+          "spec_lbg_guide"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "탄종 강화",
+            "scope": "matching_ammo_only",
+            "effect": "선택한 통상/관통/산탄에만 적용. 강화 계수는 공통 스킬 DB의 검증값을 사용.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "퍼스트샷",
+            "scope": "clip_first_shot_and_reload",
+            "effect": "첫발 공격력+5/10/15, 재장전 속도+10/15/30%.",
+            "numeric": {
+              "rawFirstShot": [
+                5,
+                10,
+                15
+              ],
+              "reloadSpeedBonus": [
+                0.1,
+                0.15,
+                0.3
+              ]
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "속사 강화",
+            "scope": "rapid_fire_only",
+            "effect": "속사 탄에만5% 피해 증가. RF 유지율 필요.",
+            "numeric": {
+              "multiplier": 1.05
+            },
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "적 길이·탄속·부위별 관통 틱 수",
+          "탄창 크기·반동·재장전·속사/특수모드 유지율"
+        ],
+        "notes": null
+      },
+      {
+        "type": "spread",
+        "channels": [
+          "raw_ammo"
+        ],
+        "rotation": "산탄 펠릿 적중 및 회피 장전/칼날비늘 장전 연계.",
+        "elementOrientation": "raw_only_ammo",
+        "sourceIds": [
+          "spec_lbg_guide"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "탄종 강화",
+            "scope": "matching_ammo_only",
+            "effect": "선택한 통상/관통/산탄에만 적용. 강화 계수는 공통 스킬 DB의 검증값을 사용.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "퍼스트샷",
+            "scope": "clip_first_shot_and_reload",
+            "effect": "첫발 공격력+5/10/15, 재장전 속도+10/15/30%.",
+            "numeric": {
+              "rawFirstShot": [
+                5,
+                10,
+                15
+              ],
+              "reloadSpeedBonus": [
+                0.1,
+                0.15,
+                0.3
+              ]
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "속사 강화",
+            "scope": "rapid_fire_only",
+            "effect": "속사 탄에만5% 피해 증가. RF 유지율 필요.",
+            "numeric": {
+              "multiplier": 1.05
+            },
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "산탄 펠릿별 적중률·정거리",
+          "탄창 크기·반동·재장전·속사/특수모드 유지율"
+        ],
+        "notes": null
+      },
+      {
+        "type": "element",
+        "channels": [
+          "raw_ammo",
+          "element_ammo"
+        ],
+        "rotation": "속성탄의 탄창·관통 틱·적정거리·자원 보충을 포함.",
+        "elementOrientation": "element_sensitive",
+        "sourceIds": [
+          "spec_lbg_guide"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "속성 공격 강화",
+            "scope": "selected_element_ammo",
+            "effect": "선택 속성탄에만 적용. 보우건 탄 속성피해는 무기 공격력에도 비례하므로 근접처럼 독립 속성 스탯으로 계산하지 않는다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "퍼스트샷",
+            "scope": "clip_first_shot",
+            "effect": "첫발만 속성10% 추가 및 공격력+5/10/15. 재장전속도 포함.",
+            "numeric": {
+              "elementMultiplierFirstShot": 1.1
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "포스샷",
+            "scope": "clip_index",
+            "effect": "4·6번째탄만 공격력+3/6/10과속성5%;4발이후회심8/10/12%.",
+            "numeric": {
+              "specificShots": [
+                4,
+                6
+              ],
+              "elementMultiplier": 1.05
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "집중",
+            "scope": "rapid_fire_gauge",
+            "effect": "게이지회복5/10/20%.직접DPS20%아님.",
+            "numeric": {
+              "gaugeRegenBonus": [
+                0.05,
+                0.1,
+                0.2
+              ]
+            },
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "속성 탄종별raw/속성계수·관통틱·상한",
+          "가이드회심격속성본문15%와오래된FAQ14%(LBG)/21%(HBG)충돌"
+        ],
+        "criticalElement": {
+          "status": "conflicting_source",
+          "currentTableLevel3": 1.15,
+          "oldFaqLevel3": 1.14,
+          "action": "datamine/정확한 버전 검증 전 계수 미지원"
+        }
+      }
+    ],
+    "heavy-bowgun": [
+      {
+        "type": "normal",
+        "channels": [
+          "raw_ammo"
+        ],
+        "rotation": "통상탄 발사와 탄창 재장전.",
+        "elementOrientation": "raw_only_ammo",
+        "sourceIds": [
+          "spec_hbg_guide"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "탄종 강화",
+            "scope": "matching_ammo_only",
+            "effect": "선택한 통상/관통/산탄에만 적용. 강화 계수는 공통 스킬 DB의 검증값을 사용.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "퍼스트샷",
+            "scope": "clip_first_shot_and_reload",
+            "effect": "첫발 공격력+5/10/15, 재장전 속도+10/15/30%.",
+            "numeric": {
+              "rawFirstShot": [
+                5,
+                10,
+                15
+              ],
+              "reloadSpeedBonus": [
+                0.1,
+                0.15,
+                0.3
+              ]
+            },
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "통상탄 연발 속도와 FPS 민감도",
+          "탄창 크기·반동·재장전·속사/특수모드 유지율"
+        ],
+        "notes": null
+      },
+      {
+        "type": "pierce",
+        "channels": [
+          "raw_ammo"
+        ],
+        "rotation": "관통탄의 유효 틱 수 및 라보 Burst Step 연계.",
+        "elementOrientation": "raw_only_ammo",
+        "sourceIds": [
+          "spec_hbg_guide"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "탄종 강화",
+            "scope": "matching_ammo_only",
+            "effect": "선택한 통상/관통/산탄에만 적용. 강화 계수는 공통 스킬 DB의 검증값을 사용.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "퍼스트샷",
+            "scope": "clip_first_shot_and_reload",
+            "effect": "첫발 공격력+5/10/15, 재장전 속도+10/15/30%.",
+            "numeric": {
+              "rawFirstShot": [
+                5,
+                10,
+                15
+              ],
+              "reloadSpeedBonus": [
+                0.1,
+                0.15,
+                0.3
+              ]
+            },
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "적 길이·탄속·부위별 관통 틱 수",
+          "탄창 크기·반동·재장전·속사/특수모드 유지율"
+        ],
+        "notes": null
+      },
+      {
+        "type": "spread",
+        "channels": [
+          "raw_ammo"
+        ],
+        "rotation": "산탄 펠릿 적중 및 회피 장전/칼날비늘 장전 연계.",
+        "elementOrientation": "raw_only_ammo",
+        "sourceIds": [
+          "spec_hbg_guide"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "탄종 강화",
+            "scope": "matching_ammo_only",
+            "effect": "선택한 통상/관통/산탄에만 적용. 강화 계수는 공통 스킬 DB의 검증값을 사용.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "퍼스트샷",
+            "scope": "clip_first_shot_and_reload",
+            "effect": "첫발 공격력+5/10/15, 재장전 속도+10/15/30%.",
+            "numeric": {
+              "rawFirstShot": [
+                5,
+                10,
+                15
+              ],
+              "reloadSpeedBonus": [
+                0.1,
+                0.15,
+                0.3
+              ]
+            },
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "산탄 펠릿별 적중률·정거리",
+          "탄창 크기·반동·재장전·속사/특수모드 유지율"
+        ],
+        "notes": null
+      },
+      {
+        "type": "element",
+        "channels": [
+          "raw_ammo",
+          "element_ammo"
+        ],
+        "rotation": "속성탄의 탄창·관통 틱·적정거리·자원 보충을 포함.",
+        "elementOrientation": "element_sensitive",
+        "sourceIds": [
+          "spec_hbg_guide"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "속성 공격 강화",
+            "scope": "selected_element_ammo",
+            "effect": "선택 속성탄에만 적용. 보우건 탄 속성피해는 무기 공격력에도 비례하므로 근접처럼 독립 속성 스탯으로 계산하지 않는다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "퍼스트샷",
+            "scope": "clip_first_shot",
+            "effect": "첫발만 속성10% 추가 및 공격력+5/10/15. 재장전속도 포함.",
+            "numeric": {
+              "elementMultiplierFirstShot": 1.1
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "포스샷",
+            "scope": "clip_index",
+            "effect": "4·6번째탄만 공격력+3/6/10과속성5%;4발이후회심8/10/12%.",
+            "numeric": {
+              "specificShots": [
+                4,
+                6
+              ],
+              "elementMultiplier": 1.05
+            },
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "속성 탄종별raw/속성계수·관통틱·상한",
+          "가이드회심격속성본문15%와오래된FAQ14%(LBG)/21%(HBG)충돌"
+        ],
+        "criticalElement": {
+          "status": "conflicting_source",
+          "currentTableLevel3": 1.15,
+          "oldFaqLevel3": 1.21,
+          "action": "datamine/정확한 버전 검증 전 계수 미지원"
+        }
+      },
+      {
+        "type": "hybrid",
+        "channels": [
+          "element_ammo",
+          "raw_ammo",
+          "explosive_special"
+        ],
+        "rotation": "용열 척탄을 가능한 만큼 쓰고 게이지 부족/작은 대상에는 속성탄.",
+        "elementOrientation": "resource_dependent",
+        "sourceIds": [
+          "spec_hbg_guide"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "포술",
+            "scope": "wyvernblast_explosion",
+            "effect": "폭발 부분만30%증가.",
+            "numeric": {
+              "level3Multiplier": 1.3
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "특수 사격 강화",
+            "scope": "special_ammo",
+            "effect": "해당 특수탄20%증가.",
+            "numeric": {
+              "level2Multiplier": 1.2
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "속성 공격 강화",
+            "scope": "fallback_element_ammo",
+            "effect": "보조속성탄부분에만 적용.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "용열의틱수·폭발피해·부위 크기·게이지 충전과 명중률",
+          "용열/속성탄 50:50 같은 고정분할은 근거 없음",
+          "회심격속성 수치는 element 프로필 충돌 참고"
+        ]
+      }
+    ],
+    "bow": [
+      {
+        "type": "element",
+        "channels": [
+          "raw_arrows",
+          "element_arrows"
+        ],
+        "rotation": "모으기 단계와 병을 유지하며 강사/연사를 순환.",
+        "elementOrientation": "element_sensitive",
+        "sourceIds": [
+          "spec_bow_compendium"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "차지 마스터",
+            "scope": "charged_arrow_element",
+            "effect": "모으기 단계1 이상 모아쏘기/강사/강연사 등에 속성 5/10/15%. 천천시·용화살 등 제외.",
+            "numeric": {
+              "levels": [
+                1,
+                1.05,
+                1.1,
+                1.15
+              ]
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "회심격【속성】",
+            "scope": "critical_arrow_element",
+            "effect": "속성 회심에만5/10/15%.",
+            "numeric": {
+              "levels": [
+                1,
+                1.05,
+                1.1,
+                1.15
+              ]
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "산탄/강사 강화",
+            "scope": "power_shot_raw",
+            "effect": "강사 계열의 대상 피해만, 전체 모든 화살/속성에 무조건 곱하지 않는다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "체술·스태미나 급속 회복",
+            "scope": "stamina_cycle",
+            "effect": "병·스태미나와 모으기단계 유지 시간에 영향. 직접 공격 배수 아님.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "화살별 rawMV/속성배율과 발사수·모으기단계·병 소비·실패거리",
+          "강사/연사의 실제 피해비중"
+        ]
+      },
+      {
+        "type": "raw",
+        "channels": [
+          "raw_arrows",
+          "status_coatings"
+        ],
+        "rotation": "강사 중심 물리 운용. 상태이상 병은 발동 주기와 기회 창을 별도 평가.",
+        "elementOrientation": "raw_or_status",
+        "sourceIds": [
+          "spec_bow_compendium"
+        ],
+        "mainMotionShare": null,
+        "estimatedElementShareRange": null,
+        "shareEvidence": "not_measured",
+        "support": "mechanics_only",
+        "mechanicEffects": [
+          {
+            "skill": "슈퍼회심",
+            "scope": "critical_raw_arrows",
+            "effect": "속성 강화가 없는 물리 화살의 회심 기대값에 적용.",
+            "numeric": null,
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "포스샷",
+            "scope": "coating_index",
+            "effect": "4~10번째 병에서 회심8/10/12%. 4·6번째 병에만 공격력3/6/10과 속성5%.",
+            "numeric": {
+              "affinityByLevel": [
+                0.08,
+                0.1,
+                0.12
+              ],
+              "specificCoatings": [
+                4,
+                6
+              ],
+              "rawByLevel": [
+                3,
+                6,
+                10
+              ],
+              "elementMultiplier": 1.05
+            },
+            "evidence": "verified_author"
+          },
+          {
+            "skill": "체술",
+            "scope": "stamina_cycle",
+            "effect": "대상 회피·사격 스태미나와 재충전 시간을 계산한다.",
+            "numeric": null,
+            "evidence": "verified_author"
+          }
+        ],
+        "unsupported": [
+          "무기 병 목록·탄도·타수·거리·특수사격 미정",
+          "병 순서를 무시한 포스샷 상시보너스 금지"
+        ]
+      }
+    ]
+  },
+  "benchmarkExamples": [
+    {
+      "weapon": "long-sword",
+      "combo": "Crimson I → Spirit I",
+      "rawDamage": 190.08,
+      "elementDamage": 22.08,
+      "elementShare": 0.1041,
+      "evidence": "illustrative_derived_not_measured",
+      "note": "무기실스탯·회심·모드·육질을바꾸면즉시변하는예시.무기상수로저장하지말것."
+    },
+    {
+      "weapon": "long-sword",
+      "combo": "Spirit Helmbreaker + Spirit Release Slash",
+      "rawDamage": 997.92,
+      "elementDamage": 68.08,
+      "elementShare": 0.0639,
+      "evidence": "illustrative_derived_not_measured",
+      "note": "무기실스탯·회심·모드·육질을바꾸면즉시변하는예시.무기상수로저장하지말것."
+    },
+    {
+      "weapon": "dual-blades",
+      "combo": "Blade Dance I→II→III",
+      "rawDamage": 933.77,
+      "elementDamage": 184,
+      "elementShare": 0.1646,
+      "evidence": "illustrative_derived_not_measured",
+      "note": "무기실스탯·회심·모드·육질을바꾸면즉시변하는예시.무기상수로저장하지말것."
+    },
+    {
+      "weapon": "dual-blades",
+      "combo": "Demon Flurry I→Blade Dance II→III",
+      "rawDamage": 748.44,
+      "elementDamage": 136.16,
+      "elementShare": 0.1539,
+      "evidence": "illustrative_derived_not_measured",
+      "note": "무기실스탯·회심·모드·육질을바꾸면즉시변하는예시.무기상수로저장하지말것."
+    },
+    {
+      "weapon": "dual-blades",
+      "combo": "Sixfold Demon Slash",
+      "rawDamage": 275.62,
+      "elementDamage": 49.68,
+      "elementShare": 0.1527,
+      "evidence": "illustrative_derived_not_measured",
+      "note": "무기실스탯·회심·모드·육질을바꾸면즉시변하는예시.무기상수로저장하지말것."
+    },
+    {
+      "weapon": "lance",
+      "combo": "Mid Thrust→Wide Sweep→Mid Thrust→Triple Thrust",
+      "rawDamage": 553.61,
+      "elementDamage": 74.52,
+      "elementShare": 0.1186,
+      "evidence": "illustrative_derived_not_measured",
+      "note": "무기실스탯·회심·모드·육질을바꾸면즉시변하는예시.무기상수로저장하지말것."
+    }
+  ],
+  "globalLimitations": [
+    "어떤프로필도몬스터전체실전DPS를확정하지않는다.대표콤보는명중·사거리·자원·가드·버프 조건을 생략한부분모델이다.",
+    "집중·납도술·고속변형·강화지속·포탄장전·가드성능은각기시간/자원/모션에적용;단순스킬점수나전역피해배수로대체하지말것.",
+    "장식장·상처폭발·상태이상·세트추가타·벌레·노래·특수탄을미구현이면제외사유를표시하고0기여로계산되는점을고지할것.",
+    "numericSupport=mechanics_only 프로필은확정피해순위가아닌구조적설명에사용;미확인MVs를다른작품에서복사하지말것."
+  ]
+}

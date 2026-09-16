@@ -1,0 +1,2270 @@
+{
+  "schemaVersion": 1,
+  "game": "wilds",
+  "scope": "기본 게임 TU4~1.041; 다른 작품/차기 확장판 제외",
+  "researchedAt": "2026-09-16",
+  "sources": {
+    "db": {
+      "title": "MHDB Wilds 한국어 로컬 스냅샷",
+      "url": "https://wilds.mhdb.io/ko/skills",
+      "access": "local_snapshot",
+      "localPath": "data/database.json",
+      "sourceVersion": "2026-04-15T01:28:18+00:00",
+      "note": "이번 조사는 기존 로컬 스냅샷을 읽음. 원격 API 최신 내용을 읽었다는 의미 아님."
+    },
+    "calcSkills": {
+      "title": "chanleyou Wilds Calculator 스킬 구현",
+      "url": "https://github.com/chanleyou/mhwilds-calculator/blob/bbcb44f783fe20fcaf694654bd9d55fea2e430ff/src/data/skills.ts",
+      "access": "remote_source_read",
+      "updatedAt": "2026-01-15",
+      "note": "읽은 스킬 숫자만 교차검증. 전체 계산기 모델은 TU4 상한 미반영이므로 그대로 사용 금지."
+    },
+    "general": {
+      "title": "Sasch·Dickchess Intermediate Damage Calculation",
+      "url": "https://wiggler.pet/other/guides/intermediate_damage_calculation",
+      "access": "web_read",
+      "note": "여러 작품 혼합 문서. Wilds 명시 회심값만 사용. Rise 회심격속성표는 미사용."
+    },
+    "sa": {
+      "title": "Sasch Wilds Switch Axe Guide",
+      "url": "https://wiggler.pet/wilds/guide/switch_axe",
+      "access": "web_read",
+      "note": "TU4 변경 포함. 기초공격×배율+고정보너스 순서 확인."
+    },
+    "ls": {
+      "title": "Wilds Longsword Sets — Power Charm FAQ",
+      "url": "https://wiggler.pet/wilds/endgame/longsword",
+      "access": "web_read"
+    },
+    "sns": {
+      "title": "Wilds Sword and Shield Sets",
+      "url": "https://wiggler.pet/wilds/endgame/sword_and_shield",
+      "access": "web_read",
+      "note": "육질45와 특정 세트 uptime 예시. 모든 무기 발동률로 일반화 금지."
+    },
+    "cb": {
+      "title": "timmy·jerrynt Wilds Charge Blade Guide TU4.5",
+      "url": "https://docs.google.com/document/d/1I9XKBQZLpG0159yPOs2zvPS7wwrzaEPtiMkBfzGzibQ/edit",
+      "access": "public_text_export_read"
+    },
+    "lbg": {
+      "title": "MHGH Wilds Light Bowgun Guide TU4.5",
+      "url": "https://docs.google.com/document/d/1Mm7rOM0V7VLsOHlXW5zO8uD5ht5rhlVeVNLn3cdDXy8/edit",
+      "access": "public_text_export_read"
+    },
+    "hbg": {
+      "title": "MHGH Wilds Heavy Bowgun Guide TU4.5",
+      "url": "https://docs.google.com/document/d/17atnsKzYrQlEy_70Z2zzlEBJrN3OtiTYurKCHzMLIn8/edit",
+      "access": "public_text_export_read"
+    },
+    "burstTest": {
+      "title": "한손검 연격 첫 타·다섯 타 직접 실측",
+      "url": "https://www.reddit.com/r/MHWilds/comments/1j175di/burst_skill_buff_numbers/",
+      "access": "web_read"
+    },
+    "capReport": {
+      "title": "TU4 쌍검 속성상한 736 실측 보고",
+      "url": "https://www.reddit.com/r/MHWilds/comments/1q1zzbp/is_this_the_max_elemental_cap_now/",
+      "access": "web_read",
+      "note": "원본 엔진 파라미터는 미검증. 후보값의 참고 근거로만 기록."
+    },
+    "inventory": {
+      "title": "MHDB Wilds — 실제 아이템 목록",
+      "url": "https://wilds.mhdb.io/en/items",
+      "access": "remote_data_read",
+      "checkedAt": "2026-09-16",
+      "note": "773개 전체 목록: Powercharm id128/gameId152 존재, Powertalon 없음. API 문서 예시가 아닌 실제 응답 확인."
+    },
+    "powercharmItem": {
+      "title": "MHDB Wilds — 힘의 부적",
+      "url": "https://wilds.mhdb.io/ko/items/128",
+      "access": "remote_data_read",
+      "checkedAt": "2026-09-16"
+    },
+    "powercharmAvailability": {
+      "title": "Game8 Wilds — 힘의 부적 효과와 힘의발톱 미구현 확인",
+      "url": "https://game8.jp/mhwilds/673613",
+      "access": "web_read",
+      "checkedAt": "2026-09-16",
+      "note": "기초 공격력 +6 및 힘의발톱 없음 명시. 표시 공격력에는 무기계수 적용."
+    }
+  },
+  "units": {
+    "rawFlat": "기초공격력",
+    "rawPercent": "증가율 0.15=×1.15; 무기기초공격에만 곱",
+    "affinity": "퍼센트포인트",
+    "elementFlat": "DB 표시속성값; 일반 무기 실제속성은/10",
+    "elementPercent": "기초속성에 적용할 증가율",
+    "critMultiplier": "양회심 물리 총배율",
+    "criticalElement": "양회심 속성 총배율"
+  },
+  "facts": {
+    "powercharm": {
+      "status": "verified",
+      "name": "힘의 부적",
+      "effects": {
+        "rawFlat": 6
+      },
+      "sourceIds": [
+        "ls",
+        "inventory",
+        "powercharmItem",
+        "powercharmAvailability"
+      ]
+    },
+    "bloat": {
+      "status": "verified-database",
+      "sourceIds": [
+        "db"
+      ],
+      "multipliers": {
+        "great-sword": 4.8,
+        "long-sword": 3.3,
+        "sword-shield": 1.4,
+        "dual-blades": 1.4,
+        "hammer": 5.2,
+        "hunting-horn": 4.2,
+        "lance": 2.3,
+        "gunlance": 2.3,
+        "switch-axe": 3.5,
+        "charge-blade": 3.6,
+        "insect-glaive": 3.1,
+        "light-bowgun": 1.3,
+        "heavy-bowgun": 1.5,
+        "bow": 1.2
+      },
+      "notes": [
+        "DB attack/rawAttack와 Gog multiplier10 대조. rawAttack이 있으면 우선 사용. 표시attack만 있으면 계수로 나눈다. 표시 버림으로 소실된 소수는 복원 불가."
+      ]
+    },
+    "rawFormula": {
+      "status": "verified",
+      "expression": "raw = weaponRaw * product(1+activeRawPercent) + 6 + sum(activeRawFlat)",
+      "sourceIds": [
+        "sa"
+      ],
+      "notes": [
+        "부적과 도전자 등 고정보너스에 기초공격 배율을 곱하지 않는다. 폭발/특수 공격은 별도 성분식 필요."
+      ]
+    },
+    "affinity": {
+      "status": "verified",
+      "min": -100,
+      "max": 100,
+      "negativeCritMultiplier": 0.75,
+      "basePositiveCritMultiplier": 1.25,
+      "expectedRawFactor": "a=clamp(affinity,-100,100)/100; a>=0 ? 1+a*(critMultiplier-1) : 1+0.25*a",
+      "expectedElementFactor": "1+max(0,clamp(affinity,-100,100)/100)*(criticalElement-1)",
+      "sourceIds": [
+        "general",
+        "sa"
+      ],
+      "notes": [
+        "회심 불가 성분은 배율1. 회심격속성 없으면 속성회심배율1."
+      ]
+    },
+    "damageFormula": {
+      "status": "verified-general-form",
+      "raw": "raw * rawSharpness * motionValue/100 * rawHitzone/100 * expectedRawCritFactor * moveModifiers",
+      "element": "elementDisplayed/10 * elementSharpness * elementMotion * elementHitzone/100 * expectedElementCritFactor * moveModifiers",
+      "total": "sum(raw+element+separatelyModeledFixedComponents)",
+      "sourceIds": [
+        "sa"
+      ],
+      "notes": [
+        "모션·육질·공격성분 없이는 실제피해/DPS가 아니라 EFR/가정시나리오 비교다. 메뉴는버림, 내부피해는소수유지. 마지막 반올림 단계는 미확인."
+      ]
+    },
+    "elementFormula": {
+      "status": "verified-general-form",
+      "expression": "uncappedElementDisplayed=weaponElementDisplayed*product(1+activeElementPercent)+sum(activeElementFlat)",
+      "sourceIds": [
+        "sa",
+        "calcSkills"
+      ],
+      "notes": [
+        "속성 일치 필수. 무속성에 새 속성을 생성하지 않는다. 보우건 탄은 별도 공식."
+      ]
+    },
+    "caps": {
+      "skillLevel": {
+        "status": "verified",
+        "expression": "min(totalSkillPoints,DB.maxLevel)",
+        "sourceIds": [
+          "db"
+        ]
+      },
+      "affinity": {
+        "status": "verified",
+        "min": -100,
+        "max": 100,
+        "sourceIds": [
+          "general"
+        ]
+      },
+      "element": {
+        "status": "unknown-primary-parameters",
+        "candidateExpression": "max(weaponElementDisplayed*2.3,weaponElementDisplayed+400)",
+        "sourceIds": [
+          "capReport"
+        ],
+        "example": {
+          "base": 320,
+          "reportedCap": 736
+        },
+        "automaticUse": false,
+        "notes": [
+          "TU4 이전1.9/+350을 현재값으로 쓰지 않음. SA병 상한보정 원본도 미확인."
+        ]
+      },
+      "raw": {
+        "status": "unknown",
+        "automaticUse": false,
+        "notes": [
+          "World2배 상한 이식 금지."
+        ]
+      }
+    },
+    "powertalon": {
+      "status": "unavailable",
+      "name": "힘의발톱",
+      "included": false,
+      "checkedAt": "2026-09-16",
+      "sourceIds": [
+        "inventory",
+        "powercharmAvailability"
+      ],
+      "note": "현행 와일즈 실제 아이템 목록에 없고 와일즈 전용 공략도 미구현 명시. 다른 작품의 공격력 보너스는 사용하지 않음."
+    }
+  },
+  "comparison": {
+    "baseline": "선택무기 강화완료 고유 공격력·회심·속성 + 힘의 부적 +6. 장비스킬/장식주/조건부스킬은 제외.",
+    "totalRatio": "D(all)/D(base)",
+    "marginalRatio": "D(all)/D(allWithoutSkill)",
+    "notes": [
+      "개별한계기여는 서로 곱하지 않는다. 제거전후 동일한 타격/조건 시나리오 사용. 목표는 가상집합, 결과는 실제발동집합. 미지원스킬을1.00으로 위장하지 않는다."
+    ]
+  },
+  "assumptions": {
+    "status": "not-game-facts",
+    "averaging": "sum(p(jointState)*D(jointState))",
+    "notes": [
+      "도전자 raw와회심을 각각 평균낸 스탯으로D계산하면 교차항과상한오차 발생. 체력은배타상태 categorical. 연격초기/완성도배타상태.",
+      "사용자지정/시나리오 발동률이 없으면null. 상시발동1은 게임사실이아니라 명시한비교시나리오다."
+    ],
+    "conditions": [
+      {
+        "id": "always",
+        "defaultUptime": 1
+      },
+      {
+        "id": "enraged",
+        "defaultUptime": null,
+        "example": 0.7,
+        "exampleScope": "한손검 특정세트 가정",
+        "sourceIds": [
+          "sns"
+        ]
+      },
+      {
+        "id": "weakHit",
+        "defaultUptime": null
+      },
+      {
+        "id": "woundHit",
+        "defaultUptime": null
+      },
+      {
+        "id": "maximumMightActive",
+        "defaultUptime": null
+      },
+      {
+        "id": "offensiveGuardActive",
+        "defaultUptime": null,
+        "example": 0.4,
+        "exampleScope": "한손검 가이드 예시",
+        "sourceIds": [
+          "sns"
+        ]
+      },
+      {
+        "id": "counterstrikeActive",
+        "defaultUptime": null
+      },
+      {
+        "id": "adrenalineRushActive",
+        "defaultUptime": null
+      },
+      {
+        "id": "redHealth",
+        "defaultUptime": null
+      },
+      {
+        "id": "fullHealth",
+        "defaultUptime": null
+      },
+      {
+        "id": "healthAtMost35Percent",
+        "defaultUptime": null
+      },
+      {
+        "id": "burstInitial",
+        "defaultUptime": null
+      },
+      {
+        "id": "burstFull",
+        "defaultUptime": null
+      },
+      {
+        "id": "coalescenceActive",
+        "defaultUptime": null
+      },
+      {
+        "id": "positiveCriticalHit",
+        "defaultUptime": null,
+        "derivedFrom": "effectiveAffinity"
+      },
+      {
+        "id": "matchingActiveElement",
+        "defaultUptime": null,
+        "derivedFrom": "weaponOrAmmoElement"
+      }
+    ]
+  },
+  "rules": [
+    {
+      "skillId": "s1",
+      "skillname": "공격",
+      "maxLevel": 5,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "raw"
+        ]
+      },
+      "conditionId": "always",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "rawFlat": 3
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "rawFlat": 5
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "rawFlat": 7
+          }
+        },
+        {
+          "level": 4,
+          "effects": {
+            "rawPercent": 0.02,
+            "rawFlat": 8
+          }
+        },
+        {
+          "level": 5,
+          "effects": {
+            "rawPercent": 0.04,
+            "rawFlat": 9
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills"
+      ],
+      "notes": [
+        "배율은 무기 기초공격에만 곱한다. 고정공격은 배율 적용 뒤 더한다."
+      ]
+    },
+    {
+      "skillId": "s-2096489472",
+      "skillname": "간파",
+      "maxLevel": 5,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "critEligibleRaw",
+          "critEligibleElement"
+        ]
+      },
+      "conditionId": "always",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "affinity": 4
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "affinity": 8
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "affinity": 12
+          }
+        },
+        {
+          "level": 4,
+          "effects": {
+            "affinity": 16
+          }
+        },
+        {
+          "level": 5,
+          "effects": {
+            "affinity": 20
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills"
+      ]
+    },
+    {
+      "skillId": "s-397570464",
+      "skillname": "약점 특효",
+      "maxLevel": 5,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "critEligibleRaw",
+          "critEligibleElement"
+        ]
+      },
+      "conditionId": "weakHit",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "affinity": 5
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "affinity": 10
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "affinity": 15
+          }
+        },
+        {
+          "level": 4,
+          "effects": {
+            "affinity": 20
+          }
+        },
+        {
+          "level": 5,
+          "effects": {
+            "affinity": 30
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills",
+        "sns"
+      ],
+      "additionalConditions": [
+        {
+          "conditionId": "woundHit",
+          "levels": [
+            {
+              "level": 1,
+              "effects": {
+                "affinity": 3
+              }
+            },
+            {
+              "level": 2,
+              "effects": {
+                "affinity": 5
+              }
+            },
+            {
+              "level": 3,
+              "effects": {
+                "affinity": 10
+              }
+            },
+            {
+              "level": 4,
+              "effects": {
+                "affinity": 15
+              }
+            },
+            {
+              "level": 5,
+              "effects": {
+                "affinity": 20
+              }
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "해당 물리 육질45 이상 적중. 상처 추가분은 별도 조건. 같은 타격의 공동 상태로 계산한다."
+      ]
+    },
+    {
+      "skillId": "s1865909632",
+      "skillname": "도전자",
+      "maxLevel": 5,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "raw",
+          "critEligibleRaw",
+          "critEligibleElement"
+        ]
+      },
+      "conditionId": "enraged",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "rawFlat": 4,
+            "affinity": 3
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "rawFlat": 8,
+            "affinity": 5
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "rawFlat": 12,
+            "affinity": 7
+          }
+        },
+        {
+          "level": 4,
+          "effects": {
+            "rawFlat": 16,
+            "affinity": 10
+          }
+        },
+        {
+          "level": 5,
+          "effects": {
+            "rawFlat": 20,
+            "affinity": 15
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills"
+      ]
+    },
+    {
+      "skillId": "s632127488",
+      "skillname": "혼신",
+      "maxLevel": 3,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "critEligibleRaw",
+          "critEligibleElement"
+        ]
+      },
+      "conditionId": "maximumMightActive",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "affinity": 10
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "affinity": 20
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "affinity": 30
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills"
+      ]
+    },
+    {
+      "skillId": "s-181127504",
+      "skillname": "공격적인 방어",
+      "maxLevel": 3,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "great-sword",
+          "sword-shield",
+          "lance",
+          "gunlance",
+          "charge-blade",
+          "heavy-bowgun"
+        ],
+        "components": [
+          "raw"
+        ]
+      },
+      "conditionId": "offensiveGuardActive",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "rawPercent": 0.05
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "rawPercent": 0.1
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "rawPercent": 0.15
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills",
+        "hbg"
+      ]
+    },
+    {
+      "skillId": "s280489184",
+      "skillname": "역습",
+      "maxLevel": 3,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "raw"
+        ]
+      },
+      "conditionId": "counterstrikeActive",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "rawFlat": 10
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "rawFlat": 15
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "rawFlat": 25
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills",
+        "sa"
+      ],
+      "durationSeconds": [
+        null,
+        null,
+        45
+      ],
+      "notes": [
+        "Lv1/2 시간 미확인. 일반 가드만으로 발동한다고 가정하지 않는다."
+      ]
+    },
+    {
+      "skillId": "s1174975744",
+      "skillname": "교격",
+      "maxLevel": 5,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "raw"
+        ]
+      },
+      "conditionId": "adrenalineRushActive",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "rawFlat": 10
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "rawFlat": 15
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "rawFlat": 20
+          }
+        },
+        {
+          "level": 4,
+          "effects": {
+            "rawFlat": 25
+          }
+        },
+        {
+          "level": 5,
+          "effects": {
+            "rawFlat": 30
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills"
+      ]
+    },
+    {
+      "skillId": "s1359821952",
+      "skillname": "앙심",
+      "maxLevel": 5,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "raw"
+        ]
+      },
+      "conditionId": "redHealth",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "rawFlat": 5
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "rawFlat": 10
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "rawFlat": 15
+          }
+        },
+        {
+          "level": 4,
+          "effects": {
+            "rawFlat": 20
+          }
+        },
+        {
+          "level": 5,
+          "effects": {
+            "rawFlat": 25
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills"
+      ]
+    },
+    {
+      "skillId": "s2106877312",
+      "skillname": "완전 충전",
+      "maxLevel": 5,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "raw"
+        ]
+      },
+      "conditionId": "fullHealth",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "rawFlat": 3
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "rawFlat": 6
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "rawFlat": 10
+          }
+        },
+        {
+          "level": 4,
+          "effects": {
+            "rawFlat": 15
+          }
+        },
+        {
+          "level": 5,
+          "effects": {
+            "rawFlat": 20
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills"
+      ]
+    },
+    {
+      "skillId": "s422666624",
+      "skillname": "재난대처능력",
+      "maxLevel": 5,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "raw"
+        ]
+      },
+      "conditionId": "healthAtMost35Percent",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "defenseFlat": 50
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "rawPercent": 0.05,
+            "defenseFlat": 50
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "rawPercent": 0.05,
+            "defenseFlat": 100
+          }
+        },
+        {
+          "level": 4,
+          "effects": {
+            "rawPercent": 0.1,
+            "defenseFlat": 100
+          }
+        },
+        {
+          "level": 5,
+          "effects": {
+            "rawPercent": 0.3
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills"
+      ],
+      "notes": [
+        "Lv1 직접피해 증가 없음. Lv3은 Lv2와 피해배율 동일."
+      ]
+    },
+    {
+      "skillId": "s-1607763456",
+      "skillname": "슈퍼회심",
+      "maxLevel": 5,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "critEligibleRaw"
+        ]
+      },
+      "conditionId": "positiveCriticalHit",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "critMultiplier": 1.28
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "critMultiplier": 1.31
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "critMultiplier": 1.34
+          }
+        },
+        {
+          "level": 4,
+          "effects": {
+            "critMultiplier": 1.37
+          }
+        },
+        {
+          "level": 5,
+          "effects": {
+            "critMultiplier": 1.4
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "general"
+      ],
+      "notes": [
+        "기본1.25를 대체. 음회심0.75에는 영향 없음."
+      ]
+    },
+    {
+      "skillId": "s-562534336",
+      "skillname": "불속성 공격 강화",
+      "maxLevel": 3,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "matchingElement"
+        ]
+      },
+      "conditionId": "matchingActiveElement",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "elementFlat": 40
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "elementPercent": 0.1,
+            "elementFlat": 50
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "elementPercent": 0.2,
+            "elementFlat": 60
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills",
+        "lbg"
+      ],
+      "element": "fire",
+      "notes": [
+        "표시속성 단위. 일반 무기는 결과를10으로 나누어 실제속성 계산. 보우건은 별도 탄 공식 필요. 상태이상에는 적용하지 않음."
+      ]
+    },
+    {
+      "skillId": "s508916704",
+      "skillname": "물속성 공격 강화",
+      "maxLevel": 3,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "matchingElement"
+        ]
+      },
+      "conditionId": "matchingActiveElement",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "elementFlat": 40
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "elementPercent": 0.1,
+            "elementFlat": 50
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "elementPercent": 0.2,
+            "elementFlat": 60
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills",
+        "lbg"
+      ],
+      "element": "water",
+      "notes": [
+        "표시속성 단위. 일반 무기는 결과를10으로 나누어 실제속성 계산. 보우건은 별도 탄 공식 필요. 상태이상에는 적용하지 않음."
+      ]
+    },
+    {
+      "skillId": "s1452140672",
+      "skillname": "번개속성 공격 강화",
+      "maxLevel": 3,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "matchingElement"
+        ]
+      },
+      "conditionId": "matchingActiveElement",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "elementFlat": 40
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "elementPercent": 0.1,
+            "elementFlat": 50
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "elementPercent": 0.2,
+            "elementFlat": 60
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills",
+        "lbg"
+      ],
+      "element": "thunder",
+      "notes": [
+        "표시속성 단위. 일반 무기는 결과를10으로 나누어 실제속성 계산. 보우건은 별도 탄 공식 필요. 상태이상에는 적용하지 않음."
+      ]
+    },
+    {
+      "skillId": "s1268070400",
+      "skillname": "얼음속성 공격 강화",
+      "maxLevel": 3,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "matchingElement"
+        ]
+      },
+      "conditionId": "matchingActiveElement",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "elementFlat": 40
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "elementPercent": 0.1,
+            "elementFlat": 50
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "elementPercent": 0.2,
+            "elementFlat": 60
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills",
+        "lbg"
+      ],
+      "element": "ice",
+      "notes": [
+        "표시속성 단위. 일반 무기는 결과를10으로 나누어 실제속성 계산. 보우건은 별도 탄 공식 필요. 상태이상에는 적용하지 않음."
+      ]
+    },
+    {
+      "skillId": "s-776946176",
+      "skillname": "용속성 공격 강화",
+      "maxLevel": 3,
+      "status": "verified-db-crosschecked",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "matchingElement"
+        ]
+      },
+      "conditionId": "matchingActiveElement",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "elementFlat": 40
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "elementPercent": 0.1,
+            "elementFlat": 50
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "elementPercent": 0.2,
+            "elementFlat": 60
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills",
+        "lbg"
+      ],
+      "element": "dragon",
+      "notes": [
+        "표시속성 단위. 일반 무기는 결과를10으로 나누어 실제속성 계산. 보우건은 별도 탄 공식 필요. 상태이상에는 적용하지 않음."
+      ]
+    },
+    {
+      "skillId": "s313598432",
+      "skillname": "회심격【속성】",
+      "maxLevel": 3,
+      "status": "verified-source-with-exceptions",
+      "applicable": {
+        "kinds": [
+          "long-sword",
+          "sword-shield",
+          "dual-blades",
+          "lance",
+          "gunlance",
+          "switch-axe",
+          "charge-blade",
+          "insect-glaive",
+          "light-bowgun",
+          "bow"
+        ],
+        "components": [
+          "critEligibleMatchingElement"
+        ]
+      },
+      "conditionId": "positiveCriticalHit",
+      "levels": [
+        {
+          "level": 1,
+          "effects": {
+            "criticalElement": 1.05
+          }
+        },
+        {
+          "level": 2,
+          "effects": {
+            "criticalElement": 1.1
+          }
+        },
+        {
+          "level": 3,
+          "effects": {
+            "criticalElement": 1.15
+          }
+        }
+      ],
+      "sourceIds": [
+        "db",
+        "calcSkills",
+        "lbg"
+      ],
+      "variants": [
+        {
+          "kinds": [
+            "great-sword",
+            "hammer",
+            "hunting-horn"
+          ],
+          "status": "verified-source",
+          "levels": [
+            {
+              "level": 1,
+              "effects": {
+                "criticalElement": 1.07
+              }
+            },
+            {
+              "level": 2,
+              "effects": {
+                "criticalElement": 1.14
+              }
+            },
+            {
+              "level": 3,
+              "effects": {
+                "criticalElement": 1.21
+              }
+            }
+          ],
+          "sourceIds": [
+            "calcSkills"
+          ]
+        },
+        {
+          "kinds": [
+            "heavy-bowgun"
+          ],
+          "status": "conflict",
+          "levels": null,
+          "candidates": [
+            {
+              "sourceId": "calcSkills",
+              "criticalElement": [
+                1.07,
+                1.14,
+                1.21
+              ]
+            },
+            {
+              "sourceId": "hbg",
+              "criticalElementLevel3": 1.15
+            }
+          ],
+          "sourceIds": [
+            "calcSkills",
+            "hbg"
+          ],
+          "automaticUse": false
+        }
+      ],
+      "notes": [
+        "회심 불가 공격 성분에는 적용하지 않음. 상태이상용 회심격과 구분."
+      ]
+    },
+    {
+      "skillId": "s565867136",
+      "skillname": "연격",
+      "maxLevel": 5,
+      "status": "verified-source",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "raw",
+          "matchingElement"
+        ]
+      },
+      "conditionId": "burstFull",
+      "levels": null,
+      "sourceIds": [
+        "db",
+        "calcSkills",
+        "cb",
+        "lbg",
+        "hbg"
+      ],
+      "variants": [
+        {
+          "kinds": [
+            "great-sword",
+            "hunting-horn"
+          ],
+          "levels": [
+            {
+              "level": 1,
+              "effects": {
+                "rawFlat": 10,
+                "elementFlat": 80
+              }
+            },
+            {
+              "level": 2,
+              "effects": {
+                "rawFlat": 12,
+                "elementFlat": 100
+              }
+            },
+            {
+              "level": 3,
+              "effects": {
+                "rawFlat": 14,
+                "elementFlat": 120
+              }
+            },
+            {
+              "level": 4,
+              "effects": {
+                "rawFlat": 16,
+                "elementFlat": 160
+              }
+            },
+            {
+              "level": 5,
+              "effects": {
+                "rawFlat": 18,
+                "elementFlat": 200
+              }
+            }
+          ],
+          "unknownComponents": []
+        },
+        {
+          "kinds": [
+            "dual-blades"
+          ],
+          "levels": [
+            {
+              "level": 1,
+              "effects": {
+                "rawFlat": 8,
+                "elementFlat": 40
+              }
+            },
+            {
+              "level": 2,
+              "effects": {
+                "rawFlat": 10,
+                "elementFlat": 60
+              }
+            },
+            {
+              "level": 3,
+              "effects": {
+                "rawFlat": 12,
+                "elementFlat": 80
+              }
+            },
+            {
+              "level": 4,
+              "effects": {
+                "rawFlat": 15,
+                "elementFlat": 100
+              }
+            },
+            {
+              "level": 5,
+              "effects": {
+                "rawFlat": 18,
+                "elementFlat": 120
+              }
+            }
+          ],
+          "unknownComponents": []
+        },
+        {
+          "kinds": [
+            "bow"
+          ],
+          "levels": [
+            {
+              "level": 1,
+              "effects": {
+                "rawFlat": 6,
+                "elementFlat": 40
+              }
+            },
+            {
+              "level": 2,
+              "effects": {
+                "rawFlat": 7,
+                "elementFlat": 60
+              }
+            },
+            {
+              "level": 3,
+              "effects": {
+                "rawFlat": 8,
+                "elementFlat": 80
+              }
+            },
+            {
+              "level": 4,
+              "effects": {
+                "rawFlat": 9,
+                "elementFlat": 100
+              }
+            },
+            {
+              "level": 5,
+              "effects": {
+                "rawFlat": 10,
+                "elementFlat": 120
+              }
+            }
+          ],
+          "unknownComponents": []
+        },
+        {
+          "kinds": [
+            "light-bowgun",
+            "heavy-bowgun"
+          ],
+          "levels": [
+            {
+              "level": 1,
+              "effects": {
+                "rawFlat": 6
+              }
+            },
+            {
+              "level": 2,
+              "effects": {
+                "rawFlat": 7
+              }
+            },
+            {
+              "level": 3,
+              "effects": {
+                "rawFlat": 8
+              }
+            },
+            {
+              "level": 4,
+              "effects": {
+                "rawFlat": 9
+              }
+            },
+            {
+              "level": 5,
+              "effects": {
+                "rawFlat": 10
+              }
+            }
+          ],
+          "unknownComponents": [
+            "bowgunElementFlat"
+          ]
+        },
+        {
+          "kinds": [
+            "long-sword",
+            "sword-shield",
+            "hammer",
+            "lance",
+            "gunlance",
+            "switch-axe",
+            "charge-blade",
+            "insect-glaive"
+          ],
+          "levels": [
+            {
+              "level": 1,
+              "effects": {
+                "rawFlat": 8,
+                "elementFlat": 60
+              }
+            },
+            {
+              "level": 2,
+              "effects": {
+                "rawFlat": 10,
+                "elementFlat": 80
+              }
+            },
+            {
+              "level": 3,
+              "effects": {
+                "rawFlat": 12,
+                "elementFlat": 100
+              }
+            },
+            {
+              "level": 4,
+              "effects": {
+                "rawFlat": 15,
+                "elementFlat": 120
+              }
+            },
+            {
+              "level": 5,
+              "effects": {
+                "rawFlat": 18,
+                "elementFlat": 140
+              }
+            }
+          ],
+          "unknownComponents": []
+        }
+      ],
+      "partialStage": {
+        "status": "partially-verified",
+        "kinds": [
+          "sword-shield"
+        ],
+        "conditionId": "burstInitial",
+        "effects": {
+          "rawFlat": 5,
+          "elementFlat": 50
+        },
+        "sourceIds": [
+          "burstTest"
+        ]
+      },
+      "notes": [
+        "5회 적중 강화상태 최종 보너스. 초기+강화 보너스를 이중 더하지 않음. 다른 무기 초기단계 값/정확한 유지시간은 미확인. 보우건 속성 보너스를0으로 단정하지 않음. 연격강화 시리즈는 별도."
+      ]
+    },
+    {
+      "skillId": "s-1700743296",
+      "skillname": "전화위복",
+      "maxLevel": 3,
+      "status": "verified-source",
+      "applicable": {
+        "kinds": [
+          "all"
+        ],
+        "components": [
+          "matchingElement",
+          "statusBuildup"
+        ]
+      },
+      "conditionId": "coalescenceActive",
+      "levels": null,
+      "sourceIds": [
+        "db",
+        "calcSkills",
+        "cb",
+        "lbg"
+      ],
+      "variants": [
+        {
+          "kinds": [
+            "long-sword",
+            "dual-blades",
+            "sword-shield",
+            "lance",
+            "insect-glaive",
+            "bow"
+          ],
+          "levels": [
+            {
+              "level": 1,
+              "effects": {
+                "elementPercent": 0.05,
+                "statusPercent": 0.05
+              }
+            },
+            {
+              "level": 2,
+              "effects": {
+                "elementPercent": 0.1,
+                "statusPercent": 0.1
+              }
+            },
+            {
+              "level": 3,
+              "effects": {
+                "elementPercent": 0.15,
+                "statusPercent": 0.15
+              }
+            }
+          ]
+        },
+        {
+          "kinds": [
+            "great-sword",
+            "hammer",
+            "hunting-horn",
+            "gunlance",
+            "switch-axe",
+            "charge-blade",
+            "light-bowgun",
+            "heavy-bowgun"
+          ],
+          "levels": [
+            {
+              "level": 1,
+              "effects": {
+                "elementPercent": 0.1,
+                "statusPercent": 0.05
+              }
+            },
+            {
+              "level": 2,
+              "effects": {
+                "elementPercent": 0.2,
+                "statusPercent": 0.1
+              }
+            },
+            {
+              "level": 3,
+              "effects": {
+                "elementPercent": 0.3,
+                "statusPercent": 0.15
+              }
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "구작 공격력 보너스를 추가하지 않는다. statusPercent는 축적 효과이며 직접 피해배율 아님."
+      ]
+    }
+  ],
+  "dbRankExtracts": [
+    {
+      "id": "s1",
+      "name": "공격",
+      "maxLevel": 5,
+      "description": "플레이어의 공격력을 올린다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "기초 공격력+3"
+        },
+        {
+          "level": 2,
+          "description": "기초 공격력+5"
+        },
+        {
+          "level": 3,
+          "description": "기초 공격력+7"
+        },
+        {
+          "level": 4,
+          "description": "공격력이 1.02배가 되고, 기초 공격력+8"
+        },
+        {
+          "level": 5,
+          "description": "공격력이 1.04배가 되고, 기초 공격력+9"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s-2096489472",
+      "name": "간파",
+      "maxLevel": 5,
+      "description": "회심률이 상승한다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "회심률+4%"
+        },
+        {
+          "level": 2,
+          "description": "회심률+8%"
+        },
+        {
+          "level": 3,
+          "description": "회심률+12%"
+        },
+        {
+          "level": 4,
+          "description": "회심률+16%"
+        },
+        {
+          "level": 5,
+          "description": "회심률+20％"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s-397570464",
+      "name": "약점 특효",
+      "maxLevel": 5,
+      "description": "몬스터를 공격할 때 명중한 부위가 꽤 효과적이면 회심률이 오른다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "유효 부위 공격 시 회심률+5% 상처 공격 시 회심률+3% 추가"
+        },
+        {
+          "level": 2,
+          "description": "유효 부위 공격 시 회심률+10% 상처 공격 시 회심률+5% 추가"
+        },
+        {
+          "level": 3,
+          "description": "유효 부위 공격 시 회심률+15% 상처 공격 시 회심률+10% 추가"
+        },
+        {
+          "level": 4,
+          "description": "유효 부위 공격 시 회심률+20% 상처 공격 시 회심률+15% 추가"
+        },
+        {
+          "level": 5,
+          "description": "유효 부위 공격 시 회심률+30% 상처 공격 시 회심률+20% 추가"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s1865909632",
+      "name": "도전자",
+      "maxLevel": 5,
+      "description": "전투 중에 대형 몬스터가 분노하면 공격력과 회심률이 상승한다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "스킬 발동 중, 기초 공격력+4 회심률+3%"
+        },
+        {
+          "level": 2,
+          "description": "스킬 발동 중, 기초 공격력+8 회심률+5%"
+        },
+        {
+          "level": 3,
+          "description": "스킬 발동 중, 기초 공격력+12 회심률+7%"
+        },
+        {
+          "level": 4,
+          "description": "스킬 발동 중, 기초 공격력+16 회심률+10%"
+        },
+        {
+          "level": 5,
+          "description": "스킬 발동 중, 기초 공격력+20 회심률+15%"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s632127488",
+      "name": "혼신",
+      "maxLevel": 3,
+      "description": "스태미나 게이지가 가득 찬 상태를 잠시 유지하고 있으면 회심률이 오른다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "효과 발동 시 회심률+10%"
+        },
+        {
+          "level": 2,
+          "description": "효과 발동 시 회심률+20%"
+        },
+        {
+          "level": 3,
+          "description": "효과 발동 시 회심률+30%"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s565867136",
+      "name": "연격",
+      "maxLevel": 5,
+      "description": "공격을 연속으로 맞히면 단계적으로 공격력과 속성치가 상승. (상승효과는 무기종류별로 다름)",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "공격 명중 시 일정 시간 기초 공격력과 속성 공격치가 약간 상승 5회 계속되면 효과가 강화된다"
+        },
+        {
+          "level": 2,
+          "description": "5회 계속 시 상승 효과가 조금 강화된다"
+        },
+        {
+          "level": 3,
+          "description": "5회 계속 시 상승 효과가 더욱 강화된다"
+        },
+        {
+          "level": 4,
+          "description": "5회 계속 시 상승 효과가 상당히 강화된다"
+        },
+        {
+          "level": 5,
+          "description": "5회 계속 시 상승 효과가 크게 강화된다"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s-181127504",
+      "name": "공격적인 방어",
+      "maxLevel": 3,
+      "description": "타이밍을 잘 맞춰 가드에 성공하면 일정 시간 공격력이 상승한다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "스킬 발동 중, 공격력 1.05배"
+        },
+        {
+          "level": 2,
+          "description": "스킬 발동 중, 공격력 1.1배"
+        },
+        {
+          "level": 3,
+          "description": "스킬 발동 중, 공격력 1.15배"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s280489184",
+      "name": "역습",
+      "maxLevel": 3,
+      "description": "날아가 버린 후에는 일정 시간 공격력이 오른다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "스킬 발동 중, 기초 공격력+10"
+        },
+        {
+          "level": 2,
+          "description": "스킬 발동 중, 기초 공격력+15 효과 시간이 조금 늘어난다"
+        },
+        {
+          "level": 3,
+          "description": "스킬 발동 중, 기초 공격력+25 효과 시간이 늘어난다"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s1174975744",
+      "name": "교격",
+      "maxLevel": 5,
+      "description": "회피 타이밍과 몬스터의 공격이 겹치면, 일정 시간 공격력이 상승한다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "스킬 발동 중, 기초 공격력+10"
+        },
+        {
+          "level": 2,
+          "description": "스킬 발동 중, 기초 공격력+15"
+        },
+        {
+          "level": 3,
+          "description": "스킬 발동 중, 기초 공격력+20"
+        },
+        {
+          "level": 4,
+          "description": "스킬 발동 중, 기초 공격력+25"
+        },
+        {
+          "level": 5,
+          "description": "스킬 발동 중, 기초 공격력+30"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s1359821952",
+      "name": "앙심",
+      "maxLevel": 5,
+      "description": "체력 게이지에 빨간 부분이 있는 동안 공격력이 오른다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "스킬 발동 중, 기초 공격력+5"
+        },
+        {
+          "level": 2,
+          "description": "스킬 발동 중, 기초 공격력+10"
+        },
+        {
+          "level": 3,
+          "description": "스킬 발동 중, 기초 공격력+15"
+        },
+        {
+          "level": 4,
+          "description": "스킬 발동 중, 기초 공격력+20"
+        },
+        {
+          "level": 5,
+          "description": "스킬 발동 중, 기초 공격력+25"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s2106877312",
+      "name": "완전 충전",
+      "maxLevel": 5,
+      "description": "체력이 최대일 때 공격력이 오른다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "스킬 발동 중, 기초 공격력+3"
+        },
+        {
+          "level": 2,
+          "description": "스킬 발동 중, 기초 공격력+6"
+        },
+        {
+          "level": 3,
+          "description": "스킬 발동 중, 기초 공격력+10"
+        },
+        {
+          "level": 4,
+          "description": "스킬 발동 중, 기초 공격력+15"
+        },
+        {
+          "level": 5,
+          "description": "스킬 발동 중, 기초 공격력+20"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s422666624",
+      "name": "재난대처능력",
+      "maxLevel": 5,
+      "description": "체력이 최대치의 35% 이하일 때 공격력과 방어력이 오른다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "스킬 발동 중, 방어력+50"
+        },
+        {
+          "level": 2,
+          "description": "스킬 발동 중, 공격력 1.05배 방어력+50"
+        },
+        {
+          "level": 3,
+          "description": "스킬 발동 중, 공격력 1.05배 방어력+100"
+        },
+        {
+          "level": 4,
+          "description": "스킬 발동 중, 공격력 1.1배 방어력+100"
+        },
+        {
+          "level": 5,
+          "description": "스킬 발동 중, 공격력 1.3배 방어력 상승 효과는 사라진다"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s-562534336",
+      "name": "불속성 공격 강화",
+      "maxLevel": 3,
+      "description": "불속성의 힘을 강화한다. (무기의 속성치 강화에는 한계가 있습니다)",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "불속성 공격치+40"
+        },
+        {
+          "level": 2,
+          "description": "불속성 공격치가 1.1배가 되고 불속성 공격치에+50"
+        },
+        {
+          "level": 3,
+          "description": "불속성 공격치가 1.2배가 되고 불속성 공격치에+60"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s508916704",
+      "name": "물속성 공격 강화",
+      "maxLevel": 3,
+      "description": "물속성의 힘을 강화한다. (무기의 속성치 강화에는 한계가 있습니다)",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "물속성 공격치+40"
+        },
+        {
+          "level": 2,
+          "description": "물속성 공격치가 1.1배가 되고 물속성 공격치에+50"
+        },
+        {
+          "level": 3,
+          "description": "물속성 공격치가 1.2배가 되고 물속성 공격치에+60"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s1452140672",
+      "name": "번개속성 공격 강화",
+      "maxLevel": 3,
+      "description": "번개속성의 힘을 강화한다. (무기의 속성치 강화에는 한계가 있습니다)",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "번개속성 공격치+40"
+        },
+        {
+          "level": 2,
+          "description": "번개속성 공격치가 1.1배가 되고 번개속성 공격치에+50"
+        },
+        {
+          "level": 3,
+          "description": "번개속성 공격치가 1.2배가 되고 번개속성 공격치에+60"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s1268070400",
+      "name": "얼음속성 공격 강화",
+      "maxLevel": 3,
+      "description": "얼음속성의 힘을 강화한다. (무기의 속성치 강화에는 한계가 있습니다)",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "얼음속성 공격치+40"
+        },
+        {
+          "level": 2,
+          "description": "얼음속성 공격치가 1.1배가 되고 얼음속성 공격치에+50"
+        },
+        {
+          "level": 3,
+          "description": "얼음속성 공격치가 1.2배가 되고 얼음속성 공격치에+60"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s-776946176",
+      "name": "용속성 공격 강화",
+      "maxLevel": 3,
+      "description": "용속성의 힘을 강화한다. (무기의 속성치 강화에는 한계가 있습니다)",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "용속성 공격치+40"
+        },
+        {
+          "level": 2,
+          "description": "용속성 공격치가 1.1배가 되고 용속성 공격치에+50"
+        },
+        {
+          "level": 3,
+          "description": "용속성 공격치가 1.2배가 되고 용속성 공격치에+60"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s313598432",
+      "name": "회심격【속성】",
+      "maxLevel": 3,
+      "description": "공격으로 회심이 발생했을 때 주는 속성 대미지(불, 물, 번개, 얼음, 용)가 높아진다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "효과 발동 시, 속성 대미지가 약간 상승"
+        },
+        {
+          "level": 2,
+          "description": "효과 발동 시, 속성 대미지가 상승"
+        },
+        {
+          "level": 3,
+          "description": "효과 발동 시, 속성 대미지가 크게 상승"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s-1607763456",
+      "name": "슈퍼회심",
+      "maxLevel": 5,
+      "description": "회심 공격 대미지가 증가한다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "회심 공격 시의 대미지 배율을 1.28배로 강화한다."
+        },
+        {
+          "level": 2,
+          "description": "회심 공격 시의 대미지 배율을 1.31배로 강화한다."
+        },
+        {
+          "level": 3,
+          "description": "회심 공격 시의 대미지 배율을 1.34배로 강화한다."
+        },
+        {
+          "level": 4,
+          "description": "회심 공격 시의 대미지 배율을 1.37배로 강화한다."
+        },
+        {
+          "level": 5,
+          "description": "회심 공격 시의 대미지 배율을 1.4배로 강화한다."
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    },
+    {
+      "id": "s-1700743296",
+      "name": "전화위복",
+      "maxLevel": 3,
+      "description": "상태 이상, 속성 피해를 해제하면 일정 시간 속성치, 상태 이상치가 상승한다.",
+      "ranks": [
+        {
+          "level": 1,
+          "description": "스킬 발동 중, 속성 공격치와 상태 이상 축적치가 약간 상승"
+        },
+        {
+          "level": 2,
+          "description": "스킬 발동 중, 속성 공격치와 상태 이상 축적치가 상승"
+        },
+        {
+          "level": 3,
+          "description": "스킬 발동 중, 속성 공격치와 상태 이상 축적치가 크게 상승"
+        }
+      ],
+      "sourceIds": [
+        "db"
+      ]
+    }
+  ],
+  "handling": {
+    "directNeutralExamples": [
+      "방어",
+      "불 내성",
+      "기절 내성",
+      "정령의 가호"
+    ],
+    "tempoOrUtilityUnknownExamples": [
+      "집중",
+      "고속 변형",
+      "포탄 장전",
+      "명검",
+      "달인의 재주",
+      "장인",
+      "스태미나 급속 회복",
+      "체술"
+    ],
+    "procUnknownExamples": [
+      "쇄인",
+      "화룡의 힘",
+      "흑염룡의 힘",
+      "속성 전환"
+    ],
+    "notes": [
+      "direct-neutral은 고정1타 직접피해중립이지 실제DPS무효란뜻아님. tempo/예리도/탄수/proc/시리즈는 별도모형 필요. 없는스킬은unknown으로 시작."
+    ]
+  },
+  "unresolved": [
+    "HBG 회심격속성15/21% 충돌",
+    "TU4 속성상한 원본과SA병 상한보정",
+    "물리공격력 상한/타격별 마지막반올림",
+    "보우건 속성탄과연격 속성성분",
+    "연격 초기단계14무기 수치/정확한지속시간",
+    "모든 무기고유버프·시리즈·도핑 전체상호작용"
+  ]
+}

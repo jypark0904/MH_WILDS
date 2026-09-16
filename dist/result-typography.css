@@ -1,0 +1,99 @@
+/* One readable type-size step (+0.125rem) inside combination results only. */
+#results-area{font-size:1.125rem;min-width:0}
+#results-area h2{font-size:1.175rem;line-height:1.5}
+#results-area h3{font-size:1rem}
+#results-area small,#results-area .hint{font-size:.875rem}
+#results-area .panel-heading>span{font-size:.825rem}
+#results-area :where(button:not(.skill-detail-trigger),input,select){font-size:1rem}
+#results-area .skill-detail-trigger{font:inherit;line-height:inherit}
+#results-area .empty p{font-size:1rem}
+#results-area .notice{font-size:.925rem}
+#results-area .badge{font-size:.825rem;max-width:100%;white-space:normal}
+#results-area .chip{font-size:.875rem}
+#results-area .result-actions select,
+#results-area .damage-open{font-size:.875rem}
+#results-area .result-actions{min-width:0}
+
+/* Combination summaries. */
+#results-area .result-card h3{font-size:1.075rem;line-height:1.5;overflow-wrap:anywhere}
+#results-area .result-card>.row:first-child{flex-wrap:wrap}
+#results-area .stat-pair{flex-shrink:0}
+#results-area .stat-pair strong{font-size:1.425rem}
+#results-area .stat-pair small{font-size:.825rem}
+#results-area .result-equipment{grid-template-columns:repeat(auto-fit,minmax(min(100%,8.5rem),1fr))}
+#results-area .part-tile{font-size:.875rem}
+#results-area .part-tile small{font-size:.775rem}
+#results-area .part-tile strong{font-size:.875rem;line-height:1.6}
+#results-area .result-slot-room>small{font-size:.825rem}
+#results-area .slot{font-size:.825rem;width:23px;height:26px;flex-shrink:0}
+#results-area .result-expand{font-size:.875rem;line-height:1.5;flex-wrap:wrap}
+#results-area .result-expand>span:last-child{margin-left:auto}
+
+/* Equipment, decorations, and activated skills. */
+#results-area .loadout-intro{font-size:.825rem}
+#results-area .loadout-columns,
+#results-area .loadout-column-heading{font-size:.875rem}
+#results-area .loadout-column-heading h3{font-size:.905rem}
+#results-area .loadout-column-heading>span{font-size:.775rem}
+#results-area .loadout-part{font-size:.785rem}
+#results-area .loadout-part-badge{font-size:.785rem}
+#results-area .loadout-heading h3{font-size:.955rem;line-height:1.55}
+#results-area .loadout-native,
+#results-area .loadout-tags{font-size:.815rem;line-height:1.65}
+#results-area .loadout-native>span,
+#results-area .loadout-tags>span{font-size:.755rem}
+#results-area .loadout-slot-label{font-size:.735rem;line-height:1.55}
+#results-area .loadout-decoration strong{font-size:.895rem;line-height:1.55}
+#results-area .loadout-decoration small{font-size:.775rem;line-height:1.6}
+#results-area .loadout-empty .loadout-decoration,
+#results-area .loadout-no-slots{font-size:.845rem}
+#results-area .loadout-reason{font-size:.765rem;line-height:1.6}
+#results-area .result-skill-name{font-size:.895rem;line-height:1.55}
+#results-area .result-skill-check{font-size:.805rem}
+#results-area .result-skill-number{font-size:.775rem}
+#results-area .result-skill-number strong{font-size:.905rem}
+#results-area .result-skill-level{flex-wrap:wrap}
+#results-area .result-skill-number{margin-left:auto}
+#results-area .damage-skill-badge{font-size:.845rem;max-width:100%}
+
+/* Damage estimate and further suggestions. */
+#results-area .damage-summary small{font-size:.905rem}
+#results-area .damage-index{font-size:2.025rem}
+#results-area .damage-profile{font-size:.985rem}
+#results-area .damage-shares,
+#results-area .damage-summary .hint{font-size:.875rem}
+#results-area .improvement-panel h3{font-size:.955rem}
+#results-area .improvement-skill-card h4{font-size:1.025rem;line-height:1.5}
+#results-area .improvement-skill-description{font-size:.875rem}
+#results-area .improvement-back{font-size:.925rem}
+#results-area .improvement-level-label{font-size:.875rem}
+#results-area .improvement-submit{font-size:.875rem}
+#results-area .improvement-level-status{font-size:.845rem}
+#results-area .improvement-retry h3{font-size:1.075rem}
+#results-area .improvement-retry-heading p{font-size:.925rem}
+#results-area .improvement-control-row{flex-wrap:wrap}
+#results-area .improvement-options{grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr))}
+
+/* Resistance totals remain easy to scan against either theme. */
+#results-area .loadout-footer h3{font-size:.875rem;font-weight:700;color:var(--text)}
+#results-area .loadout-footer .element-stat.badge{font-size:.875rem;font-weight:700;color:var(--text);padding:.25rem .5rem}
+#results-area .loadout-footer>.hint{font-weight:500;color:var(--text);line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
+
+/* Keep the larger labels readable without horizontal scrolling. */
+@container loadout-detail (max-width:650px){
+  #results-area .result-skill{grid-template-columns:minmax(0,1fr);gap:.35rem}
+  #results-area .result-skill-level{min-width:0;justify-content:flex-start}
+  #results-area .result-skill-level>.damage-skill-badge{margin-right:0}
+  #results-area .result-skill-number{margin-left:auto}
+}
+@container loadout-detail (max-width:400px){
+  #results-area .loadout-slot-label{font-size:.705rem}
+  #results-area .loadout-decoration strong{font-size:.845rem}
+  #results-area .loadout-heading h3{font-size:.885rem}
+}
+@media(max-width:600px){
+  #results-area .result-actions{flex-wrap:wrap}
+  #results-area .result-actions select{width:100%;flex-basis:100%}
+  #results-area .improvement-options{grid-template-columns:minmax(0,1fr)}
+  #results-area .loadout-footer>button{width:100%}
+}

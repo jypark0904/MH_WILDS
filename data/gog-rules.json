@@ -1,0 +1,381 @@
+{
+  "schema": 1,
+  "checked": "2026-09-15",
+  "units": {
+    "attack": "true raw",
+    "element": "display (10x true)",
+    "affinity": "percentage points"
+  },
+  "sources": [
+    {
+      "id": "extractedBase",
+      "url": "https://github.com/LartTyler/mhdb-wilds-data/tree/main/output/merged/weapons",
+      "description": "Game extraction. Only original Artian in merged output, no Gog focus dynamic data. Confirms base190 affinity5 slots333 defense0 skills empty"
+    },
+    {
+      "id": "primaryRng",
+      "url": "https://github.com/WiseHorror/Gogma-Artian-Roll-Planner/blob/main/app.js",
+      "description": "Reverse-engineered game RNG code. Lines85-102 allowed tier IDs, 209-240 pool limits: max2 of each exact type&tier"
+    },
+    {
+      "id": "phantom",
+      "url": "https://www.phantombrawlers.com/mhwilds/Artian",
+      "description": "Weapon specific element tables; stale Gunlance base in this page, use separate update. Raw element units x10 before using display"
+    },
+    {
+      "id": "game8Gog",
+      "url": "https://game8.co/games/Monster-Hunter-Wilds/archives/571311",
+      "description": "Corroborates focus deltas and full reinforcement tables. No elementIII"
+    },
+    {
+      "id": "game8GL",
+      "url": "https://game8.co/games/Monster-Hunter-Wilds/archives/502942",
+      "description": "Post1.011 elemental base 370, matching3 +30. Status values in this English page remain stale; use current GameWith Gog gunlance table."
+    },
+    {
+      "id": "primarySwaxe",
+      "url": "https://wiggler.pet/wilds/endgame/switch_axe",
+      "description": "Author's original guide with example unmatched 2atk1aff yielding200raw10aff, no extra raw bonus"
+    },
+    {
+      "id": "GogI",
+      "url": "https://wikiwiki.jp/nenaiko/%E6%AD%A6%E5%99%A8/%E3%82%A2%E3%83%BC%E3%83%86%E3%82%A3%E3%82%A2%E6%AD%A6%E5%99%A8",
+      "description": "Initial conversion retains originalI bonuses; first Gog restore changes I to II or higher"
+    }
+  ],
+  "common": {
+    "baseRaw": 190,
+    "baseAffinity": 5,
+    "defense": 0,
+    "slots": [
+      3,
+      3,
+      3
+    ],
+    "nativeSkills": [],
+    "productionPart": {
+      "attack": 5,
+      "affinity": 5
+    },
+    "noneRawExtra": 0,
+    "focus": {
+      "attack": {
+        "raw": 10,
+        "affinity": -15
+      },
+      "affinity": {
+        "raw": -10,
+        "affinity": 10
+      },
+      "element": {
+        "raw": 0,
+        "affinity": -5
+      }
+    },
+    "restoration": {
+      "attack": {
+        "I": 5,
+        "II": 6,
+        "III": 9,
+        "EX": 12
+      },
+      "affinity": {
+        "I": 5,
+        "II": 6,
+        "III": 8,
+        "EX": 10
+      },
+      "sharpness": {
+        "I": 30,
+        "EX": 50
+      },
+      "ammo": {
+        "I": 1,
+        "EX": 2
+      }
+    },
+    "afterGogRerollAllowed": {
+      "attack": [
+        "II",
+        "III",
+        "EX"
+      ],
+      "affinity": [
+        "II",
+        "III",
+        "EX"
+      ],
+      "element": [
+        "II",
+        "EX"
+      ],
+      "sharpness": [
+        "I",
+        "EX"
+      ],
+      "ammo": [
+        "I",
+        "EX"
+      ]
+    },
+    "maxEachExactTier": 2,
+    "baseSharpness": {
+      "red": 80,
+      "orange": 40,
+      "yellow": 60,
+      "green": 80,
+      "blue": 70,
+      "white": 20,
+      "purple": 0
+    }
+  },
+  "perKind": {
+    "great-sword": {
+      "elementBase": 450,
+      "poisonBlastBase": 300,
+      "paralysisSleepBase": 250,
+      "infusion3": 30,
+      "focusElementDelta": {
+        "attack": 0,
+        "affinity": -10,
+        "element": 50
+      },
+      "elementRestoration": {
+        "I": 80,
+        "II": 90,
+        "EX": 110
+      }
+    },
+    "long-sword": {
+      "elementBase": 270,
+      "poisonBlastBase": 120,
+      "paralysisSleepBase": 70,
+      "infusion3": 30,
+      "focusElementDelta": {
+        "attack": 0,
+        "affinity": -20,
+        "element": 50
+      },
+      "elementRestoration": {
+        "I": 50,
+        "II": 60,
+        "EX": 90
+      }
+    },
+    "sword-shield": {
+      "elementBase": 260,
+      "poisonBlastBase": 110,
+      "paralysisSleepBase": 60,
+      "infusion3": 20,
+      "focusElementDelta": {
+        "attack": 0,
+        "affinity": -20,
+        "element": 40
+      },
+      "elementRestoration": {
+        "I": 30,
+        "II": 50,
+        "EX": 80
+      }
+    },
+    "dual-blades": {
+      "elementBase": 250,
+      "poisonBlastBase": 100,
+      "paralysisSleepBase": 50,
+      "infusion3": 20,
+      "focusElementDelta": {
+        "attack": 0,
+        "affinity": -20,
+        "element": 30
+      },
+      "elementRestoration": {
+        "I": 20,
+        "II": 30,
+        "EX": 50
+      }
+    },
+    "hammer": {
+      "elementBase": 320,
+      "poisonBlastBase": 170,
+      "paralysisSleepBase": 120,
+      "infusion3": 30,
+      "focusElementDelta": {
+        "attack": 0,
+        "affinity": -10,
+        "element": 40
+      },
+      "elementRestoration": {
+        "I": 50,
+        "II": 60,
+        "EX": 90
+      }
+    },
+    "hunting-horn": {
+      "elementBase": 320,
+      "poisonBlastBase": 170,
+      "paralysisSleepBase": 120,
+      "infusion3": 30,
+      "focusElementDelta": {
+        "attack": 30,
+        "affinity": 20,
+        "element": 80
+      },
+      "elementRestoration": {
+        "I": 50,
+        "II": 60,
+        "EX": 90
+      }
+    },
+    "lance": {
+      "elementBase": 270,
+      "poisonBlastBase": 120,
+      "paralysisSleepBase": 70,
+      "infusion3": 30,
+      "focusElementDelta": {
+        "attack": 0,
+        "affinity": -20,
+        "element": 50
+      },
+      "elementRestoration": {
+        "I": 50,
+        "II": 60,
+        "EX": 90
+      }
+    },
+    "gunlance": {
+      "elementBase": 370,
+      "poisonBlastBase": 220,
+      "paralysisSleepBase": 170,
+      "infusion3": 30,
+      "focusElementDelta": {
+        "attack": 40,
+        "affinity": 30,
+        "element": 80
+      },
+      "elementRestoration": {
+        "I": 50,
+        "II": 60,
+        "EX": 90
+      },
+      "baseStatusConfidence": "Cross-checked current GameWith 536459 Gog focus table (attack: poison/blast260, paralysis/sleep210) and post1.011 update; baseline220/170 before attack focus +40.",
+      "shellByGogFocus": {
+        "attack": "normal",
+        "affinity": "long",
+        "element": "wide"
+      }
+    },
+    "switch-axe": {
+      "elementBase": 260,
+      "poisonBlastBase": 110,
+      "paralysisSleepBase": 60,
+      "infusion3": 20,
+      "focusElementDelta": {
+        "attack": 0,
+        "affinity": -20,
+        "element": 40
+      },
+      "elementRestoration": {
+        "I": 30,
+        "II": 50,
+        "EX": 80
+      }
+    },
+    "charge-blade": {
+      "elementBase": 270,
+      "poisonBlastBase": 120,
+      "paralysisSleepBase": 70,
+      "infusion3": 30,
+      "focusElementDelta": {
+        "attack": 0,
+        "affinity": -20,
+        "element": 50
+      },
+      "elementRestoration": {
+        "I": 50,
+        "II": 60,
+        "EX": 80
+      },
+      "statusElementFocusDelta": 40
+    },
+    "insect-glaive": {
+      "elementBase": 260,
+      "poisonBlastBase": 110,
+      "paralysisSleepBase": 60,
+      "infusion3": 20,
+      "focusElementDelta": {
+        "attack": 0,
+        "affinity": -20,
+        "element": 40
+      },
+      "elementRestoration": {
+        "I": 30,
+        "II": 50,
+        "EX": 80
+      },
+      "sharpnessRestoration": {
+        "I": 20,
+        "EX": 50
+      }
+    },
+    "bow": {
+      "elementBase": 210,
+      "poisonBlastBase": {
+        "poison": 0,
+        "blast": 60
+      },
+      "paralysisSleepBase": 0,
+      "infusion3": 20,
+      "focusElementDelta": {
+        "attack": 0,
+        "affinity": -20,
+        "element": 30
+      },
+      "elementRestoration": {
+        "I": 30,
+        "II": 40,
+        "EX": 60
+      },
+      "noNumericElementFor": [
+        "none",
+        "poison",
+        "paralysis",
+        "sleep"
+      ]
+    },
+    "light-bowgun": {
+      "elementBase": null,
+      "poisonBlastBase": null,
+      "paralysisSleepBase": null,
+      "infusion3": null,
+      "focusElementDelta": {
+        "attack": null,
+        "affinity": null,
+        "element": null
+      },
+      "elementRestoration": null,
+      "elementMeansAmmoType": true,
+      "numericElement": false
+    },
+    "heavy-bowgun": {
+      "elementBase": null,
+      "poisonBlastBase": null,
+      "paralysisSleepBase": null,
+      "infusion3": null,
+      "focusElementDelta": {
+        "attack": null,
+        "affinity": null,
+        "element": null
+      },
+      "elementRestoration": null,
+      "elementMeansAmmoType": true,
+      "numericElement": false
+    }
+  },
+  "formula": "elementDisplay = base(kind,elementOrStatus) + (matchingParts===3?infusion3:0) + focusDelta(kind,focus) + sum(elementRestoration). None and bow poison/paralysis/sleep always numeric0; guns numericnull. raw190+focusRaw+5*productionAttack+sumattack. affinity5+focusAffinity+5*(3-productionAttack)+sumaffinity.",
+  "limitations": [
+    "Game8 JP and Mobalytics contain incorrect ElementIII or AttackIII8; ignore conflicting values where primaryRng and multiple tables agree.",
+    "Cap base affinity3/element4 from old guides conflicts current primaryRng5 each; do not enforce old family caps on Gog.",
+    "Current code RNG source models exact tier max2; actual direct game extracted cap file not in LartTyler repo.",
+    "Do not claim element base solely game-extracted: base specials[] are dynamic and absent. Tables cross-check multiple community sources."
+  ]
+}

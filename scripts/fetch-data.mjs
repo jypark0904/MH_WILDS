@@ -1,0 +1,20 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+const out=path.resolve(import.meta.dirname,'../data/raw');
+await fs.mkdir(out,{recursive:true});
+const endpoints=['skills','armor','armor/sets','decorations','charms','weapons'];
+const downloaded=await Promise.all(endpoints.map(async endpoint=>{
+  const url='https://wilds.mhdb.io/ko/'+endpoint;
+  const response=await fetch(url,{signal:AbortSignal.timeout(180000)});
+  if(!response.ok)throw new Error(`${url}: ${response.status}`);
+  const data=await response.json();
+  if(!Array.isArray(data)||!data.length)throw new Error(`Empty dataset: ${endpoint}`);
+  await fs.writeFile(path.join(out,endpoint.replaceAll('/','-')+'.json'),JSON.stringify(data));
+  console.log(endpoint,data.length);
+  return {endpoint,url,count:data.length};
+}));
+const versionResponse=await fetch('https://wilds.mhdb.io/version');
+if(!versionResponse.ok)throw new Error('API version unavailable');
+const version=await versionResponse.json();
+await fs.writeFile(path.join(out,'manifest.json'),JSON.stringify({game:'Monster Hunter Wilds',locale:'ko',retrievedAt:new Date().toISOString(),version,sources:downloaded},null,2));
+console.log('Source version',version);

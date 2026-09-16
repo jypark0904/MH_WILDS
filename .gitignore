@@ -1,0 +1,14 @@
+node_modules/
+.playwright-mcp/
+.cache/
+.firebase/
+firebase-debug.log*
+ui-debug.log*
+.env
+.env.*
+!.env.example
+Athena's ASS MH4G 1.08b-ko/
+wilds-initial.png
+wilds-results.png
+tests/output/
+.sites-runtime/

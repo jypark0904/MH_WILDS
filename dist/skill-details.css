@@ -1,0 +1,23 @@
+.skill-detail-trigger{display:inline;text-align:left;padding:0;border:0;border-radius:2px;background:transparent;color:inherit;font:inherit;line-height:inherit;text-decoration:underline;text-decoration-color:#8b9caa66;text-underline-offset:3px;overflow-wrap:anywhere;min-width:0}
+.skill-detail-trigger:hover{background:transparent;color:var(--gold);text-decoration-color:var(--gold)}
+.skill-row .skill-name{min-width:0}
+.skill-row .target-level,.skill-row .remove-target{flex-shrink:0}
+.result-skill-name>.skill-detail-trigger{flex:1}
+.skill-info-dialog{width:min(570px,calc(100% - 2rem));padding:0;max-height:88vh;overscroll-behavior:contain}
+.skill-info-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding:1.3rem 1.4rem 1rem;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--panel);z-index:1}
+.skill-info-header h2{font-size:1.25rem;margin:0;overflow-wrap:anywhere}
+.skill-info-header .eyebrow{letter-spacing:.08em;margin-bottom:.35rem}
+.skill-info-header form{margin:0;flex:none}
+.skill-info-header button{width:34px;height:34px;font-size:1.2rem;line-height:1;padding:0}
+.skill-info-body{padding:1.2rem 1.4rem 1.4rem}
+.skill-info-description{font-size:.87rem;line-height:1.8;margin:1rem 0;color:#cdd6dc;white-space:pre-line}
+.skill-info-body h3{margin:1.2rem 0 .65rem;font-size:.88rem}
+.skill-effect-list{display:flex;flex-direction:column;gap:.55rem;list-style:none;padding:0;margin:0}
+.skill-effect{border:1px solid var(--line);border-radius:7px;padding:.75rem .9rem;background:#11191f}
+.skill-effect.is-current{border-color:#8a754b;background:#39322266}
+.skill-effect-heading{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.skill-effect-heading>strong{font-size:.8rem;color:var(--gold)}
+.skill-effect-current{margin-left:auto;font-size:.7rem;color:var(--gold)}
+.skill-effect h4{font-size:.87rem;margin:.45rem 0 0;font-weight:600}
+.skill-effect p{font-size:.82rem;color:#cdd6dc;line-height:1.8;margin:.35rem 0 0;white-space:pre-line;overflow-wrap:anywhere}
+@media(max-width:520px){.skill-info-header{padding:1rem}.skill-info-body{padding:1rem}.skill-effect{padding:.65rem .75rem}}

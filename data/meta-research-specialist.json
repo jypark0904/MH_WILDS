@@ -1,0 +1,1294 @@
+{
+  "sources": {
+    "spec_sa_sets": {
+      "title": "Sasch · Wilds Switch Axe Endgame Sets (Gogma/TU4.5)",
+      "url": "https://wiggler.pet/wilds/endgame/switch_axe"
+    },
+    "spec_cb_guide": {
+      "title": "timmy · jerrynt — MH Wilds Charge Blade Guide, TU4.5 v1.4.2",
+      "url": "https://docs.google.com/document/d/1I9XKBQZLpG0159yPOs2zvPS7wwrzaEPtiMkBfzGzibQ/edit"
+    },
+    "spec_ig_sets": {
+      "title": "EchoesPartOne · MH Wilds Insect Glaive Endgame Meta Sets, TU4.5",
+      "url": "https://mhwssets.wordpress.com/ig/"
+    },
+    "spec_lbg_guide": {
+      "title": "MHGH Bowgun team · Wilds Light Bowgun Guide, TU4.5 v1.4.5",
+      "url": "https://docs.google.com/document/d/1Mm7rOM0V7VLsOHlXW5zO8uD5ht5rhlVeVNLn3cdDXy8/edit",
+      "updatedAt": "2026-03-06"
+    },
+    "spec_hbg_guide": {
+      "title": "Cylon · MHGH Bowgun team — Wilds Heavy Bowgun Guide, TU4.5 v1.4.5",
+      "url": "https://docs.google.com/document/d/17atnsKzYrQlEy_70Z2zzlEBJrN3OtiTYurKCHzMLIn8/edit",
+      "updatedAt": "2026-07-06"
+    },
+    "spec_bow_compendium": {
+      "title": "p_chu · ninjazenia — MH:Wilds Bow Compendium, TU4",
+      "url": "https://docs.google.com/document/d/1i3qfZtagi5CFrIKdTlNM-DN2cMowdOwwkAVOWvMccUE/edit"
+    },
+    "spec_bow_tu4": {
+      "title": "Mobalytics · TU4 Endgame Bow Meta & Progression",
+      "url": "https://mobalytics.gg/mhw/builds/endgame-bow-meta",
+      "updatedAt": "2026-01-09"
+    }
+  },
+  "weapons": {
+    "switch-axe": {
+      "label": "슬래시액스",
+      "defaultType": "power",
+      "typeLabel": "운용 유형",
+      "types": [
+        {
+          "id": "power",
+          "label": "물리 중심 · 강격병 권장",
+          "description": "강격병의 상승 베기·풀 릴리스 기준. 다른 병은 물리 스킬 배분 참고용입니다.",
+          "skills": [
+            {
+              "name": "강화 지속",
+              "level": 3,
+              "priority": "core",
+              "reason": "고출력 상태 유지.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "슈퍼회심",
+              "level": 3,
+              "priority": "core",
+              "reason": "회심 피해의 기본선.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "공격",
+              "level": 4,
+              "priority": "core",
+              "reason": "4레벨부터 효율 상승.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "혼신",
+              "level": 3,
+              "priority": "core",
+              "reason": "스태미나 유지 시 회심.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "역습",
+              "level": 3,
+              "priority": "core",
+              "reason": "카운터·버티기 후 공격력.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "연격",
+              "level": 1,
+              "priority": "optional",
+              "reason": "1레벨 투자 효율.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "약점 특효",
+              "level": 5,
+              "priority": "optional",
+              "reason": "약점 회심 보충.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "@element-attack",
+              "level": 3,
+              "priority": "optional",
+              "reason": "무기와 약점 속성 일치 시.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_sa_sets"
+          ]
+        },
+        {
+          "id": "element",
+          "label": "강속성병 · 속성 중심",
+          "description": "속성 약점에서 삼연 베기 중심. 상대 육질에 따라 강격병보다 유리합니다.",
+          "skills": [
+            {
+              "name": "@element-attack",
+              "level": 3,
+              "priority": "core",
+              "reason": "등록 속성 강화.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "강화 지속",
+              "level": 3,
+              "priority": "core",
+              "reason": "고출력 상태 유지.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "회심격【속성】",
+              "level": 3,
+              "priority": "core",
+              "reason": "속성 회심 강화.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "슈퍼회심",
+              "level": 3,
+              "priority": "core",
+              "reason": "물리 피해도 보완.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "역습",
+              "level": 3,
+              "priority": "core",
+              "reason": "카운터 후 공격력.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "연격",
+              "level": 1,
+              "priority": "optional",
+              "reason": "짧은 연속공격 보상.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "혼신",
+              "level": 3,
+              "priority": "optional",
+              "reason": "스태미나 유지 시 회심.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            },
+            {
+              "name": "전화위복",
+              "level": 3,
+              "priority": "optional",
+              "reason": "상태 이상 해제 시 속성.",
+              "sources": [
+                "spec_sa_sets"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_sa_sets"
+          ]
+        }
+      ]
+    },
+    "charge-blade": {
+      "label": "차지액스",
+      "defaultType": "element",
+      "typeLabel": "병 · 운용 유형",
+      "types": [
+        {
+          "id": "impact",
+          "label": "유탄병 · 고출력 후속해방",
+          "description": "TU4.5 고출력→후속해방 루프 기준. 유탄병의 폭발을 강화합니다.",
+          "skills": [
+            {
+              "name": "포탄 장전",
+              "level": 2,
+              "priority": "core",
+              "reason": "병 과충전 확보.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "포술",
+              "level": 3,
+              "priority": "core",
+              "reason": "유탄병 폭발 강화.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "고속 변형",
+              "level": 3,
+              "priority": "core",
+              "reason": "변형 포함 루프 개선.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "슈퍼회심",
+              "level": 3,
+              "priority": "core",
+              "reason": "도끼 물리타격 강화.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "혼신",
+              "level": 3,
+              "priority": "core",
+              "reason": "스태미나 유지 시 회심.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "도전자",
+              "level": 5,
+              "priority": "optional",
+              "reason": "분노 시 화력.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "연격",
+              "level": 1,
+              "priority": "optional",
+              "reason": "1레벨 투자 효율.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "공격적인 방어",
+              "level": 3,
+              "priority": "optional",
+              "reason": "저스트 가드 유지 시.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "명검",
+              "level": 3,
+              "priority": "optional",
+              "reason": "예리도가 부족할 때.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_cb_guide"
+          ]
+        },
+        {
+          "id": "element",
+          "label": "강속성병 · 고출력 후속해방",
+          "description": "속성 약점의 도끼·병 피해 중심. 포술은 강속성병 강화용이 아닙니다.",
+          "skills": [
+            {
+              "name": "@element-attack",
+              "level": 3,
+              "priority": "core",
+              "reason": "병과 무기의 속성 강화.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "포탄 장전",
+              "level": 2,
+              "priority": "core",
+              "reason": "병 과충전 확보.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "고속 변형",
+              "level": 3,
+              "priority": "core",
+              "reason": "변형 포함 루프 개선.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "슈퍼회심",
+              "level": 3,
+              "priority": "core",
+              "reason": "도끼 물리타격 강화.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "혼신",
+              "level": 3,
+              "priority": "core",
+              "reason": "스태미나 유지 시 회심.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "전화위복",
+              "level": 3,
+              "priority": "optional",
+              "reason": "상태 이상 해제 시 속성.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "연격",
+              "level": 1,
+              "priority": "optional",
+              "reason": "1레벨 투자 효율.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "공격적인 방어",
+              "level": 3,
+              "priority": "optional",
+              "reason": "저스트 가드 유지 시.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            },
+            {
+              "name": "명검",
+              "level": 3,
+              "priority": "optional",
+              "reason": "예리도가 부족할 때.",
+              "sources": [
+                "spec_cb_guide"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_cb_guide"
+          ]
+        }
+      ]
+    },
+    "insect-glaive": {
+      "label": "조충곤",
+      "defaultType": "ground",
+      "typeLabel": "운용 유형",
+      "types": [
+        {
+          "id": "ground",
+          "label": "지상 연계 · 강습베기",
+          "description": "TU4.5 지상 연계 중심. 비연은 강습베기·비천나선참에도 기여합니다.",
+          "skills": [
+            {
+              "name": "비연",
+              "level": 1,
+              "priority": "core",
+              "reason": "주력 공격 다수에 적용.",
+              "sources": [
+                "spec_ig_sets"
+              ]
+            },
+            {
+              "name": "슈퍼회심",
+              "level": 5,
+              "priority": "core",
+              "reason": "회심 확보 후 피해 강화.",
+              "sources": [
+                "spec_ig_sets"
+              ]
+            },
+            {
+              "name": "혼신",
+              "level": 3,
+              "priority": "core",
+              "reason": "지상 연계의 회심 확보.",
+              "sources": [
+                "spec_ig_sets"
+              ]
+            },
+            {
+              "name": "연격",
+              "level": 1,
+              "priority": "core",
+              "reason": "연속 타격의 높은 효율.",
+              "sources": [
+                "spec_ig_sets"
+              ]
+            },
+            {
+              "name": "도전자",
+              "level": 5,
+              "priority": "core",
+              "reason": "분노 시 공격·회심.",
+              "sources": [
+                "spec_ig_sets"
+              ]
+            },
+            {
+              "name": "역습",
+              "level": 3,
+              "priority": "optional",
+              "reason": "버티기 동작과 연계.",
+              "sources": [
+                "spec_ig_sets"
+              ]
+            },
+            {
+              "name": "귀마개",
+              "level": 1,
+              "priority": "optional",
+              "reason": "3색 진액과 함께 활용.",
+              "sources": [
+                "spec_ig_sets"
+              ]
+            },
+            {
+              "name": "공격",
+              "level": 4,
+              "priority": "optional",
+              "reason": "4레벨부터 효율 상승.",
+              "sources": [
+                "spec_ig_sets"
+              ]
+            },
+            {
+              "name": "장인",
+              "level": 1,
+              "priority": "optional",
+              "reason": "흰 예리도가 부족할 때.",
+              "sources": [
+                "spec_ig_sets"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_ig_sets"
+          ]
+        }
+      ]
+    },
+    "light-bowgun": {
+      "label": "라이트보우건",
+      "defaultType": "normal",
+      "typeLabel": "사용 탄종",
+      "types": [
+        {
+          "id": "normal",
+          "label": "통상탄",
+          "description": "TU4 이후 강화된 통상 속사 중심.",
+          "skills": [
+            {
+              "name": "통상탄/통상화살 강화",
+              "level": 1,
+              "priority": "core",
+              "reason": "통상탄 강화.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "속사 강화",
+              "level": 1,
+              "priority": "core",
+              "reason": "속사 피해 강화.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "퍼스트샷",
+              "level": 3,
+              "priority": "core",
+              "reason": "장전·첫발 강화.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "도전자",
+              "level": 5,
+              "priority": "core",
+              "reason": "분노 화력.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "슈퍼회심",
+              "level": 3,
+              "priority": "optional",
+              "reason": "회심률에 따라 1~5 조절.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "혼신",
+              "level": 3,
+              "priority": "optional",
+              "reason": "스태미나 유지 시.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "연격",
+              "level": 1,
+              "priority": "optional",
+              "reason": "1레벨 효율.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_lbg_guide"
+          ]
+        },
+        {
+          "id": "pierce",
+          "label": "관통탄",
+          "description": "속사·스텝 연계 중심. 혼신을 기본 추천하지 않습니다.",
+          "skills": [
+            {
+              "name": "관통탄/용화살 강화",
+              "level": 1,
+              "priority": "core",
+              "reason": "관통탄 강화.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "속사 강화",
+              "level": 1,
+              "priority": "core",
+              "reason": "속사 피해 강화.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "퍼스트샷",
+              "level": 3,
+              "priority": "core",
+              "reason": "장전·첫발 강화.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "도전자",
+              "level": 5,
+              "priority": "core",
+              "reason": "분노 화력.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "슈퍼회심",
+              "level": 3,
+              "priority": "optional",
+              "reason": "회심률에 따라 1~5 조절.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "탄도 강화",
+              "level": 1,
+              "priority": "optional",
+              "reason": "사거리 확보.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "연격",
+              "level": 1,
+              "priority": "optional",
+              "reason": "1레벨 효율.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_lbg_guide"
+          ]
+        },
+        {
+          "id": "spread",
+          "label": "산탄",
+          "description": "근접 속사 중심. 셀레기오스 무기는 회피 장전과 연계합니다.",
+          "skills": [
+            {
+              "name": "산탄/강사 강화",
+              "level": 1,
+              "priority": "core",
+              "reason": "산탄 강화.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "속사 강화",
+              "level": 1,
+              "priority": "core",
+              "reason": "속사 피해 강화.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "탄도 강화",
+              "level": 2,
+              "priority": "core",
+              "reason": "영거리 적정거리 확보.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "도전자",
+              "level": 5,
+              "priority": "core",
+              "reason": "분노 화력.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "슈퍼회심",
+              "level": 3,
+              "priority": "optional",
+              "reason": "회심률에 따라 1~5 조절.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "퍼스트샷",
+              "level": 3,
+              "priority": "optional",
+              "reason": "장전·첫발 강화.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "회피 성능",
+              "level": 2,
+              "priority": "optional",
+              "reason": "아즈즈 식사 병용 기준.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_lbg_guide"
+          ]
+        },
+        {
+          "id": "element",
+          "label": "속성탄",
+          "description": "사용할 탄의 속성을 먼저 선택하세요.",
+          "skills": [
+            {
+              "name": "@element-attack",
+              "level": 3,
+              "priority": "core",
+              "reason": "사용 탄 속성 강화.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "회심격【속성】",
+              "level": 3,
+              "priority": "core",
+              "reason": "속성 회심 강화.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "퍼스트샷",
+              "level": 1,
+              "priority": "core",
+              "reason": "장전·첫발 보강.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "집중",
+              "level": 3,
+              "priority": "core",
+              "reason": "속사 게이지 회복.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "전화위복",
+              "level": 3,
+              "priority": "optional",
+              "reason": "상태이상 해제 조건.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "포스샷",
+              "level": 1,
+              "priority": "optional",
+              "reason": "연속사격 1레벨 효율.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            },
+            {
+              "name": "연격",
+              "level": 1,
+              "priority": "optional",
+              "reason": "1레벨 효율.",
+              "sources": [
+                "spec_lbg_guide"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_lbg_guide"
+          ]
+        }
+      ]
+    },
+    "heavy-bowgun": {
+      "label": "헤비보우건",
+      "defaultType": "hybrid",
+      "typeLabel": "사용 탄종 · 운용",
+      "types": [
+        {
+          "id": "normal",
+          "label": "통상탄",
+          "description": "통상탄 중심의 대안 운용.",
+          "skills": [
+            {
+              "name": "통상탄/통상화살 강화",
+              "level": 1,
+              "priority": "core",
+              "reason": "통상탄 강화.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "퍼스트샷",
+              "level": 3,
+              "priority": "core",
+              "reason": "장전·첫발 강화.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "도전자",
+              "level": 5,
+              "priority": "core",
+              "reason": "분노 화력.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "슈퍼회심",
+              "level": 3,
+              "priority": "optional",
+              "reason": "회심률에 따라 1~5 조절.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "혼신",
+              "level": 3,
+              "priority": "optional",
+              "reason": "스태미나 유지 시.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_hbg_guide"
+          ]
+        },
+        {
+          "id": "pierce",
+          "label": "관통탄",
+          "description": "관통탄 중심의 대안 운용.",
+          "skills": [
+            {
+              "name": "관통탄/용화살 강화",
+              "level": 1,
+              "priority": "core",
+              "reason": "관통탄 강화.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "퍼스트샷",
+              "level": 3,
+              "priority": "core",
+              "reason": "장전·첫발 강화.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "도전자",
+              "level": 5,
+              "priority": "core",
+              "reason": "분노 화력.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "슈퍼회심",
+              "level": 3,
+              "priority": "optional",
+              "reason": "회심률에 따라 1~5 조절.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "탄도 강화",
+              "level": 1,
+              "priority": "optional",
+              "reason": "사거리 확보.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_hbg_guide"
+          ]
+        },
+        {
+          "id": "spread",
+          "label": "산탄",
+          "description": "회피·산탄 중심. 셀레기오스 무기의 고유 스킬을 활용합니다.",
+          "skills": [
+            {
+              "name": "산탄/강사 강화",
+              "level": 1,
+              "priority": "core",
+              "reason": "산탄 강화.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "탄도 강화",
+              "level": 2,
+              "priority": "core",
+              "reason": "영거리 적정거리 확보.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "도전자",
+              "level": 5,
+              "priority": "core",
+              "reason": "분노 화력.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "슈퍼회심",
+              "level": 3,
+              "priority": "optional",
+              "reason": "회심률에 따라 1~5 조절.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "회피 성능",
+              "level": 2,
+              "priority": "optional",
+              "reason": "아즈즈 식사 병용 기준.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "혼신",
+              "level": 3,
+              "priority": "optional",
+              "reason": "스태미나 유지 시.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_hbg_guide"
+          ]
+        },
+        {
+          "id": "element",
+          "label": "속성탄",
+          "description": "사용할 탄의 속성을 먼저 선택하세요.",
+          "skills": [
+            {
+              "name": "@element-attack",
+              "level": 3,
+              "priority": "core",
+              "reason": "사용 탄 속성 강화.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "회심격【속성】",
+              "level": 3,
+              "priority": "core",
+              "reason": "속성 회심 강화.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "퍼스트샷",
+              "level": 1,
+              "priority": "core",
+              "reason": "장전·첫발 보강.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "전화위복",
+              "level": 3,
+              "priority": "core",
+              "reason": "상태이상 해제 조건.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "공격적인 방어",
+              "level": 3,
+              "priority": "optional",
+              "reason": "저스트 가드 유지 시.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "포스샷",
+              "level": 1,
+              "priority": "optional",
+              "reason": "연속사격 1레벨 효율.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "연격",
+              "level": 1,
+              "priority": "optional",
+              "reason": "1레벨 효율.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_hbg_guide"
+          ]
+        },
+        {
+          "id": "hybrid",
+          "label": "속성탄 + 용열 척탄",
+          "description": "속성탄으로 공격하며 다운 때 용열 척탄을 병용하는 운용입니다.",
+          "skills": [
+            {
+              "name": "@element-attack",
+              "level": 3,
+              "priority": "core",
+              "reason": "사용 탄 속성 강화.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "회심격【속성】",
+              "level": 3,
+              "priority": "core",
+              "reason": "속성탄 피해 보완.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "포술",
+              "level": 3,
+              "priority": "core",
+              "reason": "용열 척탄의 폭발 강화.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "특수 사격 강화",
+              "level": 2,
+              "priority": "core",
+              "reason": "특수탄 강화.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "전화위복",
+              "level": 3,
+              "priority": "optional",
+              "reason": "상태이상 해제 조건.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "퍼스트샷",
+              "level": 1,
+              "priority": "optional",
+              "reason": "장전·첫발 보강.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            },
+            {
+              "name": "연격",
+              "level": 1,
+              "priority": "optional",
+              "reason": "1레벨 효율.",
+              "sources": [
+                "spec_hbg_guide"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_hbg_guide"
+          ]
+        }
+      ]
+    },
+    "bow": {
+      "label": "활",
+      "defaultType": "element",
+      "typeLabel": "운용 유형",
+      "types": [
+        {
+          "id": "element",
+          "label": "속성 · 강사 중심",
+          "description": "접격병·관통병 모두 강사 중심. 관통병에 관통탄/용화살 강화를 넣지 않습니다.",
+          "skills": [
+            {
+              "name": "체술",
+              "level": 5,
+              "priority": "core",
+              "reason": "식사·강주약에 의존하지 않는 기준.",
+              "sources": [
+                "spec_bow_compendium"
+              ]
+            },
+            {
+              "name": "@element-attack",
+              "level": 3,
+              "priority": "core",
+              "reason": "무기 속성 강화.",
+              "sources": [
+                "spec_bow_tu4"
+              ]
+            },
+            {
+              "name": "차지 마스터",
+              "level": 3,
+              "priority": "core",
+              "reason": "모으기 사격의 속성 강화.",
+              "sources": [
+                "spec_bow_tu4"
+              ]
+            },
+            {
+              "name": "산탄/강사 강화",
+              "level": 1,
+              "priority": "core",
+              "reason": "강사 피해 강화.",
+              "sources": [
+                "spec_bow_tu4"
+              ]
+            },
+            {
+              "name": "스태미나 급속 회복",
+              "level": 3,
+              "priority": "optional",
+              "reason": "스태미나 회복 여유.",
+              "sources": [
+                "spec_bow_compendium"
+              ]
+            },
+            {
+              "name": "포스샷",
+              "level": 1,
+              "priority": "optional",
+              "reason": "병 연속사용 보너스.",
+              "sources": [
+                "spec_bow_tu4"
+              ]
+            },
+            {
+              "name": "도전자",
+              "level": 5,
+              "priority": "optional",
+              "reason": "분노 시 공격·회심.",
+              "sources": [
+                "spec_bow_tu4"
+              ]
+            },
+            {
+              "name": "회심격【속성】",
+              "level": 3,
+              "priority": "optional",
+              "reason": "회심률 확보 시 대안.",
+              "sources": [
+                "spec_bow_compendium"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_bow_compendium",
+            "spec_bow_tu4"
+          ]
+        },
+        {
+          "id": "raw",
+          "label": "물리 · 강사 중심",
+          "description": "아르슈벨드처럼 속성 효율이 낮은 상대를 위한 대안.",
+          "skills": [
+            {
+              "name": "체술",
+              "level": 5,
+              "priority": "core",
+              "reason": "식사·강주약에 의존하지 않는 기준.",
+              "sources": [
+                "spec_bow_compendium"
+              ]
+            },
+            {
+              "name": "산탄/강사 강화",
+              "level": 1,
+              "priority": "core",
+              "reason": "강사 피해 강화.",
+              "sources": [
+                "spec_bow_compendium"
+              ]
+            },
+            {
+              "name": "슈퍼회심",
+              "level": 3,
+              "priority": "core",
+              "reason": "회심 피해; 투자량 조절 가능.",
+              "sources": [
+                "spec_bow_compendium"
+              ]
+            },
+            {
+              "name": "약점 특효",
+              "level": 5,
+              "priority": "core",
+              "reason": "약점의 회심 확보.",
+              "sources": [
+                "spec_bow_tu4"
+              ]
+            },
+            {
+              "name": "스태미나 급속 회복",
+              "level": 3,
+              "priority": "optional",
+              "reason": "스태미나 회복 여유.",
+              "sources": [
+                "spec_bow_compendium"
+              ]
+            },
+            {
+              "name": "도전자",
+              "level": 5,
+              "priority": "optional",
+              "reason": "분노 시 공격·회심.",
+              "sources": [
+                "spec_bow_tu4"
+              ]
+            },
+            {
+              "name": "포스샷",
+              "level": 1,
+              "priority": "optional",
+              "reason": "병 연속사용 보너스.",
+              "sources": [
+                "spec_bow_compendium"
+              ]
+            },
+            {
+              "name": "연격",
+              "level": 1,
+              "priority": "optional",
+              "reason": "연속 타격 보너스.",
+              "sources": [
+                "spec_bow_compendium"
+              ]
+            }
+          ],
+          "sourceIds": [
+            "spec_bow_compendium",
+            "spec_bow_tu4"
+          ]
+        }
+      ]
+    }
+  }
+}

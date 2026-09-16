@@ -1,0 +1,40 @@
+{
+  "game": "Monster Hunter Wilds",
+  "locale": "ko",
+  "retrievedAt": "2026-09-15T01:10:22.896Z",
+  "version": {
+    "version": "2026-04-15T01:28:18+00:00"
+  },
+  "sources": [
+    {
+      "endpoint": "skills",
+      "url": "https://wilds.mhdb.io/ko/skills",
+      "count": 179
+    },
+    {
+      "endpoint": "armor",
+      "url": "https://wilds.mhdb.io/ko/armor",
+      "count": 714
+    },
+    {
+      "endpoint": "armor/sets",
+      "url": "https://wilds.mhdb.io/ko/armor/sets",
+      "count": 194
+    },
+    {
+      "endpoint": "decorations",
+      "url": "https://wilds.mhdb.io/ko/decorations",
+      "count": 361
+    },
+    {
+      "endpoint": "charms",
+      "url": "https://wilds.mhdb.io/ko/charms",
+      "count": 64
+    },
+    {
+      "endpoint": "weapons",
+      "url": "https://wilds.mhdb.io/ko/weapons",
+      "count": 1188
+    }
+  ]
+}

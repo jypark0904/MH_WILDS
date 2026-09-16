@@ -1,0 +1,71 @@
+{
+  "sources": {
+    "gl-current": {
+      "title": "Wilds 건랜스 후기 환경 · 포술·포탄 장전·가드와 연격 운용",
+      "url": "https://www.reddit.com/r/Gunlance/comments/1ugmndl/returning_player_to_wilds_looking_for_some_help/"
+    },
+    "gl-wide": {
+      "title": "Wilds 확산형 실전 세팅 · 집중 3과 모아 포격",
+      "url": "https://www.reddit.com/r/Gunlance/comments/1rfjala/any_wide_builds/"
+    },
+    "gl-shells": {
+      "title": "Wilds 포격형 비교 · 풀버스트와 용항 운용",
+      "url": "https://www.reddit.com/r/Gunlance/comments/1v7gfu2/wilds_is_normal_shot_the_best_for_full_burst_combo/"
+    }
+  },
+  "weapons": {
+    "gunlance": {
+      "label": "건랜스",
+      "defaultType": "normal",
+      "typeLabel": "포격형",
+      "types": [
+        {
+          "id": "normal",
+          "label": "일반형",
+          "description": "풀버스트·용항 콤보 중심. 연격은 우선 Lv 1을 확보하고 여유에 따라 올리세요.",
+          "sourceIds": ["gl-current", "gl-shells"],
+          "skills": [
+            {"name":"포술","level":3,"priority":"core","reason":"포격과 용격포 화력의 기본입니다.","sources":["gl-current"]},
+            {"name":"포탄 장전","level":2,"priority":"core","reason":"포탄 수를 늘려 풀버스트 운용을 보강합니다.","sources":["gl-current"]},
+            {"name":"가드 성능","level":3,"priority":"core","reason":"가드 후 반격을 안정적으로 잇기 위한 권장치입니다.","sources":["gl-current"]},
+            {"name":"연격","level":1,"priority":"core","reason":"연속 공격으로 공격력 보너스를 유지합니다. 연격 강화 세팅은 추가 투자를 고려하세요.","sources":["gl-current"]},
+            {"name":"도전자","level":5,"priority":"optional","reason":"분노 중 공격력 상승을 활용하는 화력 선택입니다.","sources":["gl-current"]},
+            {"name":"공격적인 방어","level":3,"priority":"optional","reason":"정확한 타이밍의 가드가 익숙할 때 반격 화력을 높입니다.","sources":["gl-wide"]},
+            {"name":"가드 강화","level":3,"priority":"optional","reason":"가드 불가 공격을 막아야 하는 상대에게 선택하세요.","sources":["gl-current"]}
+          ]
+        },
+        {
+          "id": "long",
+          "label": "방사형",
+          "description": "용항·근접 콤보를 섞는 운용. 연격의 공격력 보너스를 활용합니다.",
+          "sourceIds": ["gl-current", "gl-shells"],
+          "skills": [
+            {"name":"포술","level":3,"priority":"core","reason":"포격과 용격포 화력을 확보합니다.","sources":["gl-current"]},
+            {"name":"포탄 장전","level":2,"priority":"core","reason":"포탄 수를 늘려 포격 연계를 보강합니다.","sources":["gl-current"]},
+            {"name":"가드 성능","level":3,"priority":"core","reason":"가드 후 반격을 안정적으로 잇기 위한 권장치입니다.","sources":["gl-current"]},
+            {"name":"연격","level":1,"priority":"core","reason":"용항과 연속 공격에 맞춰 공격력 보너스를 유지합니다.","sources":["gl-current","gl-shells"]},
+            {"name":"도전자","level":5,"priority":"optional","reason":"분노 중 공격력 상승을 활용하는 화력 선택입니다.","sources":["gl-current"]},
+            {"name":"공격적인 방어","level":3,"priority":"optional","reason":"정확한 타이밍의 가드가 익숙할 때 반격 화력을 높입니다.","sources":["gl-current"]},
+            {"name":"가드 강화","level":3,"priority":"optional","reason":"가드 불가 공격을 막아야 하는 상대에게 선택하세요.","sources":["gl-current"]}
+          ]
+        },
+        {
+          "id": "wide",
+          "label": "확산형",
+          "description": "모아 포격·용격포 중심. 집중으로 모아 포격의 준비 시간을 줄입니다.",
+          "sourceIds": ["gl-wide", "gl-current"],
+          "skills": [
+            {"name":"집중","level":3,"priority":"core","reason":"모아 포격을 빠르게 연결하는 확산형의 핵심입니다.","sources":["gl-wide"]},
+            {"name":"포탄 장전","level":2,"priority":"core","reason":"포탄 수를 늘려 포격 운용을 보강합니다.","sources":["gl-wide"]},
+            {"name":"포술","level":3,"priority":"core","reason":"포격·용격포 중심 운용의 화력을 확보합니다.","sources":["gl-wide"]},
+            {"name":"가드 성능","level":3,"priority":"core","reason":"가드 후 반격을 안정적으로 잇기 위한 권장치입니다.","sources":["gl-current"]},
+            {"name":"도전자","level":5,"priority":"optional","reason":"분노 중 공격력 상승을 활용하는 화력 선택입니다.","sources":["gl-wide"]},
+            {"name":"공격적인 방어","level":3,"priority":"optional","reason":"정확한 가드 후 용격포 반격의 화력을 높입니다.","sources":["gl-wide"]},
+            {"name":"가드 강화","level":3,"priority":"optional","reason":"가드 불가 공격을 막아야 하는 상대에게 선택하세요.","sources":["gl-current"]},
+            {"name":"연격","level":1,"priority":"optional","reason":"공격을 계속 이어갈 수 있다면 적은 투자로 공격력을 더합니다.","sources":["gl-wide"]}
+          ]
+        }
+      ]
+    }
+  }
+}

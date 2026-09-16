@@ -1,0 +1,81 @@
+'use strict';
+const assert=require('node:assert/strict');
+const vm=require('node:vm');
+const db=require('../data/database.json');
+const {createProfile,factory}=require('../dist/weapon-relevance.js');
+const id=name=>{const skill=db.skills.find(s=>s.name===name);assert(skill,'Missing fixture skill '+name);return skill.id;};
+const values=names=>Object.fromEntries(Object.entries(names).map(([name,n])=>[id(name),n]));
+const dragon={id:'personal-dragon',kind:'gunlance',gogConfig:{element:'dragon'},elementValue:620,skills:{}};
+const before=JSON.stringify({db,dragon});
+const profile=createProfile(db,dragon);
+assert.equal(profile.known,true);
+assert.deepEqual(profile.elements,['dragon']);
+assert.equal(profile.skills[id('용속성 공격 강화')].priority,2);
+for(const name of ['불속성 공격 강화','포스샷','퍼스트샷','고속 변형']){
+  assert.ok(profile.excluded[id(name)],name+' must have an explicit mismatch reason');
+  assert.equal(profile.skills[id(name)],undefined);
+}
+for(const name of ['포술','포탄 장전','명검','숫돌 사용 고속화','칼날 연마','집중','가드 성능','연격','도전자','약점 특효','회피 거리 UP','회복 속도','귀마개','용 내성'])assert.equal(profile.skills[id(name)].priority,1,name);
+assert.ok(profile.unknown[id('주먹밥')]);
+assert.ok(profile.unknown[id('거극룡의 묵시록')],'Series skills are not all automatically applicable');
+assert.equal(profile.excluded[id('주먹밥')],undefined,'Unverified conditions do not imply an invalid skill');
+assert.match(profile.reason(id('용속성 공격 강화')),/일치/);
+assert.deepEqual(profile.gain(values({'용속성 공격 강화':3,'가드 성능':1}),{},values({'가드 성능':1})),{element:3,useful:0});
+assert.deepEqual(profile.gain(values({'용속성 공격 강화':3}),values({'용속성 공격 강화':3})),{element:0,useful:0});
+assert.deepEqual(profile.gain(values({'용속성 공격 강화':3}),values({'용속성 공격 강화':2})),{element:1,useful:0});
+assert.deepEqual(profile.gain(values({'용속성 공격 강화':3}),{},values({'용속성 공격 강화':1})),{element:2,useful:0});
+assert.deepEqual(profile.gain(values({'불속성 공격 강화':3,'포스샷':3})),{element:0,useful:0});
+assert.deepEqual(profile.gain(values({'명검':3}),values({'명검':2}),values({'명검':1})),{element:0,useful:0});
+assert.equal(JSON.stringify({db,dragon}),before,'Profiles do not mutate database or weapons');
+
+const explicitNone=createProfile(db,{...dragon,gogConfig:{element:'none'},specials:[{kind:'element',element:'dragon',value:500}]});
+assert.deepEqual(explicitNone.elements,[]);
+assert.ok(explicitNone.excluded[id('용속성 공격 강화')]);
+assert.equal(explicitNone.gain(values({'용속성 공격 강화':3})).element,0);
+const direct=createProfile(db,{id:'direct',kind:'gunlance',element:'ice'});
+assert.equal(direct.skills[id('얼음속성 공격 강화')].priority,2);
+const native=createProfile(db,{id:'native',kind:'dual-blades',specials:[{kind:'element',element:'fire',value:300},{kind:'status',element:'poison',value:100}]});
+assert.equal(native.skills[id('불속성 공격 강화')].priority,2);
+assert.equal(native.skills[id('독속성 강화')].priority,2);
+assert.equal(native.skills[id('회심격【특수】')].priority,1);
+const onlyName=createProfile(db,{id:'named',kind:'gunlance',name:'용속 건랜스'});
+assert.deepEqual(onlyName.elements,[],'Weapon name text is not evidence of its actual element');
+assert.ok(onlyName.unknown[id('용속성 공격 강화')]);
+assert.equal(onlyName.excluded[id('용속성 공격 강화')],undefined);
+for(const weapon of [null,{id:'none-weapon',kind:'gunlance'}, {id:'unknown',kind:'unknown'}]){
+  const missing=createProfile(db,weapon);assert.equal(missing.known,false);assert.deepEqual(missing.skills,{});assert.deepEqual(missing.gain(values({'공격':5})),{element:0,useful:0});
+}
+assert.equal(createProfile({skills:[{id:'A',maxLevel:5}]},{id:'none-weapon'}).known,false,'Name-free solver fixtures remain supported');
+assert.deepEqual(createProfile({skills:[{id:'A',maxLevel:5}]},{id:'w',kind:'gunlance'}).skills,{});
+
+const bowgun=createProfile(db,{id:'bowgun',kind:'heavy-bowgun',gogConfig:{element:'dragon'},elementValue:500,specials:[{kind:'element',element:'dragon',value:500}]});
+assert.equal(bowgun.skills[id('용속성 공격 강화')],undefined,'Bowgun ammo cannot be inferred from weapon element metadata');
+assert.ok(bowgun.unknown[id('용속성 공격 강화')]);
+assert.equal(bowgun.skills[id('퍼스트샷')].priority,1);
+assert.equal(bowgun.skills[id('포스샷')].priority,1);
+assert.ok(bowgun.excluded[id('명검')]);
+assert.equal(bowgun.skills[id('물에 젖은 명검')].priority,1,'Slicked Blade is conditional affinity, not sharpness management');
+const bow=createProfile(db,{id:'bow',kind:'bow',specials:[{kind:'element',element:'water',value:110}]});
+assert.equal(bow.skills[id('물속성 공격 강화')].priority,2,'A bow with a positive native elemental value has elemental arrows');
+assert.equal(bow.skills[id('회심격【속성】')].priority,1);
+assert.ok(bow.excluded[id('퍼스트샷')]);
+const artianBow=createProfile(db,{id:'bow',kind:'bow',gogConfig:{element:'fire'},elementValue:320});
+assert.equal(artianBow.skills[id('불속성 공격 강화')].priority,2);
+const coatingBow=createProfile(db,{id:'coating-bow',kind:'bow',gogConfig:{element:'paralysis'},elementValue:0,specials:[]});
+assert.equal(coatingBow.skills[id('마비속성 강화')],undefined);
+assert.ok(coatingBow.unknown[id('마비속성 강화')]);
+const unconfirmedBow=createProfile(db,{id:'bow',kind:'bow',gogConfig:{element:'fire'}});
+assert.equal(unconfirmedBow.skills[id('불속성 공격 강화')],undefined);
+const impact=createProfile(db,{id:'cb',kind:'charge-blade',phial:'impact'});
+const elementPhial=createProfile(db,{id:'cb',kind:'charge-blade',phial:{kind:'element'}});
+assert.equal(impact.skills[id('포술')].priority,1);
+assert.ok(elementPhial.excluded[id('포술')]);
+assert.equal(createProfile(db,{id:'cb',kind:'charge-blade'}).skills[id('포술')],undefined);
+
+const standalone=vm.runInNewContext('('+factory.toString()+')');
+const workerProfile=standalone(db,dragon);
+assert.equal(workerProfile.skills[id('용속성 공격 강화')].priority,2);
+assert.equal(workerProfile.gain(values({'용속성 공격 강화':3}),{},{}).element,3,'The factory works without its module closure');
+assert.equal(workerProfile.reason(id('포스샷')),profile.reason(id('포스샷')));
+assert.equal(factory,createProfile);
+console.log('PASS weapon relevance: dragon gunlance effects, finite bonus headroom, retained targets, explicit none, unknown metadata, bow numeric elements, bowgun ammo conservatism, game-text restrictions, standalone worker factory.');
