@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="몬스터헌터 와일즈 개인 장비 기반 스킬·방어구 조합 검색기. 로컬에서 실행하고 저장합니다.">
+  <meta name="description" content="몬스터헌터 와일즈 개인 장비 기반 스킬·방어구 조합 검색기. Google 로그인 계정으로 Firebase에 동기화합니다.">
   <title>MH: WILDS 장비 시뮬레이터</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20class%3D%22wilds-brand-crest%22%20viewBox%3D%220%200%20112%20112%22%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22wilds-crest-1-gold%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22.75%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f5df9d%22%2F%3E%3Cstop%20offset%3D%22.46%22%20stop-color%3D%22%23d2a246%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%239f7130%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D%22wilds-crest-1-olive%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23768557%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23293a31%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2256%22%20cy%3D%2256%22%20r%3D%2247%22%20fill%3D%22url(%23wilds-crest-1-olive)%22%20stroke%3D%22url(%23wilds-crest-1-gold)%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2256%22%20cy%3D%2256%22%20r%3D%2241.5%22%20fill%3D%22none%22%20stroke%3D%22%23e5c67e%22%20stroke-width%3D%22.8%22%20opacity%3D%22.55%22%2F%3E%3Cpath%20d%3D%22M14%2035A47%2047%200%200%201%2035%2014M77%2014A47%2047%200%200%201%2098%2035M98%2077A47%2047%200%200%201%2077%2098M35%2098A47%2047%200%200%201%2014%2077%22%20fill%3D%22none%22%20stroke%3D%22%23d7b366%22%20stroke-width%3D%224%22%2F%3E%3Cpath%20d%3D%22M56%201%2061%209%2056%2017%2051%209ZM111%2056%20103%2061%2095%2056%20103%2051ZM56%20111%2051%20103%2056%2095%2061%20103ZM1%2056%209%2051%2017%2056%209%2061Z%22%20fill%3D%22url(%23wilds-crest-1-gold)%22%2F%3E%3Cpath%20d%3D%22m23%2023%205%201-4%204Zm66%200-1%205-4-4Zm0%2066-5-1%204-4Zm-66%200%201-5%204%204Z%22%20fill%3D%22%23d7b366%22%2F%3E%3Cg%20transform%3D%22translate(15%2014)%20scale(1.28)%22%20style%3D%22--icon-primary%3A%23f0d48a%3B--icon-secondary%3A%23b88d3d%3B--icon-shadow%3A%238b632e%3B--icon-outline%3A%2317261f%22%3E%3Cg%20transform%3D%22matrix(1%2C0%2C0%2C1%2C0%2C-896)%22%3E%3Cpath%20d%3D%22M24%2C950L24%2C935L15%2C926L15%2C916L18%2C916L18%2C909L26%2C905L45%2C905L53%2C912L53%2C923L43%2C933L43%2C950L45%2C950L45%2C953.5L44.5%2C954L22.5%2C954L22%2C953.5L22%2C950L24%2C950Z%22%20style%3D%22fill%3Avar(--icon-outline%2C%23302c22)%3Bfill-opacity%3A.82%22%2F%3E%3Cpath%20d%3D%22M41.5%2C954L38.5%2C954L38.5%2C952C38.5%2C951.448%2038.052%2C951%2037.5%2C951L36.5%2C951C35.948%2C951%2035.5%2C951.448%2035.5%2C952L35.5%2C954L30.5%2C954L30.5%2C952C30.5%2C951.448%2030.052%2C951%2029.5%2C951L28.5%2C951C27.948%2C951%2027.5%2C951.448%2027.5%2C952L27.5%2C954L25.5%2C954L25.5%2C952C25.5%2C951.448%2025.052%2C951%2024.5%2C951L23.5%2C951C22.948%2C951%2022.5%2C951.448%2022.5%2C952L22.5%2C954L20%2C954L20%2C949C20%2C948.448%2020.448%2C948%2021%2C948L45%2C948C45.552%2C948%2046%2C948.448%2046%2C949L46%2C954L44.5%2C954L44.5%2C952C44.5%2C951.448%2044.052%2C951%2043.5%2C951L42.5%2C951C41.948%2C951%2041.5%2C951.448%2041.5%2C952L41.5%2C954ZM25%2C943L29%2C943L32%2C940L41%2C940C42%2C940%2042%2C941%2042%2C941L42%2C946L25%2C946L25%2C943ZM12%2C927C12%2C927%2011.992%2C926%2012.996%2C926L38%2C926L38%2C918C38%2C918%2038%2C917%2039%2C917L46%2C917C47%2C917%2047%2C918%2047%2C918L47%2C923C47%2C924%2046%2C924%2046%2C924L44%2C924L27%2C941L24%2C941L12%2C929L12%2C927ZM34%2C938L44%2C928L46%2C928L50%2C924L50%2C921C50%2C921%2050%2C920%2051%2C920L53%2C920L53%2C927L42%2C938L34%2C938ZM43.5%2C919C44.328%2C919%2045%2C919.672%2045%2C920.5C45%2C921.328%2044.328%2C922%2043.5%2C922C42.672%2C922%2042%2C921.328%2042%2C920.5C42%2C919.672%2042.672%2C919%2043.5%2C919ZM35%2C917C35%2C917%2038%2C913%2042.5%2C913C47%2C913%2050%2C917%2050%2C917L53%2C914.5C53%2C914.5%2047%2C909%2042.5%2C909L18%2C909C17%2C909%2015%2C911%2015%2C912L15%2C916C15%2C916%2015%2C917%2016%2C917L35%2C917ZM22%2C907C22%2C907%2026%2C902%2029%2C902L42.5%2C902C46.5%2C902%2053%2C912%2053%2C912C53%2C912%2045.5%2C907%2042.5%2C907L22%2C907Z%22%20style%3D%22fill%3Avar(--icon-primary%2CcurrentColor)%3B%22%2F%3E%3Cpath%20d%3D%22M33%2C945C33%2C944.448%2032.552%2C944%2032%2C944L31%2C944C30.448%2C944%2030%2C944.448%2030%2C945L30%2C946L33%2C946L33%2C945ZM37%2C945C37%2C944.448%2036.552%2C944%2036%2C944L35%2C944C34.448%2C944%2034%2C944.448%2034%2C945L34%2C946L37%2C946L37%2C945ZM41%2C945C41%2C944.448%2040.552%2C944%2040%2C944L39%2C944C38.448%2C944%2038%2C944.448%2038%2C945L38%2C946L41%2C946L41%2C945ZM29%2C945C29%2C944.448%2028.552%2C944%2028%2C944L27%2C944C26.448%2C944%2026%2C944.448%2026%2C945L26%2C946L29%2C946L29%2C945Z%22%20style%3D%22fill%3Avar(--icon-secondary%2CcurrentColor)%3B%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cpath%20d%3D%22M38%2090h36%22%20stroke%3D%22%23e6c680%22%20stroke-width%3D%221.3%22%2F%3E%3Cpath%20d%3D%22M46%2094h20%22%20stroke%3D%22%23a8ad78%22%20stroke-width%3D%221%22%2F%3E%3C%2Fsvg%3E">
   <style>
@@ -69,6 +69,8 @@ html.auth-locked body>:not(#auth-gate):not(script){display:none!important}
 .additional-proposals{margin:1rem 0}.additional-proposals summary{font-size:.83rem;cursor:pointer}.additional-proposals[open] summary{margin-bottom:.7rem}
 
 .improve-skill .recommendation-reason{color:var(--gold);line-height:1.6}
+
+#cloud-sync-label{width:auto;height:auto;margin:0;background:none;border-radius:0}#cloud-sync-status[data-state="loading"]>span:first-child,#cloud-sync-status[data-state="saving"]>span:first-child{background:var(--gold);box-shadow:0 0 0 3px #d8b57622}#cloud-sync-status[data-state="offline"]>span:first-child,#cloud-sync-status[data-state="error"]>span:first-child{background:var(--red)}#cloud-sync-status[data-state="synced"]{color:var(--green)}
 
 </style>
   <style>
@@ -542,14 +544,14 @@ button,input,select,textarea,code,pre,kbd,samp,.brand-mark,.panel-heading>span,.
         <button id="auth-sign-in" class="auth-google-button" type="button" hidden>Google로 로그인</button>
         <button id="auth-gate-sign-out" class="auth-secondary-button" type="button" hidden>로그아웃</button>
       </div>
-      <p class="auth-gate-note">등록된 멤버만 이용할 수 있습니다.<br>장비 설정과 검색 기록은 Firebase가 아닌 이 기기에 저장됩니다.</p>
+      <p class="auth-gate-note">등록된 멤버만 이용할 수 있습니다.<br>장비 설정과 검색 기록은 로그인한 계정의 Firebase에 동기화됩니다.</p>
     </div>
   </section>
   <header class="topbar">
     <a href="#" class="brand" aria-label="MH: WILDS 장비 시뮬레이터 홈"><span class="brand-mark" aria-hidden="true"></span><span>MH: WILDS 장비 시뮬레이터<small>MONSTER HUNTER WILDS</small></span></a>
     <nav aria-label="주 메뉴"><button data-view="search" class="nav active">조합 검색</button><button data-view="equipment" class="nav">내 장비</button><button data-view="database" class="nav">장비 도감</button></nav>
     <div class="header-tools">
-      <span class="local-tag"><span></span>로컬 저장</span>
+      <span id="cloud-sync-status" class="local-tag sync-tag" data-state="idle"><span></span><span id="cloud-sync-label">Firebase 연결 대기</span></span>
       <span id="auth-local-mode" class="auth-local-mode" hidden>로컬 모드</span>
       <div id="auth-account" class="auth-account" aria-label="로그인 계정" hidden>
         <span id="auth-account-avatar" class="auth-account-avatar" aria-hidden="true"></span>
@@ -681,10 +683,35 @@ button,input,select,textarea,code,pre,kbd,samp,.brand-mark,.panel-heading>span,.
   const gatedContent = Array.from(document.body.children).filter((element) => element !== gate && element.tagName !== 'SCRIPT');
 
   let auth = null;
+  let firebaseApp = null;
   let provider = null;
   let authSdk = null;
   let bootFailed = false;
   let activeUser = null;
+  let currentSession = Object.freeze({ mode: 'pending', app: null, user: null, access: null });
+  let cloudSyncInitializer = null;
+  let resolveCloudSyncRegistration = null;
+  const cloudSyncRegistration = new Promise((resolve) => { resolveCloudSyncRegistration = resolve; });
+
+  function publishSession(session) {
+    currentSession = Object.freeze(session);
+    window.dispatchEvent(new CustomEvent('mhw-auth-session', { detail: currentSession }));
+  }
+
+  window.MHWildsAuth = Object.freeze({
+    getSession: () => currentSession,
+    registerCloudSyncInitializer(initializer) {
+      if (typeof initializer !== 'function') throw new TypeError('Cloud sync initializer must be a function.');
+      cloudSyncInitializer = initializer;
+      resolveCloudSyncRegistration();
+    }
+  });
+
+  async function prepareCloudSession(session) {
+    await cloudSyncRegistration;
+    if (!cloudSyncInitializer) throw new Error('Firebase 동기화 모듈을 불러오지 못했습니다.');
+    await cloudSyncInitializer(session);
+  }
 
   function setBusy(button, busy, busyLabel) {
     if (!button) return;
@@ -743,6 +770,7 @@ button,input,select,textarea,code,pre,kbd,samp,.brand-mark,.panel-heading>span,.
     accountRole.textContent = access.role === 'master' ? '마스터' : '멤버';
     accountRole.dataset.role = access.role;
     accountAvatar.textContent = displayName.slice(0, 1).toLocaleUpperCase('ko-KR');
+    publishSession({ mode: 'firebase', app: firebaseApp, user, access });
   }
 
   function unlockLocalMode() {
@@ -754,6 +782,7 @@ button,input,select,textarea,code,pre,kbd,samp,.brand-mark,.panel-heading>span,.
     gate.setAttribute('aria-hidden', 'true');
     account.hidden = true;
     localMode.hidden = false;
+    publishSession({ mode: 'local', app: null, user: null, access: null });
   }
 
   function describeError(error) {
@@ -775,13 +804,30 @@ button,input,select,textarea,code,pre,kbd,samp,.brand-mark,.panel-heading>span,.
 
   async function handleUser(user) {
     const revision = ++authStateRevision;
+    showGate({
+      title: '계정 데이터 준비 중',
+      status: 'Firebase에서 로그인과 저장 데이터를 확인하고 있습니다.',
+      allowSignIn: false,
+      allowSignOut: false
+    });
+    publishSession({ mode: 'transition', app: firebaseApp, user: null, access: null });
     activeUser = user;
     const access = await policy.evaluateUser(user);
     if (revision !== authStateRevision) return;
     if (access.authorized) {
+      gateStatus.textContent = 'Firebase에서 계정 데이터를 불러오고 있습니다.';
+      try {
+        await prepareCloudSession({ mode: 'firebase', app: firebaseApp, user, access });
+      } catch (error) {
+        if (revision !== authStateRevision) return;
+        throw error;
+      }
+      if (revision !== authStateRevision) return;
       unlockApp(user, access);
       return;
     }
+
+    publishSession({ mode: 'signed-out', app: firebaseApp, user: null, access });
 
     if (!user) {
       showGate({
@@ -872,8 +918,8 @@ button,input,select,textarea,code,pre,kbd,samp,.brand-mark,.panel-heading>span,.
         import(`https://www.gstatic.com/firebasejs/${SDK_VERSION}/firebase-auth.js`)
       ]);
       authSdk = loadedAuthSdk;
-      const app = appSdk.initializeApp(policy.FIREBASE_CONFIG);
-      auth = authSdk.getAuth(app);
+      firebaseApp = appSdk.initializeApp(policy.FIREBASE_CONFIG);
+      auth = authSdk.getAuth(firebaseApp);
       provider = new authSdk.GoogleAuthProvider();
       provider.setCustomParameters({ prompt: 'select_account' });
 
@@ -2200,7 +2246,7 @@ globalThis.WILDS_DAMAGE_DATA = {"game":"wilds","version":1,"dbVersion":"1.041","
 })(globalThis);
 
 </script><script>
-/* Korean offline builder. localStorage only; no runtime network requests. */
+/* Korean equipment builder. Firebase sync is attached by cloud-sync.js. */
 (()=>{
   'use strict';
   const DB=globalThis.WILDS_DB,Engine=globalThis.WildsSolver,KEY='wilds-forge-v1',PARTS={head:'머리',chest:'몸통',arms:'팔',waist:'허리',legs:'다리'},KINDS={weapon:'무기',armor:'방어구',set:'시리즈',group:'그룹'},WEAPONS={'great-sword':'대검','long-sword':'태도','sword-shield':'한손검','dual-blades':'쌍검',hammer:'해머','hunting-horn':'수렵피리',lance:'랜스',gunlance:'건랜스','switch-axe':'슬래시액스','charge-blade':'차지액스','insect-glaive':'조충곤','light-bowgun':'라이트보우건','heavy-bowgun':'헤비보우건',bow:'활'};
@@ -2211,7 +2257,7 @@ globalThis.WILDS_DAMAGE_DATA = {"game":"wilds","version":1,"dbVersion":"1.041","
   const defaults=()=>({game:'wilds',schemaVersion:1,weapons:[],charms:[],customArmor:[],selectedWeapon:'',charmMode:'owned',selectedCharm:'',excluded:[],decorationCounts:{},inventoryMode:'all',targets:Object.fromEntries([['약점 특효',3],['도전자',3],['연격',1]].map(([n,l])=>[byName(n),l]).filter(([id])=>id)),rank:'high',maxRarity:10,minDefense:0,fixed:{},saved:[],presets:[],damageSettings:globalThis.WildsDamage.normalizeSettings(),damageSelections:{},limitBreak:true});
   let state=defaults(),view='search',equipmentTab='weapons',databaseTab='armor',dbQuery='',dbPart='',dbPage=1,results=[],selected=0,searchStatus='idle',searchStats={},elapsed=0,worker=null,workerUrl=null,fallbackIterator=null,runId=0,sort='potential',toastTimer,expandedResult=null,improvementPrevious=null,damageEditingWeapon=null;
   try{const raw=localStorage.getItem(KEY);if(raw)state=validateState(JSON.parse(raw));}catch(e){setTimeout(()=>toast('저장된 설정을 읽지 못했습니다. 기본값으로 시작합니다.'),100);}
-  function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch{toast('브라우저 저장 공간이 부족합니다. JSON 백업을 저장하세요.');}}
+  function save(options={}){try{localStorage.setItem(KEY,JSON.stringify(state));}catch{toast('브라우저 저장 공간이 부족합니다. JSON 백업을 저장하세요.');}if(!options.localOnly)window.dispatchEvent(new CustomEvent('mhw-state-changed'));}
   function toast(message){$('#toast').textContent=message;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),4200);}
   const skillChips=(skills,targets)=>Object.entries(skills||{}).filter(([,n])=>n>0).map(([id,n])=>`<span class="chip ${targets?.[id]?'met':''}" title="${esc(skillMap.get(id)?.description)}">${esc(skillName(id))} ${n}</span>`).join('');
   const tagsChips=tags=>Object.keys(tags||{}).map(id=>`<span class="badge gold">${esc(skillName(id))}</span>`).join('');
@@ -2227,7 +2273,9 @@ globalThis.WILDS_DAMAGE_DATA = {"game":"wilds","version":1,"dbVersion":"1.041","
     $$('.nav').forEach(n=>{n.classList.toggle('active',n.dataset.view===view);n.setAttribute('aria-current',n.dataset.view===view?'page':'false');});
     $('#app').innerHTML=view==='search'?searchView():view==='equipment'?equipmentView():databaseView();
     if(view==='search'){bindSearch();renderResults();}else if(view==='equipment')bindEquipment();else bindDatabase();
+    updatePersistenceCopy();
   }
+  function updatePersistenceCopy(){const cloudMode=!globalThis.MHWildsAuthPolicy?.isLocalDevelopment?.(window.location);if(!cloudMode)return;for(const p of $$('#app .hint'))if(p.textContent.includes('이 브라우저에만 저장됩니다'))p.textContent='로그인한 계정의 Firebase에 자동 동기화됩니다. JSON 백업으로 별도 복사본을 남길 수 있습니다.';if(view==='database'&&databaseTab==='info'){const p=$('#app .panel.stack>p');if(p)p.textContent='게임 데이터는 앱에 동봉되어 검색은 로컬에서 실행되며, 개인 장비와 설정만 Firebase에 동기화됩니다.';}}
   function searchView(){return `<section class="intro"><p class="eyebrow">EQUIPMENT SIMULATOR</p></section><div class="workspace"><aside class="search-sidebar" id="search-panel" aria-label="검색 조건"><section class="panel search-equipment" aria-labelledby="search-equipment-title"><div class="panel-heading"><h2 id="search-equipment-title">사용할 장비</h2></div><label>사용할 무기<span class="icon-select">${globalThis.WildsIcons.weapon(metaWeapon()?.kind)}<select id="weapon-select">${option('','무기 미지정 · 슬롯 없음',state.selectedWeapon)}${state.weapons.map(w=>option(w.id,w.name,state.selectedWeapon)).join('')}</select></span></label><button id="quick-weapon" class="icon-button">＋ 개인 무기 등록</button><label>사용할 호석<select id="charm-mode">${option('owned',`보유 호석 전체 비교 (${state.charms.length}개)`,state.charmMode)}${option('fixed','호석 하나 고정',state.charmMode)}${option('none','호석 없이 검색',state.charmMode)}</select></label>${state.charmMode==='fixed'?`<label>고정할 호석<select id="charm-select">${option('','선택하세요',state.selectedCharm)}${state.charms.map(c=>option(c.id,c.name,state.selectedCharm)).join('')}</select></label>`:''}<button id="quick-charm" class="icon-button">＋ 개인 호석 등록</button></section>${metaHtml()}<section class="panel target-skills" aria-labelledby="target-skills-title"><div class="row between"><h2 id="target-skills-title">목표 스킬</h2><small>최소 레벨</small></div>${globalThis.WildsSkillChat.html()}<div id="target-rows">${Object.entries(state.targets).map(([id,n])=>`<div class="skill-row"><span class="skill-name">${skillInfoButton(id,n,'target')}${targetSkillMetaHtml(id,targetDamage())}</span><select class="target-level" data-id="${id}" aria-label="${esc(skillName(id))} 목표 레벨">${Array.from({length:skillMap.get(id)?.maxLevel||1},(_,i)=>option(i+1,'Lv '+(i+1),n)).join('')}</select><button class="icon-button remove-target" data-id="${id}" aria-label="${esc(skillName(id))} 제거">×</button></div>`).join('')}</div></section><section class="panel equipment-conditions" aria-labelledby="equipment-conditions-title"><div class="panel-heading"><h2 id="equipment-conditions-title">장비 · 장식주 조건</h2></div><label>방어구 등급<select id="rank-select">${option('high','상위 방어구',state.rank)}${option('all','상위 + 하위 방어구',state.rank)}</select></label><label>최대 레어도<select id="rarity-select">${[1,2,3,4,5,6,7,8,9,10].map(n=>option(n,n,state.maxRarity)).join('')}</select></label><label>최소 방어력 (장비 합계)<input id="min-defense" type="number" min="0" max="2000" value="${state.minDefense}"></label><p class="hint">방어구는 한계돌파 · 최대 강화 완료 기준으로 계산합니다.</p><label>장식주 사용<select id="inventory-mode">${option('all','모든 장식주 · 수량 제한 없음',state.inventoryMode)}${option('owned','내가 등록한 수량만',state.inventoryMode)}</select></label><p class="hint">현재 ${state.excluded.length}개 방어구 제외. 내 장비 → 방어구 해금에서 수렵한 세트를 선택하세요. 장식주 수량은 도감에서 설정합니다.</p><h3>부위 고정</h3>${Object.entries(PARTS).map(([p,n])=>`<label>${n}<select class="fixed-armor" data-part="${p}">${option('','자동 선택',state.fixed[p])}${DB.armor.filter(a=>a.kind===p&&!state.excluded.includes(a.id)).map(a=>option(a.id,a.name,state.fixed[p])).join('')}</select></label>`).join('')}<p class="hint condition-inventory-note">${state.inventoryMode==='all'?'장식주는 모두 보유한 것으로 계산합니다.':'등록한 장식주 수량 안에서 계산합니다.'}</p></section>${globalThis.WildsSearchPresets.html(state)}<div class="search-db-note hint">와일즈 한국어 DB<br>방어구 <strong>${DB.armor.length}</strong> · 장식주 <strong>${DB.decorations.length}</strong><br><button class="icon-button" id="view-db">데이터 기준 보기</button></div></aside><section id="results-area" aria-live="polite"></section></div><div class="search-dock" role="region" aria-label="조합 검색 실행"><button id="search-button" class="primary" ${searchStatus==='running'?'disabled aria-busy="true"':''}>${searchStatus==='running'?'검색 중…':'조합 검색'}</button></div>`;}
   const metaWeapon=()=>state.weapons.find(w=>w.id===state.selectedWeapon);
   const metaSelection=()=>state.damageSelections[state.selectedWeapon]||{};
@@ -2354,13 +2402,392 @@ globalThis.WILDS_DAMAGE_DATA = {"game":"wilds","version":1,"dbVersion":"1.041","
     }catch{return false;}
   }
   function download(name,text){const url=URL.createObjectURL(new Blob([text],{type:'application/json;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-  function chooseImport(){const file=$('#import-file');file.value='';file.onchange=async()=>{const f=file.files[0];if(!f)return;try{if(f.size>10*1024*1024)throw new Error('파일 크기가 너무 큽니다.');const next=validateState(JSON.parse(await f.text()));state=next;change();render();toast('내 장비와 설정을 불러왔습니다.');}catch(e){toast('불러오기 실패: '+e.message);}};file.click();}
+  function chooseImport(){const file=$('#import-file');file.value='';file.onchange=async()=>{const f=file.files[0];if(!f)return;try{if(f.size>10*1024*1024)throw new Error('파일 크기가 너무 큽니다.');const next=validateState(JSON.parse(await f.text()));if(globalThis.MHWildsCloudSync?.getStatus?.().uid)globalThis.MHWildsCloudSync.assertCanSave(next);state=next;change();render();toast('내 장비와 설정을 불러왔습니다.');}catch(e){toast('불러오기 실패: '+e.message);}};file.click();}
+  function replaceState(next,options={}){improvementPrevious=null;stopSearch();state=validateState(next);save({localOnly:options.localOnly!==false});render();return structuredClone(state);}
   $$('.nav').forEach(n=>n.onclick=()=>{view=n.dataset.view;render();});$('.brand').onclick=e=>{e.preventDefault();view='search';render();};
   globalThis.WildsSkillDetails.mount(DB,(id,context)=>{const result=context==='active'?results[selected]:null;return globalThis.WildsDamageUI.skillDetail(damageModel(result?.weapon),id,result?.skills||targetDamageSkills());});
-  window.addEventListener('beforeunload',save);
+  window.addEventListener('beforeunload',()=>save({localOnly:true}));
   render();
-  globalThis.WildsApp={getState:()=>structuredClone(state),getResults:()=>structuredClone(results),getStatus:()=>searchStatus,validateState,validateEquipment,makeInput,searchDB};
+  globalThis.WildsApp={getState:()=>structuredClone(state),getDefaultState:()=>structuredClone(defaults()),getResults:()=>structuredClone(results),getStatus:()=>searchStatus,validateState,validateEquipment,replaceState,notify:toast,makeInput,searchDB};
+  window.dispatchEvent(new CustomEvent('mhw-app-ready'));
   if(document.modelContext?.registerTool){try{Promise.resolve(document.modelContext.registerTool({name:'read_wilds_build_state',description:'와일즈 장비 검색 조건과 발견한 조합의 개수를 읽습니다.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:true},execute:()=>({targets:state.targets,ownedWeapons:state.weapons.length,ownedCharms:state.charms.length,resultCount:results.length,status:searchStatus})})).catch(()=>{});}catch{}}
+})();
+
+</script><script>
+(function () {
+  'use strict';
+
+  const SDK_VERSION = '12.19.0';
+  const SAVE_DELAY = 450;
+  const RETRY_DELAY = 2500;
+  const MAX_PAYLOAD_BYTES = 700000;
+  const CLOUD_OWNER_KEY = 'wilds-forge-v1-cloud-owner';
+  const statusElement = document.getElementById('cloud-sync-status');
+  const statusLabel = document.getElementById('cloud-sync-label');
+
+  let firestoreSdkPromise = null;
+  let firestoreDb = null;
+  let stateDoc = null;
+  let unsubscribe = null;
+  let subscriptionRetryTimer = 0;
+  let saveTimer = 0;
+  let sessionEpoch = 0;
+  let activeSession = null;
+  let pendingPayload = '';
+  let writeInFlight = false;
+  let applyingRemoteState = false;
+  let emptyDocumentHandled = false;
+  let cancelSessionReady = null;
+  let memoryCloudOwner = '';
+  let syncState = 'idle';
+  let lastErrorMessage = '';
+
+  const labels = {
+    idle: 'Firebase 연결 대기',
+    loading: 'Firebase 불러오는 중',
+    saving: 'Firebase 저장 중',
+    synced: 'Firebase 동기화됨',
+    offline: '오프라인 · 재연결 대기',
+    error: 'Firebase 동기화 오류',
+    local: '로컬 저장'
+  };
+
+  function setStatus(next, detail) {
+    syncState = next;
+    const label = labels[next] || labels.idle;
+    if (statusElement) {
+      statusElement.dataset.state = next;
+      statusElement.title = detail || label;
+    }
+    if (statusLabel) statusLabel.textContent = label;
+  }
+
+  function loadFirestoreSdk() {
+    if (!firestoreSdkPromise) {
+      firestoreSdkPromise = import(`https://www.gstatic.com/firebasejs/${SDK_VERSION}/firebase-firestore.js`).catch((error) => {
+        firestoreSdkPromise = null;
+        const retryableError = new Error('Firebase Firestore 모듈을 불러오지 못했습니다.');
+        retryableError.code = 'firestore/unavailable';
+        retryableError.cause = error;
+        throw retryableError;
+      });
+    }
+    return firestoreSdkPromise;
+  }
+
+  function waitForRetry(epoch) {
+    return new Promise((resolve) => {
+      if (epoch !== sessionEpoch) {
+        resolve();
+        return;
+      }
+      let timer = 0;
+      const finish = () => {
+        window.clearTimeout(timer);
+        window.removeEventListener('online', finish);
+        resolve();
+      };
+      window.addEventListener('online', finish, { once: true });
+      timer = window.setTimeout(finish, RETRY_DELAY);
+    });
+  }
+
+  function normalizedPayload(state) {
+    const serializable = JSON.parse(JSON.stringify(state));
+    const normalized = window.WildsApp.validateState(serializable);
+    const payload = JSON.stringify(normalized);
+    const bytes = new TextEncoder().encode(payload).byteLength;
+    if (bytes > MAX_PAYLOAD_BYTES) {
+      throw new Error(`클라우드 저장 한도(${Math.floor(MAX_PAYLOAD_BYTES / 1000)}KB)를 넘었습니다. JSON 백업을 남겨 주세요.`);
+    }
+    return payload;
+  }
+
+  function currentPayload() {
+    return normalizedPayload(window.WildsApp.getState());
+  }
+
+  function describeSyncError(error) {
+    const code = String(error && error.code || '');
+    if (code.includes('unavailable') || !navigator.onLine) return '네트워크가 복구되면 Firebase 저장을 다시 시도합니다.';
+    if (code.includes('permission-denied')) return '현재 계정의 Firestore 저장 권한을 확인해 주세요.';
+    return error && error.message ? error.message : 'Firebase 동기화에 실패했습니다.';
+  }
+
+  function isRetryableSyncError(error) {
+    if (!navigator.onLine) return true;
+    const code = String(error && error.code || '').replace(/^firestore\//, '');
+    return ['aborted', 'cancelled', 'deadline-exceeded', 'internal', 'resource-exhausted', 'unavailable', 'unknown'].includes(code);
+  }
+
+  function reportError(error, notify) {
+    const message = describeSyncError(error);
+    setStatus(navigator.onLine ? 'error' : 'offline', message);
+    if (notify && message !== lastErrorMessage) window.WildsApp.notify(message);
+    lastErrorMessage = message;
+  }
+
+  function stopSubscription() {
+    sessionEpoch += 1;
+    if (cancelSessionReady) cancelSessionReady();
+    cancelSessionReady = null;
+    window.clearTimeout(saveTimer);
+    window.clearTimeout(subscriptionRetryTimer);
+    saveTimer = 0;
+    subscriptionRetryTimer = 0;
+    if (unsubscribe) unsubscribe();
+    unsubscribe = null;
+    firestoreDb = null;
+    stateDoc = null;
+    activeSession = null;
+    pendingPayload = '';
+    writeInFlight = false;
+    emptyDocumentHandled = false;
+  }
+
+  function applyRemotePayload(payload) {
+    const parsed = JSON.parse(payload);
+    const normalized = window.WildsApp.validateState(parsed);
+    applyingRemoteState = true;
+    try {
+      window.WildsApp.replaceState(normalized, { localOnly: true });
+    } finally {
+      applyingRemoteState = false;
+    }
+  }
+
+  function markCloudOwner(uid) {
+    memoryCloudOwner = uid;
+    try { localStorage.setItem(CLOUD_OWNER_KEY, uid); } catch {}
+  }
+
+  function previousCloudOwner() {
+    try { return localStorage.getItem(CLOUD_OWNER_KEY) || memoryCloudOwner; } catch { return memoryCloudOwner; }
+  }
+
+  function prepareFirstUpload(uid) {
+    const previousOwner = previousCloudOwner();
+    if (previousOwner && previousOwner !== uid) {
+      applyingRemoteState = true;
+      try {
+        window.WildsApp.replaceState(window.WildsApp.getDefaultState(), { localOnly: true });
+      } finally {
+        applyingRemoteState = false;
+      }
+    }
+    return currentPayload();
+  }
+
+  function scheduleSave() {
+    if (applyingRemoteState || !activeSession || !stateDoc) return;
+    try {
+      pendingPayload = currentPayload();
+      setStatus('saving');
+      window.clearTimeout(saveTimer);
+      saveTimer = window.setTimeout(() => {
+        saveTimer = 0;
+        flushPendingSave().catch(() => {});
+      }, SAVE_DELAY);
+    } catch (error) {
+      reportError(error, true);
+    }
+  }
+
+  async function flushPendingSave() {
+    if (writeInFlight || !pendingPayload || !activeSession || !stateDoc) return;
+    const epoch = sessionEpoch;
+    const uid = activeSession.user.uid;
+    const db = firestoreDb;
+    const docRef = stateDoc;
+    let retryDelay = null;
+    writeInFlight = true;
+    lastErrorMessage = '';
+
+    try {
+      const sdk = await loadFirestoreSdk();
+      while (pendingPayload && epoch === sessionEpoch && activeSession?.user?.uid === uid) {
+        const payload = pendingPayload;
+        setStatus('saving');
+        await sdk.runTransaction(db, async (transaction) => {
+          const snapshot = await transaction.get(docRef);
+          const data = snapshot.exists() ? snapshot.data() : null;
+          const revision = data && Number.isInteger(data.revision) ? data.revision + 1 : 1;
+          transaction.set(docRef, {
+            app: 'mh-wilds',
+            schemaVersion: 1,
+            ownerUid: uid,
+            payload,
+            revision,
+            updatedAt: sdk.serverTimestamp()
+          });
+        });
+        if (epoch !== sessionEpoch || activeSession?.user?.uid !== uid) return;
+        if (pendingPayload === payload) pendingPayload = '';
+        markCloudOwner(uid);
+      }
+      if (epoch === sessionEpoch) setStatus('synced');
+    } catch (error) {
+      if (epoch === sessionEpoch) {
+        retryDelay = isRetryableSyncError(error) ? RETRY_DELAY : null;
+        reportError(error, true);
+      }
+      throw error;
+    } finally {
+      if (epoch === sessionEpoch) {
+        writeInFlight = false;
+        if (pendingPayload && navigator.onLine && (retryDelay !== null || syncState !== 'error')) {
+          window.clearTimeout(saveTimer);
+          saveTimer = window.setTimeout(
+            () => flushPendingSave().catch(() => {}),
+            retryDelay === null ? SAVE_DELAY : retryDelay
+          );
+        }
+      }
+    }
+  }
+
+  async function handleSnapshot(snapshot, epoch, uid) {
+    if (epoch !== sessionEpoch || activeSession?.user?.uid !== uid) return;
+
+    if (!snapshot.exists()) {
+      if (snapshot.metadata.fromCache) {
+        setStatus(navigator.onLine ? 'loading' : 'offline');
+        return;
+      }
+      if (!emptyDocumentHandled) {
+        emptyDocumentHandled = true;
+        pendingPayload = prepareFirstUpload(uid);
+        setStatus('saving');
+        await flushPendingSave();
+      }
+      return;
+    }
+
+    const data = snapshot.data();
+    if (data.app !== 'mh-wilds' || data.schemaVersion !== 1 || data.ownerUid !== uid || typeof data.payload !== 'string') {
+      throw new Error('서버 저장 데이터 형식이 올바르지 않습니다.');
+    }
+
+    if (pendingPayload && data.payload !== pendingPayload) {
+      setStatus('saving');
+      return;
+    }
+
+    if (data.payload !== currentPayload()) applyRemotePayload(data.payload);
+    if (pendingPayload === data.payload && !snapshot.metadata.hasPendingWrites) pendingPayload = '';
+    markCloudOwner(uid);
+    setStatus(snapshot.metadata.fromCache ? 'offline' : (pendingPayload ? 'saving' : 'synced'));
+    lastErrorMessage = '';
+  }
+
+  async function startSession(session) {
+    stopSubscription();
+    if (!session || session.mode !== 'firebase' || !session.app || !session.user?.uid) {
+      setStatus(session?.mode === 'local' ? 'local' : 'idle');
+      return;
+    }
+
+    activeSession = session;
+    const epoch = sessionEpoch;
+    const uid = session.user.uid;
+    setStatus('loading');
+
+    try {
+      let sdk = null;
+      while (epoch === sessionEpoch && !sdk) {
+        try {
+          sdk = await loadFirestoreSdk();
+        } catch (error) {
+          if (!isRetryableSyncError(error)) throw error;
+          reportError(error, true);
+          await waitForRetry(epoch);
+          if (epoch === sessionEpoch) setStatus(navigator.onLine ? 'loading' : 'offline');
+        }
+      }
+      if (epoch !== sessionEpoch) return;
+      firestoreDb = sdk.getFirestore(session.app);
+      stateDoc = sdk.doc(firestoreDb, 'users', uid);
+      await new Promise((resolve, reject) => {
+        let ready = false;
+        const settleReady = (callback, value) => {
+          if (ready) return;
+          ready = true;
+          cancelSessionReady = null;
+          callback(value);
+        };
+        cancelSessionReady = () => settleReady(resolve);
+
+        const subscribe = () => {
+          if (epoch !== sessionEpoch) {
+            settleReady(resolve);
+            return;
+          }
+          unsubscribe = sdk.onSnapshot(
+            stateDoc,
+            { includeMetadataChanges: true },
+            (snapshot) => {
+              Promise.resolve(handleSnapshot(snapshot, epoch, uid)).then(() => {
+                if (epoch !== sessionEpoch) return;
+                const initialCreatePending = !snapshot.exists() && Boolean(pendingPayload || writeInFlight);
+                if (!snapshot.metadata.fromCache && !snapshot.metadata.hasPendingWrites && !initialCreatePending) settleReady(resolve);
+              }).catch((error) => {
+                if (epoch !== sessionEpoch) return;
+                reportError(error, true);
+                if (!isRetryableSyncError(error)) settleReady(reject, error);
+              });
+            },
+            (error) => {
+              if (epoch !== sessionEpoch) return;
+              reportError(error, true);
+              if (!isRetryableSyncError(error)) {
+                settleReady(reject, error);
+                return;
+              }
+              unsubscribe = null;
+              window.clearTimeout(subscriptionRetryTimer);
+              subscriptionRetryTimer = window.setTimeout(subscribe, RETRY_DELAY);
+            }
+          );
+        };
+
+        subscribe();
+      });
+      if (epoch !== sessionEpoch) return;
+    } catch (error) {
+      if (epoch === sessionEpoch) {
+        reportError(error, true);
+        stopSubscription();
+        setStatus(navigator.onLine ? 'error' : 'offline', describeSyncError(error));
+      }
+      throw error;
+    }
+  }
+
+  window.addEventListener('mhw-state-changed', scheduleSave);
+  window.addEventListener('mhw-auth-session', (event) => {
+    if (event.detail?.mode !== 'firebase') startSession(event.detail).catch((error) => reportError(error, true));
+  });
+  window.addEventListener('online', () => {
+    if (pendingPayload) flushPendingSave().catch(() => {});
+    else if (activeSession) setStatus('loading');
+  });
+  window.addEventListener('offline', () => {
+    if (activeSession) setStatus('offline');
+  });
+
+  window.MHWildsCloudSync = Object.freeze({
+    getStatus: () => ({ state: syncState, uid: activeSession?.user?.uid || '', pending: Boolean(pendingPayload || writeInFlight) }),
+    assertCanSave: (state) => Boolean(normalizedPayload(state)),
+    flush: () => flushPendingSave()
+  });
+
+  window.MHWildsAuth?.registerCloudSyncInitializer?.(startSession);
+
+  const initialSession = window.MHWildsAuth?.getSession?.();
+  if (initialSession && initialSession.mode !== 'pending' && initialSession.mode !== 'firebase') {
+    startSession(initialSession).catch((error) => reportError(error, true));
+  }
+  else setStatus('idle');
 })();
 
 </script>

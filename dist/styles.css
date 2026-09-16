@@ -19,3 +19,5 @@
 .additional-proposals{margin:1rem 0}.additional-proposals summary{font-size:.83rem;cursor:pointer}.additional-proposals[open] summary{margin-bottom:.7rem}
 
 .improve-skill .recommendation-reason{color:var(--gold);line-height:1.6}
+
+#cloud-sync-label{width:auto;height:auto;margin:0;background:none;border-radius:0}#cloud-sync-status[data-state="loading"]>span:first-child,#cloud-sync-status[data-state="saving"]>span:first-child{background:var(--gold);box-shadow:0 0 0 3px #d8b57622}#cloud-sync-status[data-state="offline"]>span:first-child,#cloud-sync-status[data-state="error"]>span:first-child{background:var(--red)}#cloud-sync-status[data-state="synced"]{color:var(--green)}

@@ -20,10 +20,35 @@
   const gatedContent = Array.from(document.body.children).filter((element) => element !== gate && element.tagName !== 'SCRIPT');
 
   let auth = null;
+  let firebaseApp = null;
   let provider = null;
   let authSdk = null;
   let bootFailed = false;
   let activeUser = null;
+  let currentSession = Object.freeze({ mode: 'pending', app: null, user: null, access: null });
+  let cloudSyncInitializer = null;
+  let resolveCloudSyncRegistration = null;
+  const cloudSyncRegistration = new Promise((resolve) => { resolveCloudSyncRegistration = resolve; });
+
+  function publishSession(session) {
+    currentSession = Object.freeze(session);
+    window.dispatchEvent(new CustomEvent('mhw-auth-session', { detail: currentSession }));
+  }
+
+  window.MHWildsAuth = Object.freeze({
+    getSession: () => currentSession,
+    registerCloudSyncInitializer(initializer) {
+      if (typeof initializer !== 'function') throw new TypeError('Cloud sync initializer must be a function.');
+      cloudSyncInitializer = initializer;
+      resolveCloudSyncRegistration();
+    }
+  });
+
+  async function prepareCloudSession(session) {
+    await cloudSyncRegistration;
+    if (!cloudSyncInitializer) throw new Error('Firebase 동기화 모듈을 불러오지 못했습니다.');
+    await cloudSyncInitializer(session);
+  }
 
   function setBusy(button, busy, busyLabel) {
     if (!button) return;
@@ -82,6 +107,7 @@
     accountRole.textContent = access.role === 'master' ? '마스터' : '멤버';
     accountRole.dataset.role = access.role;
     accountAvatar.textContent = displayName.slice(0, 1).toLocaleUpperCase('ko-KR');
+    publishSession({ mode: 'firebase', app: firebaseApp, user, access });
   }
 
   function unlockLocalMode() {
@@ -93,6 +119,7 @@
     gate.setAttribute('aria-hidden', 'true');
     account.hidden = true;
     localMode.hidden = false;
+    publishSession({ mode: 'local', app: null, user: null, access: null });
   }
 
   function describeError(error) {
@@ -114,13 +141,30 @@
 
   async function handleUser(user) {
     const revision = ++authStateRevision;
+    showGate({
+      title: '계정 데이터 준비 중',
+      status: 'Firebase에서 로그인과 저장 데이터를 확인하고 있습니다.',
+      allowSignIn: false,
+      allowSignOut: false
+    });
+    publishSession({ mode: 'transition', app: firebaseApp, user: null, access: null });
     activeUser = user;
     const access = await policy.evaluateUser(user);
     if (revision !== authStateRevision) return;
     if (access.authorized) {
+      gateStatus.textContent = 'Firebase에서 계정 데이터를 불러오고 있습니다.';
+      try {
+        await prepareCloudSession({ mode: 'firebase', app: firebaseApp, user, access });
+      } catch (error) {
+        if (revision !== authStateRevision) return;
+        throw error;
+      }
+      if (revision !== authStateRevision) return;
       unlockApp(user, access);
       return;
     }
+
+    publishSession({ mode: 'signed-out', app: firebaseApp, user: null, access });
 
     if (!user) {
       showGate({
@@ -211,8 +255,8 @@
         import(`https://www.gstatic.com/firebasejs/${SDK_VERSION}/firebase-auth.js`)
       ]);
       authSdk = loadedAuthSdk;
-      const app = appSdk.initializeApp(policy.FIREBASE_CONFIG);
-      auth = authSdk.getAuth(app);
+      firebaseApp = appSdk.initializeApp(policy.FIREBASE_CONFIG);
+      auth = authSdk.getAuth(firebaseApp);
       provider = new authSdk.GoogleAuthProvider();
       provider.setCustomParameters({ prompt: 'select_account' });
 

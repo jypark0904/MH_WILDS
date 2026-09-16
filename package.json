@@ -8,8 +8,8 @@
     "data:fetch": "node scripts/fetch-data.mjs",
     "data:build": "node scripts/build-data.mjs",
     "build": "node scripts/build-data.mjs && node scripts/build-gog-data.mjs && node scripts/build-charm-data.mjs && node scripts/build-meta-data.mjs && node scripts/build-damage-data.mjs && node scripts/build-single-file.mjs",
-    "test": "node tests/auth-policy.test.cjs && node tests/solver-audit.cjs --real-data && node tests/gog-artian.test.cjs && node tests/charm-rules.test.cjs && node tests/armor-access.test.cjs && node tests/skill-chat.test.cjs && node tests/search-presets.test.cjs && node tests/result-insights.test.cjs && node tests/weapon-relevance.test.cjs && node tests/result-loadout.test.cjs && node tests/weapon-meta.test.cjs && node tests/weapon-meta-catalog.test.cjs && node tests/damage-model.test.cjs && node tests/damage-catalog.test.cjs && node tests/improvement-ui.test.cjs && node tests/improvement-flow.test.cjs",
-    "deploy:firebase": "npm run build && firebase deploy --only auth,hosting"
+    "test": "node tests/auth-policy.test.cjs && node tests/firestore-config.test.cjs && node tests/cloud-sync.test.cjs && node tests/solver-audit.cjs --real-data && node tests/gog-artian.test.cjs && node tests/charm-rules.test.cjs && node tests/armor-access.test.cjs && node tests/skill-chat.test.cjs && node tests/search-presets.test.cjs && node tests/result-insights.test.cjs && node tests/weapon-relevance.test.cjs && node tests/result-loadout.test.cjs && node tests/weapon-meta.test.cjs && node tests/weapon-meta-catalog.test.cjs && node tests/damage-model.test.cjs && node tests/damage-catalog.test.cjs && node tests/improvement-ui.test.cjs && node tests/improvement-flow.test.cjs",
+    "deploy:firebase": "npm run build && firebase deploy --only auth,firestore,hosting"
   },
   "devDependencies": {
     "firebase-tools": "^15.22.0"

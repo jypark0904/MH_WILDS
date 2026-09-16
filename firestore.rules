@@ -1,0 +1,78 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function emailHash() {
+      return hashing.sha256(request.auth.token.email.lower().toUtf8())
+        .toHexString()
+        .lower();
+    }
+
+    function isAllowedMember() {
+      return request.auth != null
+        && request.auth.token.email is string
+        && request.auth.token.email_verified == true
+        && emailHash() in [
+          '3cccc5cf887c593c941c757aa59a2e6f3bb8a9012a8cfa079e1c6582707b5a5f',
+          'a97be25f686894c681c95dc4066f338f88c511138fbbc67e631294bcf1208367',
+          '9ee4585cada95cdfaf40fc8783f24cd47e94d6ec8fa7e2e4ecce4bbb1d9940ea'
+        ];
+    }
+
+    function isOwnDocument(uid) {
+      return request.auth.uid == uid;
+    }
+
+    function hasValidShape(uid) {
+      return request.resource.data.keys().hasAll([
+          'app',
+          'schemaVersion',
+          'ownerUid',
+          'payload',
+          'revision',
+          'updatedAt'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'app',
+          'schemaVersion',
+          'ownerUid',
+          'payload',
+          'revision',
+          'updatedAt'
+        ])
+        && request.resource.data.app == 'mh-wilds'
+        && request.resource.data.schemaVersion == 1
+        && request.resource.data.ownerUid == uid
+        && request.resource.data.payload is string
+        && request.resource.data.payload.toUtf8().size() <= 700000
+        && request.resource.data.revision is int
+        && request.resource.data.updatedAt is timestamp
+        && request.resource.data.updatedAt == request.time;
+    }
+
+    match /users/{uid} {
+      // Path ownership is enough for reads and also permits a safe "not found"
+      // result before a member's first document is created.
+      allow get: if isAllowedMember()
+        && isOwnDocument(uid);
+      allow list: if false;
+      allow create: if isAllowedMember()
+        && isOwnDocument(uid)
+        && hasValidShape(uid)
+        && request.resource.data.revision == 1;
+      allow update: if isAllowedMember()
+        && isOwnDocument(uid)
+        && resource.data.ownerUid == uid
+        && resource.data.app == 'mh-wilds'
+        && resource.data.schemaVersion == 1
+        && resource.data.revision is int
+        && hasValidShape(uid)
+        && request.resource.data.revision == resource.data.revision + 1;
+      allow delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
